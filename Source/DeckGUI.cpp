@@ -12,11 +12,14 @@
 #include "DeckGUI.h"
 
 //==============================================================================
-DeckGUI::DeckGUI(DJAudioPlayer* _player,
-                 juce::AudioFormatManager & formatManagerToUse,
-                 juce::AudioThumbnailCache & cacheToUse)
-                 : player(_player),
-                 waveformDisplay(formatManagerToUse, cacheToUse)
+
+DeckGUI::DeckGUI(DJAudioPlayer* _player, 
+                 AudioFormatManager & formatManagerToUse,
+                 AudioThumbnailCache & cacheToUse)
+:
+waveformDisplay(formatManagerToUse, cacheToUse),
+player(_player)
+                   
 {
     // Add Buttons and Sliders
     
@@ -70,27 +73,21 @@ void DeckGUI::paint (juce::Graphics& g)
 
 void DeckGUI::resized()
 {
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
     
     double rowH = getHeight() / 8;
     
-    // buttons
-    playButton.setBounds(0, 0, getWidth(),rowH);
-    stopButton.setBounds(0, rowH, getWidth(),rowH);
-    loadButton.setBounds(0, rowH*7, getWidth(),rowH);
-    
-    // slider
-    volSlider.setBounds(0,  rowH * 2, getWidth(), rowH);
-    speedSlider.setBounds(0,  rowH * 3, getWidth(), rowH);
-    posSlider.setBounds(0,  rowH * 4, getWidth(), rowH);
-    
-    waveformDisplay.setBounds(0, rowH * 5, getWidth(), rowH*2);
-    
-    volSlider.setRange(0.0, 1.0);
-    posSlider.setRange(0.0, 1.0);
+    // GUI Components            x      y          width        height
+    playButton.setBounds        (0,     0,         getWidth(),  rowH);
+    stopButton.setBounds        (0,     rowH,      getWidth(),  rowH);
+    loadButton.setBounds        (0,     rowH*7,    getWidth(),  rowH);
+    volSlider.setBounds         (0,     rowH * 2,  getWidth(),  rowH);
+    speedSlider.setBounds       (0,     rowH * 3,  getWidth(),  rowH);
+    posSlider.setBounds         (0,     rowH * 4,  getWidth(),  rowH);
+    waveformDisplay.setBounds   (0,     rowH * 5,  getWidth(),  rowH*2);
 
 }
+
+//==============================================================================
 
 /** Process user click
  @param button juce::Button*/
@@ -108,18 +105,17 @@ void DeckGUI::buttonClicked(juce::Button* button)
 
     if (button == &loadButton)
     {
-        // this does work in 6.1 but the syntax is a little funky
-        // https://docs.juce.com/master/classFileChooser.html#ac888983e4abdd8401ba7d6124ae64ff3
-        // - configure the dialogue
-        auto fileChooserFlags =
-        juce::FileBrowserComponent::canSelectFiles;
-        // - launch out of the main thread
-        // - note how we use a lambda function which you've probably
-        // not seen before. Please do not worry too much about that.
-        fChooser.launchAsync(fileChooserFlags, [this](const juce::FileChooser& chooser)
+        // get flag integer
+        int fileChooserFlags = FileBrowserComponent::canSelectFiles;
+        
+        // launch file browser window async
+        fChooser.launchAsync(fileChooserFlags, [this](const FileChooser& chooser)
         {
+            // get chosen file
             juce::File chosenFile = chooser.getResult();
+            // load audio file
             player->loadURL(juce::URL{chosenFile});
+            // load waveform display
             waveformDisplay.loadURL(juce::URL{chosenFile});
         });
     }
@@ -156,6 +152,8 @@ void DeckGUI::filesDropped (const juce::StringArray &files, int x, int y)
     if (files.size() ==1)
     {
         player->loadURL(juce::URL{juce::File{files[0]}});
+        waveformDisplay.loadURL(juce::URL{juce::File{files[0]}});
+        
     }
 
 }

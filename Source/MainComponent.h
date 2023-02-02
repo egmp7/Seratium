@@ -20,7 +20,7 @@ public:
 
     //==============================================================================
     void prepareToPlay (int samplesPerBlockExpected, double sampleRate) override;
-    void getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill) override;
+    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override;
     void releaseResources() override;
 
     //==============================================================================
@@ -28,11 +28,10 @@ public:
     void resized() override;
 
 private:
-    //==============================================================================
-    // Your private member variables go here...
     
-    juce::AudioFormatManager formatManager;
-    juce::AudioThumbnailCache thumbCache{100};
+    // Required for Waveform Display
+    AudioFormatManager formatManager;
+    AudioThumbnailCache thumbCache{100};
 
     // Controller
     DJAudioPlayer player1{formatManager};
@@ -42,13 +41,11 @@ private:
     DeckGUI deckGUI1{&player1, formatManager, thumbCache};
     DeckGUI deckGUI2{&player2, formatManager, thumbCache};
     
-    juce::MixerAudioSource mixerSource;
+    MixerAudioSource mixerSource;
     
     PlaylistComponent playlistComponent;
     
-    //juce::Random rand;
-    //double phase;
-    //double dphase;
+
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

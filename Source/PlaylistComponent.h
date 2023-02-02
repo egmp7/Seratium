@@ -47,7 +47,7 @@ public:
     juce::Component* refreshComponentForCell (int rowNumber,
                                               int columnId,
                                               bool isRowSelected,
-                                              juce::Component *existingComponentToUpdate);
+                                              juce::Component *existingComponentToUpdate) override ;
     
     void buttonClicked (juce::Button* button) override;
 

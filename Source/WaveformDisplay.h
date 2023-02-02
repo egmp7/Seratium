@@ -12,23 +12,28 @@
 
 #include <JuceHeader.h>
 
-//==============================================================================
-/*
-*/
-class WaveformDisplay  : public juce::Component,
-                         public juce::ChangeListener
+using namespace juce;
+using namespace std;
+
+class WaveformDisplay  : public Component,
+                         public ChangeListener
 {
 public:
-    WaveformDisplay(juce::AudioFormatManager & formatManagerToUse,
-                    juce::AudioThumbnailCache & cacheToUse);
+    WaveformDisplay(AudioFormatManager & formatManagerToUse,
+                    AudioThumbnailCache & cacheToUse);
     ~WaveformDisplay() override;
+    
+//==============================================================================
 
-    void paint (juce::Graphics&) override;
-    
-    void changeListenerCallback (juce::ChangeBroadcaster *source) override;
-    
+    void paint (Graphics&) override;
     void resized() override;
     
+//==============================================================================
+
+    /**Listens for changes in the thumbnail to redraw**/
+    void changeListenerCallback (ChangeBroadcaster *source) override;
+    
+    /**Load waveform thumbnail**/
     void loadURL(juce::URL audioURL);
     
     /**set the relative position of the playhead**/
@@ -38,7 +43,7 @@ private:
     
     bool fileLoaded;
     double position;
-    juce::AudioThumbnail audioThumb;
+    AudioThumbnail audioThumb;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WaveformDisplay)
 };

@@ -36,7 +36,7 @@ PlaylistComponent::PlaylistComponent()
 PlaylistComponent::~PlaylistComponent()
 {
 }
-
+// virtual
 void PlaylistComponent::paint (juce::Graphics& g)
 {
     /* This demo code just fills the component's background and
@@ -56,7 +56,7 @@ void PlaylistComponent::paint (juce::Graphics& g)
     g.drawText ("PlaylistComponent", getLocalBounds(),
                 juce::Justification::centred, true);   // draw some placeholder text
 }
-
+// virtual
 void PlaylistComponent::resized()
 {
     // This method is where you should set the bounds of any child
@@ -64,10 +64,12 @@ void PlaylistComponent::resized()
     tableComponent.setBounds(0, 0, getWidth(), getHeight());
 }
 
+// virtual
 int PlaylistComponent::getNumRows()
 {
     return trackTitles.size();
 }
+// virtual
 void PlaylistComponent::paintRowBackground (juce::Graphics & g,
                          int rowNumber,
                          int width,
@@ -84,6 +86,7 @@ void PlaylistComponent::paintRowBackground (juce::Graphics & g,
     }
 }
 
+// virtual
 void PlaylistComponent::paintCell (juce::Graphics & g,
                 int rowNumber,
                 int columnId,
@@ -98,7 +101,7 @@ void PlaylistComponent::paintCell (juce::Graphics & g,
                juce::Justification::centredLeft,
                true);
 }
-
+// virtual
 juce::Component* PlaylistComponent::refreshComponentForCell (int rowNumber,
                                     int columnId,
                                     bool isRowSelected,
@@ -120,7 +123,7 @@ juce::Component* PlaylistComponent::refreshComponentForCell (int rowNumber,
     }
     return existingComponentToUpdate;
 }
-
+// virtual
 void PlaylistComponent::buttonClicked (juce::Button* button)
 {
     int id = stoi(button->getComponentID().toStdString());

@@ -14,57 +14,66 @@
 #include "DJAudioPlayer.h"
 #include "WaveformDisplay.h"
 
+using namespace juce;
+using namespace std;
+
 //==============================================================================
-/*
-*/
-class DeckGUI  : public juce::Component,
-                 public juce::Button::Listener,
-                 public juce::Slider::Listener,
-                 public juce::FileDragAndDropTarget,
+
+class DeckGUI  : public Component,
+                 public Button::Listener,
+                 public Slider::Listener,
+                 public FileDragAndDropTarget,
                  public juce::Timer
 {
 public:
     DeckGUI(DJAudioPlayer* player,
-            juce::AudioFormatManager & formatManagerToUse,
-            juce::AudioThumbnailCache & cacheToUse);
+            AudioFormatManager & formatManagerToUse,
+            AudioThumbnailCache & cacheToUse);
     ~DeckGUI() override;
 
+//==============================================================================
+    
     void paint (juce::Graphics&) override;
     void resized() override;
     
-    // Buttons and Sliders implementation
+//==============================================================================
+    
+    // Buttons and Sliders
     
     /** implement Button::Listener*/
-    void buttonClicked(juce::Button *) override;
+    void buttonClicked(Button *) override;
     /** implement Slider::Listener*/
-    void sliderValueChanged (juce::Slider *slider) override;
+    void sliderValueChanged (Slider *slider) override;
+    
+//==============================================================================
     
     // Drag and Drop
     
-    bool isInterestedInFileDrag (const juce::StringArray &files) override;
+    /**Checks when user hover the component*/
+    bool isInterestedInFileDrag (const StringArray &files) override;
+    /**Runs when the user release the click*/
+    void filesDropped (const StringArray &files, int x, int y) override;
     
-    void filesDropped (const juce::StringArray &files, int x, int y) override;
-    
+//==============================================================================
+
     void timerCallback() override;
 
 
 private:
     
-    //Buttons
-    juce::TextButton playButton{"PLAY"};
-    juce::TextButton stopButton{"STOP"};
-    juce::TextButton loadButton{"LOAD"};
-    
-    //Sliders
-    juce::Slider volSlider;
-    juce::Slider speedSlider;
-    juce::Slider posSlider;
-    
-    DJAudioPlayer* player;
+    // GUI Components
+    TextButton playButton{"PLAY"};
+    TextButton stopButton{"STOP"};
+    TextButton loadButton{"LOAD"};
+    Slider volSlider;
+    Slider speedSlider;
+    Slider posSlider;
     WaveformDisplay waveformDisplay;
     
+    DJAudioPlayer* player;
+    
     //Utilities
-    juce::FileChooser fChooser{"Select a file..."};
+    FileChooser fChooser{"Select a file... Mijo"};
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeckGUI)
 };

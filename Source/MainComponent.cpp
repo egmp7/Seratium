@@ -36,17 +36,19 @@ MainComponent::~MainComponent()
 }
 
 //==============================================================================
+
+// Audio life cycle
+
 void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRate)
 {
-    //Synthesis
-    //phase = 0.0 ;
-    //dphase = 0.0001;
-    
+
+    // delegate to DJAudioPlayer
     player1.prepareToPlay(samplesPerBlockExpected, sampleRate);
     player2.prepareToPlay(samplesPerBlockExpected, sampleRate);
 
     //mixerSource.prepareToPlay(samplesPerBlockExpected, sampleRate);
     
+    // plug sources into the mixer
     mixerSource.addInputSource(&player1, false);
     mixerSource.addInputSource(&player2, false);
 
@@ -84,33 +86,4 @@ void MainComponent::resized()
     playlistComponent.setBounds(0, getHeight() /2, getWidth(), getHeight() /2);
 }
 
-/*
-void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill)
-{
-    // Your audio-processing code goes here!
-    
-    auto* leftChan = bufferToFill.buffer->getWritePointer(0,
-                                                          bufferToFill.startSample);
-    auto* rightChan = bufferToFill.buffer->getWritePointer(0,
-                                                          bufferToFill.startSample);
-    
-    for (auto i=0 ; i < bufferToFill.numSamples ; ++i )
-    {
-        //double sample = rand.nextDouble() * 0.5;
-        //double sample = fmod(phase,0.2);
-        double sample = sin(phase)*0.1;
-        
-        leftChan[i] = sample;
-        rightChan[i] = sample;
-        
-        phase += dphase;
-        
-    }
 
-    // For more details, see the help for AudioProcessor::getNextAudioBlock()
-
-    // Right now we are not producing any data, in which case we need to clear the buffer
-    // (to prevent the output of random noise)
-    //bufferToFill.clearActiveBufferRegion();
-}
- */
