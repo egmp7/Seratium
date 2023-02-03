@@ -31,8 +31,7 @@ player(_player)
     addAndMakeVisible(posSlider);
     addAndMakeVisible(waveformDisplay);
     addAndMakeVisible(volLabel);
-    
-
+    addAndMakeVisible(deckAnimation);
     
     playButton.addListener(this);
     stopButton.addListener(this);
@@ -57,7 +56,7 @@ player(_player)
     getLookAndFeel().setColour(Slider::thumbColourId, Colours::purple);
     getLookAndFeel().setColour(Slider::rotarySliderOutlineColourId, Colours::red);
 
-    startTimer(200);
+    startTimer(20);
 }
 
 DeckGUI::~DeckGUI()
@@ -88,7 +87,7 @@ void DeckGUI::paint (juce::Graphics& g)
 void DeckGUI::resized()
 {
     
-    double rowH = getHeight() / 8;
+    double rowH = getHeight() / 10;
     
     // GUI Components            x      y          width        height
     playButton.setBounds        (0,     0,         getWidth(),  rowH);
@@ -98,6 +97,7 @@ void DeckGUI::resized()
     speedSlider.setBounds       (0,     rowH * 3,  getWidth(),  rowH);
     posSlider.setBounds         (0,     rowH * 4,  getWidth(),  rowH);
     waveformDisplay.setBounds   (0,     rowH * 5,  getWidth(),  rowH*2);
+    deckAnimation.setBounds     (0,     rowH * 8,   getWidth(), rowH * 2);
 
 }
 
@@ -110,14 +110,12 @@ void DeckGUI::buttonClicked(juce::Button* button)
     if(button == &playButton)
     {
         player->start();
-
     }
     if (button == &stopButton)
     {
         player->stop();
     }
-
-    if (button == &loadButton)
+    if (button == &loadButton)  // open the file chooser
     {
         // get flag integer
         int fileChooserFlags = FileBrowserComponent::canSelectFiles;
@@ -152,31 +150,28 @@ void DeckGUI::sliderValueChanged(juce::Slider *slider)
         player->setPositionRelative(slider->getValue());
     }
 }
-
 bool DeckGUI::isInterestedInFileDrag (const juce::StringArray &files)
 {
     std::cout<< "DeckGUI::isInterestedInFileDrag" << std::endl;
     return true;
 }
-
 void DeckGUI::filesDropped (const juce::StringArray &files, int x, int y)
 {
     std::cout<< "DeckGUI::filesDropped" << std::endl;
     
     if (files.size() ==1)
     {
-        player->loadURL(juce::URL{juce::File{files[0]}});
-        waveformDisplay.loadURL(juce::URL{juce::File{files[0]}});
+        player->loadURL(URL{File{files[0]}});
+        waveformDisplay.loadURL(URL{File{files[0]}});
         
     }
 
 }
 void DeckGUI::timerCallback()
 {
-    
-    //std::cout << isnan(player->getPositionRelative()) << std::endl;
-    
-    waveformDisplay.setPositionRelative(
-                    player->getPositionRelative());
+    // Set position of the waveform line
+    waveformDisplay.setPositionRelative(player->getPositionRelative());
+    // Set position of the deck animation
+    deckAnimation.setPosition(player->getPosition());
 }
 

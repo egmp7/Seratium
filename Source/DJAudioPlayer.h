@@ -50,7 +50,8 @@ public:
     void start();
     /**Stop audio playback*/
     void stop();
-    
+    /**get the position of the track in seconds**/
+    double getPosition();
     /**get relative position of the playhead*/
     double getPositionRelative();
 

@@ -568,6 +568,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\DeckAnimation.cpp">
+      <Filter>OtoDekcs\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\PlaylistComponent.cpp">
       <Filter>OtoDekcs\Source</Filter>
     </ClCompile>
@@ -2889,6 +2892,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\DeckAnimation.h">
+      <Filter>OtoDekcs\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\PlaylistComponent.h">
       <Filter>OtoDekcs\Source</Filter>
     </ClInclude>

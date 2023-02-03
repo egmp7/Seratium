@@ -13,6 +13,7 @@
 #include <JuceHeader.h>
 #include "DJAudioPlayer.h"
 #include "WaveformDisplay.h"
+#include "DeckAnimation.h"
 
 using namespace juce;
 using namespace std;
@@ -69,6 +70,7 @@ private:
     Slider speedSlider;
     Slider posSlider;
     WaveformDisplay waveformDisplay;
+    DeckAnimation deckAnimation;
     
     // Labels
     Label volLabel;

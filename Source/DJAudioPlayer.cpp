@@ -38,7 +38,14 @@ void DJAudioPlayer::releaseResources()
 }
 
 //==============================================================================
-
+void DJAudioPlayer::start()
+{
+    transportSource.start();
+}
+void DJAudioPlayer::stop()
+{
+    transportSource.stop();
+}
 void DJAudioPlayer::loadURL(juce::URL audioURL)
 {
     // Audio Format Reader
@@ -96,19 +103,11 @@ void DJAudioPlayer::setPositionRelative(double pos)
         setPosition(posInSec);
     }
 }
-
-
-void DJAudioPlayer::start()
+double DJAudioPlayer::getPosition()
 {
-    transportSource.start();
+    return transportSource.getCurrentPosition();
 }
-void DJAudioPlayer::stop()
-{
-    transportSource.stop();
-}
-
 double DJAudioPlayer::getPositionRelative()
 {
     return transportSource.getCurrentPosition() / transportSource.getLengthInSeconds();
 }
-
