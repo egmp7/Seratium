@@ -70,6 +70,9 @@ private:
     Slider posSlider;
     WaveformDisplay waveformDisplay;
     
+    // Labels
+    Label volLabel;
+    
     DJAudioPlayer* player;
     
     //Utilities

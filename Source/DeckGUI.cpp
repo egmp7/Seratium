@@ -30,6 +30,8 @@ player(_player)
     addAndMakeVisible(speedSlider);
     addAndMakeVisible(posSlider);
     addAndMakeVisible(waveformDisplay);
+    addAndMakeVisible(volLabel);
+    
 
     
     playButton.addListener(this);
@@ -43,6 +45,18 @@ player(_player)
     speedSlider.setRange(0.1, 5.0);
     posSlider.setRange(0.0, 1.0);
     
+    //volSlider.setSliderStyle(Slider::SliderStyle::Rotary);
+    volSlider.setSliderStyle(Slider::SliderStyle::LinearVertical);
+
+    volSlider.setTextBoxStyle(Slider::NoTextBox, false, 100, 20);
+    volSlider.setTextValueSuffix("Hello World!");
+    
+    volLabel.setText("Volume", dontSendNotification);
+    volLabel.attachToComponent(&volSlider, false);
+    
+    getLookAndFeel().setColour(Slider::thumbColourId, Colours::purple);
+    getLookAndFeel().setColour(Slider::rotarySliderOutlineColourId, Colours::red);
+
     startTimer(200);
 }
 
@@ -80,7 +94,7 @@ void DeckGUI::resized()
     playButton.setBounds        (0,     0,         getWidth(),  rowH);
     stopButton.setBounds        (0,     rowH,      getWidth(),  rowH);
     loadButton.setBounds        (0,     rowH*7,    getWidth(),  rowH);
-    volSlider.setBounds         (0,     rowH * 2,  getWidth(),  rowH);
+    volSlider.setBounds         (100,     rowH * 2,  getWidth(),  rowH);
     speedSlider.setBounds       (0,     rowH * 3,  getWidth(),  rowH);
     posSlider.setBounds         (0,     rowH * 4,  getWidth(),  rowH);
     waveformDisplay.setBounds   (0,     rowH * 5,  getWidth(),  rowH*2);

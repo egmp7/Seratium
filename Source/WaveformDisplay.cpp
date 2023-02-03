@@ -63,7 +63,7 @@ void WaveformDisplay::resized()
 
 void WaveformDisplay::changeListenerCallback (ChangeBroadcaster *source)
 {
-    cout << "Changed received" << endl;
+    cout << "WaveformDisplay::changeListenerCallback Changed received" << endl;
     repaint();
 }
 
@@ -76,12 +76,11 @@ void WaveformDisplay::loadURL(URL audioURL)
     
     if (fileLoaded)
     {
-        std::cout << "wfd: loaded!" << std::endl;
+        std::cout << "WaveformDisplay::loadURL loaded!" << std::endl;
     }
     else
     {
-        std::cout << "wfd: not loaded!" << std::endl;
-
+        std::cout << "WaveformDisplay::loadURL not loaded!" << std::endl;
     }
     
 }
