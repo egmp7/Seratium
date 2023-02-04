@@ -24,8 +24,7 @@ void DeckAnimation::update ()
 }
 void DeckAnimation::paint (Graphics& g)
 {
-    g.fillAll   (Colours::grey);
-    
+    g.fillAll   (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
     
     // bigger circle
     int d1 = 100;

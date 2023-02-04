@@ -81,9 +81,9 @@ void MainComponent::paint (juce::Graphics& g)
 /** VIEW */
 void MainComponent::resized()
 {
-    deckGUI1.setBounds(0, 0, getWidth() /2, getHeight() /2);
-    deckGUI2.setBounds(getWidth() /2, 0, getWidth() /2, getHeight() /2);
-    playlistComponent.setBounds(0, getHeight() /2, getWidth(), getHeight() /2);
+    deckGUI1.setBounds(0, 0, getWidth() /2, getHeight() *3/4);
+    deckGUI2.setBounds(getWidth() /2, 0, getWidth() /2, getHeight() *3/4);
+    playlistComponent.setBounds(0, getHeight() *3/4, getWidth(), getHeight() *1/4);
 }
 
 
