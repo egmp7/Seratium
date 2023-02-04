@@ -63,6 +63,7 @@ player(_player)
     addAndMakeVisible(deckAnimation);
 
     startTimer(20);
+    currentTrackTime = 0;
 }
 
 DeckGUI::~DeckGUI()
@@ -78,6 +79,10 @@ void DeckGUI::paint (juce::Graphics& g)
     
     g.setColour (juce::Colours::grey);
     g.drawRect (getLocalBounds(), 1);
+    
+    g.setColour(Colours::white);
+    g.drawText(String(currentTrackTime) + "s", currentTrackTimeComp, Justification::centred);
+
 }
 
 void DeckGUI::resized()
@@ -86,16 +91,17 @@ void DeckGUI::resized()
     double rowH = getHeight() / 7;
     double columnW = getWidth() / 8;
     
-    // GUI Components            x          y           width       height
-    loadButton.setBounds        (0,         0,          columnW,    rowH);
-    waveformDisplay.setBounds   (columnW,   0,          columnW*6,  rowH);
-    speedSlider.setBounds       (0,         rowH,       columnW*2,  rowH*5);
-    deckAnimation.setBounds     (columnW*2, rowH,       columnW*4,  rowH*5);
-    volSlider.setBounds         (columnW*6, rowH,       columnW*2,  rowH*5);
-    playButton.setBounds        (0,         rowH*6,     columnW*2,  rowH);
-    stopButton.setBounds        (columnW*2, rowH*6,     columnW*2,  rowH);
+    // GUI Components               x          y           width       height
+    loadButton.setBounds            (0,         0,          columnW,    rowH);
+    waveformDisplay.setBounds       (columnW,   0,          columnW*6,  rowH);
+    currentTrackTimeComp.setBounds  (columnW*7, 0,          columnW,    rowH/2);
+    speedSlider.setBounds           (0,         rowH,       columnW*2,  rowH*5);
+    deckAnimation.setBounds         (columnW*2, rowH,       columnW*4,  rowH*5);
+    volSlider.setBounds             (columnW*6, rowH,       columnW*2,  rowH*5);
+    playButton.setBounds            (0,         rowH*6,     columnW*2,  rowH);
+    stopButton.setBounds            (columnW*2, rowH*6,     columnW*2,  rowH);
     
-    posSlider.setBounds         (columnW*4, rowH * 6,   columnW*4,  rowH);
+    posSlider.setBounds             (columnW*4, rowH * 6,   columnW*4,  rowH);
     
 }
 
@@ -165,11 +171,21 @@ void DeckGUI::filesDropped (const juce::StringArray &files, int x, int y)
     }
 
 }
+
+void DeckGUI::setCurrentTrackTime(float time)
+{
+    if(currentTrackTime != time && time != 0.0f)
+        currentTrackTime = time;
+        repaint();
+}
+
 void DeckGUI::timerCallback()
 {
     // Set position of the waveform line
     waveformDisplay.setPositionRelative(player->getPositionRelative());
     // Set position of the deck animation
     deckAnimation.setPosition(player->getPosition());
+    // Set position of timerTrack
+    setCurrentTrackTime(player->getPosition());
 }
 

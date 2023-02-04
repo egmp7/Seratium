@@ -24,7 +24,7 @@ class DeckGUI  : public Component,
                  public Button::Listener,
                  public Slider::Listener,
                  public FileDragAndDropTarget,
-                 public juce::Timer
+                 public Timer
 {
 public:
     DeckGUI(DJAudioPlayer* player,
@@ -62,6 +62,8 @@ public:
 
 private:
     
+    void setCurrentTrackTime(float time);
+    
     // GUI Components
     TextButton playButton{"PLAY"};
     TextButton stopButton{"STOP"};
@@ -71,6 +73,10 @@ private:
     Slider posSlider;
     WaveformDisplay waveformDisplay;
     DeckAnimation deckAnimation;
+    Rectangle<float> currentTrackTimeComp;
+    
+    // locals
+    int currentTrackTime;
     
     // Labels
     Label volLabel;
