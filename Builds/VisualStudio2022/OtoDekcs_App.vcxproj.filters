@@ -2,6 +2,15 @@
 
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="OtoDekcs\Source\Controllers">
+      <UniqueIdentifier>{EC74F80A-FD9A-8710-6A02-BAFDCFF2AF0F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDekcs\Source\Components">
+      <UniqueIdentifier>{911E779E-8EF6-5A5A-FAF4-5FECA02483FD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDekcs\Source\GUIs">
+      <UniqueIdentifier>{CC3DF228-1060-CAF2-E232-109A24316BB8}</UniqueIdentifier>
+    </Filter>
     <Filter Include="OtoDekcs\Source">
       <UniqueIdentifier>{2C145D45-099F-D9A7-2B28-DFDEEAEF4D67}</UniqueIdentifier>
     </Filter>
@@ -568,23 +577,23 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\DJAudioPlayer.cpp">
+      <Filter>OtoDekcs\Source\Controllers</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Crossfader.cpp">
-      <Filter>OtoDekcs\Source</Filter>
+      <Filter>OtoDekcs\Source\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\DeckAnimation.cpp">
-      <Filter>OtoDekcs\Source</Filter>
+      <Filter>OtoDekcs\Source\Components</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\PlaylistComponent.cpp">
-      <Filter>OtoDekcs\Source</Filter>
+    <ClCompile Include="..\..\Source\Playlist.cpp">
+      <Filter>OtoDekcs\Source\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\WaveformDisplay.cpp">
-      <Filter>OtoDekcs\Source</Filter>
+      <Filter>OtoDekcs\Source\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\DeckGUI.cpp">
-      <Filter>OtoDekcs\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\DJAudioPlayer.cpp">
-      <Filter>OtoDekcs\Source</Filter>
+      <Filter>OtoDekcs\Source\GUIs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Main.cpp">
       <Filter>OtoDekcs\Source</Filter>
@@ -2895,23 +2904,23 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\DJAudioPlayer.h">
+      <Filter>OtoDekcs\Source\Controllers</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Crossfader.h">
-      <Filter>OtoDekcs\Source</Filter>
+      <Filter>OtoDekcs\Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\DeckAnimation.h">
-      <Filter>OtoDekcs\Source</Filter>
+      <Filter>OtoDekcs\Source\Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\PlaylistComponent.h">
-      <Filter>OtoDekcs\Source</Filter>
+    <ClInclude Include="..\..\Source\Playlist.h">
+      <Filter>OtoDekcs\Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\WaveformDisplay.h">
-      <Filter>OtoDekcs\Source</Filter>
+      <Filter>OtoDekcs\Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\DeckGUI.h">
-      <Filter>OtoDekcs\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\DJAudioPlayer.h">
-      <Filter>OtoDekcs\Source</Filter>
+      <Filter>OtoDekcs\Source\GUIs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MainComponent.h">
       <Filter>OtoDekcs\Source</Filter>

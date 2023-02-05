@@ -4,14 +4,11 @@
 
 #include "DJAudioPlayer.h"
 #include "DeckGUI.h"
-#include "PlaylistComponent.h"
+#include "Playlist.h"
 #include "Crossfader.h"
 
 //==============================================================================
-/*
-    This component lives inside our window, and this is where you should put all
-    your controls and content.
-*/
+
 class MainComponent  : public juce::AudioAppComponent
 {                       
 public:
@@ -46,7 +43,7 @@ private:
     
     MixerAudioSource mixerSource;
     
-    PlaylistComponent playlistComponent;
+    Playlist playlist;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

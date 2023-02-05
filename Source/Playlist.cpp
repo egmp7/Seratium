@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    PlaylistComponent.cpp
+    Playlist.cpp
     Created: 14 Jan 2023 1:21:11pm
     Author:  Erick Gonzalez
 
@@ -9,10 +9,10 @@
 */
 
 #include <JuceHeader.h>
-#include "PlaylistComponent.h"
+#include "Playlist.h"
 
 //==============================================================================
-PlaylistComponent::PlaylistComponent()
+Playlist::Playlist()
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
@@ -33,11 +33,11 @@ PlaylistComponent::PlaylistComponent()
     addAndMakeVisible(tableComponent);
 }
 
-PlaylistComponent::~PlaylistComponent()
+Playlist::~Playlist()
 {
 }
 // virtual
-void PlaylistComponent::paint (juce::Graphics& g)
+void Playlist::paint (juce::Graphics& g)
 {
     /* This demo code just fills the component's background and
        draws some placeholder text to get you started.
@@ -53,11 +53,11 @@ void PlaylistComponent::paint (juce::Graphics& g)
 
     g.setColour (juce::Colours::white);
     g.setFont (14.0f);
-    g.drawText ("PlaylistComponent", getLocalBounds(),
+    g.drawText ("Playlist", getLocalBounds(),
                 juce::Justification::centred, true);   // draw some placeholder text
 }
 // virtual
-void PlaylistComponent::resized()
+void Playlist::resized()
 {
     // This method is where you should set the bounds of any child
     // components that your component contains..
@@ -65,12 +65,12 @@ void PlaylistComponent::resized()
 }
 
 // virtual
-int PlaylistComponent::getNumRows()
+int Playlist::getNumRows()
 {
     return trackTitles.size();
 }
 // virtual
-void PlaylistComponent::paintRowBackground (juce::Graphics & g,
+void Playlist::paintRowBackground (juce::Graphics & g,
                          int rowNumber,
                          int width,
                          int height,
@@ -87,7 +87,7 @@ void PlaylistComponent::paintRowBackground (juce::Graphics & g,
 }
 
 // virtual
-void PlaylistComponent::paintCell (juce::Graphics & g,
+void Playlist::paintCell (juce::Graphics & g,
                 int rowNumber,
                 int columnId,
                 int width,
@@ -102,7 +102,7 @@ void PlaylistComponent::paintCell (juce::Graphics & g,
                true);
 }
 // virtual
-juce::Component* PlaylistComponent::refreshComponentForCell (int rowNumber,
+juce::Component* Playlist::refreshComponentForCell (int rowNumber,
                                     int columnId,
                                     bool isRowSelected,
                                     juce::Component *existingComponentToUpdate)
@@ -124,9 +124,9 @@ juce::Component* PlaylistComponent::refreshComponentForCell (int rowNumber,
     return existingComponentToUpdate;
 }
 // virtual
-void PlaylistComponent::buttonClicked (juce::Button* button)
+void Playlist::buttonClicked (juce::Button* button)
 {
     int id = stoi(button->getComponentID().toStdString());
-    cout << "PlaylistComponent::buttonClicked " << trackTitles[id] << endl;
+    cout << "Playlist::buttonClicked " << trackTitles[id] << endl;
 }
 

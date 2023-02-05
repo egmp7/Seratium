@@ -141,6 +141,7 @@ void DeckGUI::buttonClicked(juce::Button* button)
         });
     }
 }
+
 /** Process user silder action
  @param button juce::Button*/
 void DeckGUI::sliderValueChanged(juce::Slider *slider)
@@ -154,11 +155,13 @@ void DeckGUI::sliderValueChanged(juce::Slider *slider)
         player->setSpeed(slider->getValue());
     }
 }
+
 bool DeckGUI::isInterestedInFileDrag (const juce::StringArray &files)
 {
     std::cout<< "DeckGUI::isInterestedInFileDrag" << std::endl;
     return true;
 }
+
 void DeckGUI::filesDropped (const juce::StringArray &files, int x, int y)
 {
     std::cout<< "DeckGUI::filesDropped" << std::endl;
@@ -171,6 +174,7 @@ void DeckGUI::filesDropped (const juce::StringArray &files, int x, int y)
     }
 
 }
+
 void DeckGUI::setCurrentTrackTime(int time)
 {
     if(currentTrackTime != time && time != 0.0f)
@@ -180,6 +184,7 @@ void DeckGUI::setCurrentTrackTime(int time)
     }
         
 }
+
 void DeckGUI::setRemainingTrackTime(int trackLength)
 {
     if(trackLength != 0)
@@ -189,6 +194,7 @@ void DeckGUI::setRemainingTrackTime(int trackLength)
     }
     
 }
+
 void DeckGUI::timerCallback()
 {
     // Set position of the waveform line

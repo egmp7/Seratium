@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    PlaylistComponent.h
+    Playlist.h
     Created: 14 Jan 2023 1:21:11pm
     Author:  Erick Gonzalez
 
@@ -19,13 +19,13 @@ using namespace std;
 //==============================================================================
 /*
 */
-class PlaylistComponent  : public juce::Component,
+class Playlist  : public juce::Component,
                            public juce::TableListBoxModel,
                            public juce::Button::Listener
 {
 public:
-    PlaylistComponent();
-    ~PlaylistComponent() override;
+    Playlist();
+    ~Playlist() override;
 
     void paint (juce::Graphics&) override;
     void resized() override;
@@ -57,5 +57,5 @@ private:
     vector<string> trackTitles;
 
     
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PlaylistComponent)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Playlist)
 };
