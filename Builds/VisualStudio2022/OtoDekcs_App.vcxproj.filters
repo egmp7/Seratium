@@ -595,6 +595,9 @@
     <ClCompile Include="..\..\Source\DeckGUI.cpp">
       <Filter>OtoDekcs\Source\GUIs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\MainGUI.cpp">
+      <Filter>OtoDekcs\Source\GUIs</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Main.cpp">
       <Filter>OtoDekcs\Source</Filter>
     </ClCompile>
@@ -2920,6 +2923,9 @@
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\DeckGUI.h">
+      <Filter>OtoDekcs\Source\GUIs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\MainGUI.h">
       <Filter>OtoDekcs\Source\GUIs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MainComponent.h">

@@ -6,6 +6,7 @@
 #include "DeckGUI.h"
 #include "Playlist.h"
 #include "Crossfader.h"
+#include "MainGUI.h"
 
 //==============================================================================
 
@@ -31,19 +32,15 @@ private:
     AudioFormatManager formatManager;
     AudioThumbnailCache thumbCache{100};
 
-    // Controller
+    // Controllers
     DJAudioPlayer player1{formatManager};
     DJAudioPlayer player2{formatManager};
+    
+    // Views
+    MainGUI mainGUI{&player1, &player2, formatManager, thumbCache};
 
-    // View
-    DeckGUI deckGUI1{&player1, &crossfader, formatManager, thumbCache, false};
-    DeckGUI deckGUI2{&player2, &crossfader, formatManager, thumbCache, true};
-    
-    Crossfader crossfader{&player1, &player2};
-    
+    // Utilities
     MixerAudioSource mixerSource;
-    
-    Playlist playlist;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

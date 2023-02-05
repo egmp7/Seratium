@@ -6,25 +6,19 @@ MainComponent::MainComponent()
     setSize (1000, 600);
 
     // permissions
-    if (juce::RuntimePermissions::isRequired (juce::RuntimePermissions::recordAudio)
-        && ! juce::RuntimePermissions::isGranted (juce::RuntimePermissions::recordAudio))
+    if (RuntimePermissions::isRequired (RuntimePermissions::recordAudio)
+        && ! RuntimePermissions::isGranted (RuntimePermissions::recordAudio))
     {
-        juce::RuntimePermissions::request (juce::RuntimePermissions::recordAudio,
+        RuntimePermissions::request (RuntimePermissions::recordAudio,
                                            [&] (bool granted) { setAudioChannels (granted ? 2 : 0, 2); });
     }
     else
     {
         setAudioChannels (0, 2);
     }
-    
-    addAndMakeVisible(deckGUI1);
-    addAndMakeVisible(deckGUI2);
-    addAndMakeVisible(playlist);
-    addAndMakeVisible(crossfader);
-    
-    deckGUI1.setComponentID("deckGUI1");
-    deckGUI2.setComponentID("deckGUI2");
 
+    addAndMakeVisible(mainGUI);
+    
     formatManager.registerBasicFormats();
 }
 
@@ -69,10 +63,7 @@ void MainComponent::paint (juce::Graphics& g)
 
 void MainComponent::resized()
 {
-    deckGUI1.setBounds(0, 0, getWidth() /2, getHeight() *3/4);
-    deckGUI2.setBounds(getWidth() /2, 0, getWidth() /2, getHeight() *3/4);
-    playlist.setBounds(0, getHeight() *3/4, getWidth(), getHeight() *1/4);
-    crossfader.setBounds(getWidth()/8*4, getHeight() - getHeight()/7, getWidth()/8*4, getHeight()/7);
+    mainGUI.setBounds(getLocalBounds());
 }
 
 

@@ -25,6 +25,8 @@
       <GROUP id="{ED349D5F-41F9-FDEF-3670-860312757F3A}" name="GUIs">
         <FILE id="dXl0KJ" name="DeckGUI.cpp" compile="1" resource="0" file="Source/DeckGUI.cpp"/>
         <FILE id="cIQalg" name="DeckGUI.h" compile="0" resource="0" file="Source/DeckGUI.h"/>
+        <FILE id="zl7TU0" name="MainGUI.cpp" compile="1" resource="0" file="Source/MainGUI.cpp"/>
+        <FILE id="YWSQ5P" name="MainGUI.h" compile="0" resource="0" file="Source/MainGUI.h"/>
       </GROUP>
       <FILE id="oKdVlp" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="kpgfPk" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>

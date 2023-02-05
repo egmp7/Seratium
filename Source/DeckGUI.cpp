@@ -190,7 +190,6 @@ void DeckGUI::setRemainingTrackTime(int trackLength)
     if(trackLength != 0)
     {
         remainingTrackTime = trackLength - currentTrackTime;
-       // repaint();
     }
     
 }

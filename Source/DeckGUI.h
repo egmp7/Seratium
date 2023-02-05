@@ -60,8 +60,8 @@ public:
     
 //==============================================================================
 
+    /**Callback function that runs in a different threath**/
     void timerCallback() override;
-
 
 private:
     
