@@ -18,8 +18,9 @@ DeckGUI::DeckGUI(DJAudioPlayer* _player,
                  AudioThumbnailCache & cacheToUse)
 :
 waveformDisplay(formatManagerToUse, cacheToUse),
+currentTrackTime(0),
+remainingTrackTime(0),
 player(_player)
-                   
 {
     // play button
     addAndMakeVisible(playButton);
@@ -63,7 +64,6 @@ player(_player)
     addAndMakeVisible(deckAnimation);
 
     startTimer(20);
-    currentTrackTime = 0;
 }
 
 DeckGUI::~DeckGUI()
@@ -82,6 +82,7 @@ void DeckGUI::paint (juce::Graphics& g)
     
     g.setColour(Colours::white);
     g.drawText(String(currentTrackTime) + "s", currentTrackTimeComp, Justification::centred);
+    g.drawText(String(remainingTrackTime) + "s", remainingTrackTimeComp, Justification::centred);
 
 }
 
@@ -95,6 +96,7 @@ void DeckGUI::resized()
     loadButton.setBounds            (0,         0,          columnW,    rowH);
     waveformDisplay.setBounds       (columnW,   0,          columnW*6,  rowH);
     currentTrackTimeComp.setBounds  (columnW*7, 0,          columnW,    rowH/2);
+    remainingTrackTimeComp.setBounds(columnW*7, rowH/2,     columnW,    rowH/2);
     speedSlider.setBounds           (0,         rowH,       columnW*2,  rowH*5);
     deckAnimation.setBounds         (columnW*2, rowH,       columnW*4,  rowH*5);
     volSlider.setBounds             (columnW*6, rowH,       columnW*2,  rowH*5);
@@ -171,21 +173,32 @@ void DeckGUI::filesDropped (const juce::StringArray &files, int x, int y)
     }
 
 }
-
-void DeckGUI::setCurrentTrackTime(float time)
+void DeckGUI::setCurrentTrackTime(int time)
 {
     if(currentTrackTime != time && time != 0.0f)
+    {
         currentTrackTime = time;
         repaint();
+    }
+        
 }
-
+void DeckGUI::setRemainingTrackTime(int trackLength)
+{
+    if(trackLength != 0)
+    {
+        remainingTrackTime = trackLength - currentTrackTime;
+       // repaint();
+    }
+    
+}
 void DeckGUI::timerCallback()
 {
     // Set position of the waveform line
     waveformDisplay.setPositionRelative(player->getPositionRelative());
     // Set position of the deck animation
     deckAnimation.setPosition(player->getPosition());
-    // Set position of timerTrack
+    // Set position of Timer Track Components
     setCurrentTrackTime(player->getPosition());
+    setRemainingTrackTime(player->getTrackLength());
 }
 

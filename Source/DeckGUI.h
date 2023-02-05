@@ -62,7 +62,6 @@ public:
 
 private:
     
-    void setCurrentTrackTime(float time);
     
     // GUI Components
     TextButton playButton{"PLAY"};
@@ -73,14 +72,16 @@ private:
     Slider posSlider;
     WaveformDisplay waveformDisplay;
     DeckAnimation deckAnimation;
+    
+    // Tracking time components
     Rectangle<float> currentTrackTimeComp;
-    
-    // locals
+    Rectangle<float> remainingTrackTimeComp;
     int currentTrackTime;
+    int remainingTrackTime;
+    void setCurrentTrackTime(int time);
+    void setRemainingTrackTime(int trackLength);
     
-    // Labels
-    Label volLabel;
-    
+    // Controllers
     DJAudioPlayer* player;
     
     //Utilities

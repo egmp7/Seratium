@@ -54,6 +54,8 @@ public:
     double getPosition();
     /**get relative position of the playhead*/
     double getPositionRelative();
+    /**get  track  length in seconds*/
+    double getTrackLength();
 
 private:
     

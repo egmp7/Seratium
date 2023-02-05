@@ -111,3 +111,7 @@ double DJAudioPlayer::getPositionRelative()
 {
     return transportSource.getCurrentPosition() / transportSource.getLengthInSeconds();
 }
+double DJAudioPlayer::getTrackLength()
+{
+    return transportSource.getLengthInSeconds();
+}
