@@ -15,8 +15,10 @@
 
 DeckGUI::DeckGUI(DJAudioPlayer* _player, 
                  AudioFormatManager & formatManagerToUse,
-                 AudioThumbnailCache & cacheToUse)
+                 AudioThumbnailCache & cacheToUse,
+                 bool _mirror)
 :
+mirror(_mirror),
 waveformDisplay(formatManagerToUse, cacheToUse),
 currentTrackTime(0),
 remainingTrackTime(0),
@@ -97,14 +99,28 @@ void DeckGUI::resized()
     waveformDisplay.setBounds       (columnW,   0,          columnW*6,  rowH);
     currentTrackTimeComp.setBounds  (columnW*7, 0,          columnW,    rowH/2);
     remainingTrackTimeComp.setBounds(columnW*7, rowH/2,     columnW,    rowH/2);
-    speedSlider.setBounds           (0,         rowH,       columnW*2,  rowH*5);
-    deckAnimation.setBounds         (columnW*2, rowH,       columnW*4,  rowH*5);
-    volSlider.setBounds             (columnW*6, rowH,       columnW*2,  rowH*5);
-    playButton.setBounds            (0,         rowH*6,     columnW*2,  rowH);
-    stopButton.setBounds            (columnW*2, rowH*6,     columnW*2,  rowH);
     
-    posSlider.setBounds             (columnW*4, rowH * 6,   columnW*4,  rowH);
-    
+    if(!mirror)
+    {
+        speedSlider.setBounds           (0,         rowH,       columnW*2,  rowH*5);
+        deckAnimation.setBounds         (columnW*2, rowH,       columnW*4,  rowH*5);
+        volSlider.setBounds             (columnW*6, rowH,       columnW*2,  rowH*5);
+        playButton.setBounds            (0,         rowH*6,     columnW*2,  rowH);
+        stopButton.setBounds            (columnW*2, rowH*6,     columnW*2,  rowH);
+        
+        posSlider.setBounds             (columnW*4, rowH * 6,   columnW*4,  rowH);
+        
+    }
+    else
+    {
+        speedSlider.setBounds           (columnW*6, rowH,       columnW*2,  rowH*5);
+        deckAnimation.setBounds         (columnW*2, rowH,       columnW*4,  rowH*5);
+        volSlider.setBounds             (0,         rowH,       columnW*2,  rowH*5);
+        playButton.setBounds            (columnW*6, rowH*6,     columnW*2,  rowH);
+        stopButton.setBounds            (columnW*4, rowH*6,     columnW*2,  rowH);
+        
+        posSlider.setBounds             (0,         rowH * 6,   columnW*4,  rowH);
+    }
 }
 
 //==============================================================================

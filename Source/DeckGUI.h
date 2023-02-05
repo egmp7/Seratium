@@ -29,7 +29,8 @@ class DeckGUI  : public Component,
 public:
     DeckGUI(DJAudioPlayer* player,
             AudioFormatManager & formatManagerToUse,
-            AudioThumbnailCache & cacheToUse);
+            AudioThumbnailCache & cacheToUse,
+            bool _mirror);
     ~DeckGUI() override;
 
 //==============================================================================
@@ -62,6 +63,8 @@ public:
 
 private:
     
+    // Mirror GUI
+    bool mirror;
     
     // GUI Components
     TextButton playButton{"PLAY"};
