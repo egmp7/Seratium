@@ -72,7 +72,6 @@ private:
     TextButton loadButton{"LOAD"};
     Slider volSlider;
     Slider speedSlider;
-    Slider posSlider;
     WaveformDisplay waveformDisplay;
     DeckAnimation deckAnimation;
     

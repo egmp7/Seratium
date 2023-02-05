@@ -44,7 +44,6 @@ player(_player)
     volSlider.setTextBoxStyle(Slider::NoTextBox, false, 100, 20);
     volSlider.setValue(1);
 
-
     // speed slider
     addAndMakeVisible(speedSlider);
     speedSlider.addListener(this);
@@ -52,14 +51,6 @@ player(_player)
     speedSlider.setSliderStyle(Slider::SliderStyle::LinearVertical);
     speedSlider.setTextBoxStyle(Slider::NoTextBox, false, 100, 20);
     speedSlider.setValue(1);
-
-
-    // pos slider
-    addAndMakeVisible(posSlider);
-    posSlider.addListener(this);
-    posSlider.setRange(0.0, 1.0);
-    posSlider.setTextBoxStyle(Slider::NoTextBox, false, 100, 20);
-
 
     // other components
     addAndMakeVisible(waveformDisplay);
@@ -72,7 +63,6 @@ DeckGUI::~DeckGUI()
 {
     stopTimer();
 }
-
 void DeckGUI::paint (juce::Graphics& g)
 {
 
@@ -107,9 +97,6 @@ void DeckGUI::resized()
         volSlider.setBounds             (columnW*6, rowH,       columnW*2,  rowH*5);
         playButton.setBounds            (0,         rowH*6,     columnW*2,  rowH);
         stopButton.setBounds            (columnW*2, rowH*6,     columnW*2,  rowH);
-        
-        posSlider.setBounds             (columnW*4, rowH * 6,   columnW*4,  rowH);
-        
     }
     else
     {
@@ -118,8 +105,6 @@ void DeckGUI::resized()
         volSlider.setBounds             (0,         rowH,       columnW*2,  rowH*5);
         playButton.setBounds            (columnW*6, rowH*6,     columnW*2,  rowH);
         stopButton.setBounds            (columnW*4, rowH*6,     columnW*2,  rowH);
-        
-        posSlider.setBounds             (0,         rowH * 6,   columnW*4,  rowH);
     }
 }
 
@@ -154,7 +139,6 @@ void DeckGUI::buttonClicked(juce::Button* button)
         });
     }
 }
-
 /** Process user silder action
  @param button juce::Button*/
 void DeckGUI::sliderValueChanged(juce::Slider *slider)
@@ -166,10 +150,6 @@ void DeckGUI::sliderValueChanged(juce::Slider *slider)
     if (slider == &speedSlider)
     {
         player->setSpeed(slider->getValue());
-    }
-    if (slider == &posSlider)
-    {
-        player->setPositionRelative(slider->getValue());
     }
 }
 bool DeckGUI::isInterestedInFileDrag (const juce::StringArray &files)
