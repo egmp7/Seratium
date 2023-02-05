@@ -17,6 +17,8 @@
         <FILE id="E2LzWQ" name="DeckAnimation.h" compile="0" resource="0" file="Source/DeckAnimation.h"/>
         <FILE id="B2GjRw" name="Playlist.cpp" compile="1" resource="0" file="Source/Playlist.cpp"/>
         <FILE id="SPbX4W" name="Playlist.h" compile="0" resource="0" file="Source/Playlist.h"/>
+        <FILE id="h7QKos" name="TimeTracker.cpp" compile="1" resource="0" file="Source/TimeTracker.cpp"/>
+        <FILE id="IN7Z0R" name="TimeTracker.h" compile="0" resource="0" file="Source/TimeTracker.h"/>
         <FILE id="mTiA6q" name="WaveformDisplay.cpp" compile="1" resource="0"
               file="Source/WaveformDisplay.cpp"/>
         <FILE id="oJmZ3x" name="WaveformDisplay.h" compile="0" resource="0"

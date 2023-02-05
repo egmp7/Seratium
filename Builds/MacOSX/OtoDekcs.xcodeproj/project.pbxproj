@@ -15,6 +15,7 @@
 		14C87249C3877D2E43F20F65 /* Cocoa.framework */ = {isa = PBXBuildFile; fileRef = DC8D05AB1D6E094224F0B46B; };
 		24AD01FBBEE1E5B7631E1A68 /* DeckAnimation.cpp */ = {isa = PBXBuildFile; fileRef = 92A1E0E9ABDA4977D8F4BD37; };
 		2CC8924DDFC05C2E770A9647 /* Main.cpp */ = {isa = PBXBuildFile; fileRef = 89A11FB9595BA6C50907A84B; };
+		3592808171F9F2AF276FEFF4 /* TimeTracker.cpp */ = {isa = PBXBuildFile; fileRef = 5A02A8EA641E39546EADB62E; };
 		381ACE32AD0B239E0D993F87 /* include_juce_events.mm */ = {isa = PBXBuildFile; fileRef = 15AFFCD34D3CC22494347E89; };
 		38DCD941AA42091825DA1FEA /* CoreAudioKit.framework */ = {isa = PBXBuildFile; fileRef = 361D8991B2DFFCA7D255B3D1; };
 		4A48C164BF66C025993925BC /* include_juce_audio_devices.mm */ = {isa = PBXBuildFile; fileRef = 722646977006D98708C385A1; };
@@ -54,6 +55,7 @@
 		26F54349FA6D6B5A72DA8B1E /* juce_audio_processors */ /* juce_audio_processors */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_processors; path = "~/JUCE/modules/juce_audio_processors"; sourceTree = "<absolute>"; };
 		29BF658B35BFDB9F2CF6AE74 /* DeckAnimation.h */ /* DeckAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DeckAnimation.h; path = ../../Source/DeckAnimation.h; sourceTree = SOURCE_ROOT; };
 		2A2DD123F6C9367176766EBD /* juce_data_structures */ /* juce_data_structures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_data_structures; path = "~/JUCE/modules/juce_data_structures"; sourceTree = "<absolute>"; };
+		2A6C01AB9FE5377C33BFF0F9 /* TimeTracker.h */ /* TimeTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TimeTracker.h; path = ../../Source/TimeTracker.h; sourceTree = SOURCE_ROOT; };
 		2C3795A78637798F9A170E34 /* juce_gui_extra */ /* juce_gui_extra */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_gui_extra; path = "~/JUCE/modules/juce_gui_extra"; sourceTree = "<absolute>"; };
 		2F04F8015DDE1C216B006975 /* DeckGUI.h */ /* DeckGUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DeckGUI.h; path = ../../Source/DeckGUI.h; sourceTree = SOURCE_ROOT; };
 		33E2FB201044ADB429978BBD /* DJAudioPlayer.cpp */ /* DJAudioPlayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DJAudioPlayer.cpp; path = ../../Source/DJAudioPlayer.cpp; sourceTree = SOURCE_ROOT; };
@@ -63,6 +65,7 @@
 		465BF7041389F19E3D97F1F7 /* CoreMIDI.framework */ /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		4D3D848B7776619E31850E97 /* MainComponent.cpp */ /* MainComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainComponent.cpp; path = ../../Source/MainComponent.cpp; sourceTree = SOURCE_ROOT; };
 		56888AE98A74633ABA063333 /* WaveformDisplay.cpp */ /* WaveformDisplay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = WaveformDisplay.cpp; path = ../../Source/WaveformDisplay.cpp; sourceTree = SOURCE_ROOT; };
+		5A02A8EA641E39546EADB62E /* TimeTracker.cpp */ /* TimeTracker.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TimeTracker.cpp; path = ../../Source/TimeTracker.cpp; sourceTree = SOURCE_ROOT; };
 		67149F2E3B2F7F1973EB44F1 /* include_juce_audio_utils.mm */ /* include_juce_audio_utils.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_utils.mm; path = ../../JuceLibraryCode/include_juce_audio_utils.mm; sourceTree = SOURCE_ROOT; };
 		688A3B1C6D28A83CC65D082A /* Accelerate.framework */ /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		6DBC1461707625E037749E33 /* DeckGUI.cpp */ /* DeckGUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DeckGUI.cpp; path = ../../Source/DeckGUI.cpp; sourceTree = SOURCE_ROOT; };
@@ -217,6 +220,8 @@
 				29BF658B35BFDB9F2CF6AE74,
 				ECC127A13102B6BE1708C7C0,
 				7427D78A3EFDA5458F1C878B,
+				5A02A8EA641E39546EADB62E,
+				2A6C01AB9FE5377C33BFF0F9,
 				56888AE98A74633ABA063333,
 				BC182665A02065C6D415E1AA,
 			);
@@ -357,6 +362,7 @@
 				5017E2389387C43B53518738,
 				24AD01FBBEE1E5B7631E1A68,
 				AACDC3791971DB4FC80BBE1E,
+				3592808171F9F2AF276FEFF4,
 				8C6D5CDDB3AFE04B1079B049,
 				D3BCF8DD53900887C86C9305,
 				96D48552CBFF39BEC9A331CE,

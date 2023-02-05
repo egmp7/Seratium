@@ -17,7 +17,6 @@
 #include "Playlist.h"
 
 using namespace juce;
-using namespace std;
 
 //==============================================================================
 

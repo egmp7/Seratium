@@ -25,7 +25,7 @@ mainGainB(1.0f)
     crossfaderSlider.addListener(this);
     crossfaderSlider.setRange(0.0f, 1.0f);
     crossfaderSlider.setValue(0.5f);
-    crossfaderSlider.setTextBoxStyle(Slider::NoTextBox, false, 100, 20);
+    crossfaderSlider.setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
     
     player1->setGain(mainGainA);
     player2->setGain(mainGainB);

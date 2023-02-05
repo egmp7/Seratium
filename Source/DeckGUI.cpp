@@ -19,12 +19,10 @@ DeckGUI::DeckGUI(DJAudioPlayer* _player,
                  AudioThumbnailCache & cacheToUse,
                  bool _mirror)
 :
-mirror(_mirror),
-waveformDisplay(formatManagerToUse, cacheToUse, _player),
-currentTrackTime(0),
-remainingTrackTime(0),
 player(_player),
-crossfader(_crossfader)
+crossfader(_crossfader),
+waveformDisplay(formatManagerToUse, cacheToUse, _player),
+mirror(_mirror)
 {
     // play button
     addAndMakeVisible(playButton);
@@ -57,7 +55,9 @@ crossfader(_crossfader)
     // other components
     addAndMakeVisible(waveformDisplay);
     addAndMakeVisible(deckAnimation);
+    addAndMakeVisible(timeTracker);
 
+    // Timer class
     startTimer(20);
 }
 
@@ -67,17 +67,11 @@ DeckGUI::~DeckGUI()
 }
 void DeckGUI::paint (juce::Graphics& g)
 {
-
-    // background
     g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
     
     g.setColour (juce::Colours::grey);
     g.drawRect (getLocalBounds(), 1);
     
-    g.setColour(Colours::white);
-    g.drawText(String(currentTrackTime) + "s", currentTrackTimeComp, Justification::centred);
-    g.drawText(String(remainingTrackTime) + "s", remainingTrackTimeComp, Justification::centred);
-
 }
 
 void DeckGUI::resized()
@@ -89,8 +83,7 @@ void DeckGUI::resized()
     // GUI Components               x          y           width       height
     loadButton.setBounds            (0,         0,          columnW,    rowH);
     waveformDisplay.setBounds       (columnW,   0,          columnW*6,  rowH);
-    currentTrackTimeComp.setBounds  (columnW*7, 0,          columnW,    rowH/2);
-    remainingTrackTimeComp.setBounds(columnW*7, rowH/2,     columnW,    rowH/2);
+    timeTracker.setBounds           (columnW*7, 0,          columnW,    rowH);
     
     if(!mirror)
     {
@@ -114,7 +107,7 @@ void DeckGUI::resized()
 
 /** Process user click
  @param button juce::Button*/
-void DeckGUI::buttonClicked(juce::Button* button)
+void DeckGUI::buttonClicked(Button* button)
 {
     if(button == &playButton)
     {
@@ -133,7 +126,7 @@ void DeckGUI::buttonClicked(juce::Button* button)
         fChooser.launchAsync(fileChooserFlags, [this](const FileChooser& chooser)
         {
             // get chosen file
-            juce::File chosenFile = chooser.getResult();
+            File chosenFile = chooser.getResult();
             // load audio file
             player->loadURL(juce::URL{chosenFile});
             // load waveform display
@@ -142,8 +135,6 @@ void DeckGUI::buttonClicked(juce::Button* button)
     }
 }
 
-/** Process user silder action
- @param button juce::Button*/
 void DeckGUI::sliderValueChanged(juce::Slider *slider)
 {
     if (slider == &volSlider)
@@ -164,44 +155,22 @@ bool DeckGUI::isInterestedInFileDrag (const juce::StringArray &files)
 
 void DeckGUI::filesDropped (const juce::StringArray &files, int x, int y)
 {
-    std::cout<< "DeckGUI::filesDropped" << std::endl;
-    
     if (files.size() ==1)
     {
         player->loadURL(URL{File{files[0]}});
         waveformDisplay.loadURL(URL{File{files[0]}});
-        
     }
-
-}
-
-void DeckGUI::setCurrentTrackTime(int time)
-{
-    if(currentTrackTime != time && time != 0.0f)
-    {
-        currentTrackTime = time;
-        repaint();
-    }
-        
-}
-
-void DeckGUI::setRemainingTrackTime(int trackLength)
-{
-    if(trackLength != 0)
-    {
-        remainingTrackTime = trackLength - currentTrackTime;
-    }
-    
 }
 
 void DeckGUI::timerCallback()
 {
-    // Set position of the waveform line
+    // Set position of the waveform line component
     waveformDisplay.setPositionRelative(player->getPositionRelative());
-    // Set position of the deck animation
+    // Set position of the deck animation component
     deckAnimation.setPosition(player->getPosition());
-    // Set position of Timer Track Components
-    setCurrentTrackTime(player->getPosition());
-    setRemainingTrackTime(player->getTrackLength());
+    // Set position of the time tracker component
+    timeTracker.setCurrentTime(player->getPosition());
+    // Set track length of the time tracker component
+    timeTracker.setRemainingTime(player->getTrackLength());
 }
 

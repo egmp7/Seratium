@@ -589,6 +589,9 @@
     <ClCompile Include="..\..\Source\Playlist.cpp">
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\TimeTracker.cpp">
+      <Filter>OtoDekcs\Source\Components</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\WaveformDisplay.cpp">
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClCompile>
@@ -2917,6 +2920,9 @@
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Playlist.h">
+      <Filter>OtoDekcs\Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TimeTracker.h">
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\WaveformDisplay.h">

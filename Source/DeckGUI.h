@@ -13,6 +13,7 @@
 #include <JuceHeader.h>
 #include "DJAudioPlayer.h"
 #include "WaveformDisplay.h"
+#include "TimeTracker.h"
 #include "DeckAnimation.h"
 #include "Crossfader.h"
 
@@ -65,9 +66,10 @@ public:
 
 private:
     
-    // Mirror GUI
-    bool mirror;
-    
+    // Controllers
+    DJAudioPlayer* player;
+    Crossfader* crossfader;
+        
     // GUI Components
     TextButton playButton{"PLAY"};
     TextButton stopButton{"STOP"};
@@ -75,22 +77,13 @@ private:
     Slider volSlider;
     Slider speedSlider;
     WaveformDisplay waveformDisplay;
+    TimeTracker timeTracker;
     DeckAnimation deckAnimation;
-    
-    // Tracking time components
-    Rectangle<float> currentTrackTimeComp;
-    Rectangle<float> remainingTrackTimeComp;
-    int currentTrackTime;
-    int remainingTrackTime;
-    void setCurrentTrackTime(int time);
-    void setRemainingTrackTime(int trackLength);
-    
-    // Controllers
-    DJAudioPlayer* player;
-    Crossfader* crossfader;
     
     //Utilities
     FileChooser fChooser{"Select a file... Mijo"};
+    bool mirror;
+
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeckGUI)
 };
