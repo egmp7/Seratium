@@ -568,6 +568,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Crossfader.cpp">
+      <Filter>OtoDekcs\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\DeckAnimation.cpp">
       <Filter>OtoDekcs\Source</Filter>
     </ClCompile>
@@ -2892,6 +2895,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Crossfader.h">
+      <Filter>OtoDekcs\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\DeckAnimation.h">
       <Filter>OtoDekcs\Source</Filter>
     </ClInclude>

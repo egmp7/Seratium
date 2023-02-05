@@ -23,6 +23,10 @@ MainComponent::MainComponent()
     addAndMakeVisible(deckGUI1);
     addAndMakeVisible(deckGUI2);
     addAndMakeVisible(playlistComponent);
+    addAndMakeVisible(crossfader);
+    
+    deckGUI1.setComponentID("deckGUI1");
+    deckGUI2.setComponentID("deckGUI2");
 
     
     formatManager.registerBasicFormats();
@@ -84,6 +88,7 @@ void MainComponent::resized()
     deckGUI1.setBounds(0, 0, getWidth() /2, getHeight() *3/4);
     deckGUI2.setBounds(getWidth() /2, 0, getWidth() /2, getHeight() *3/4);
     playlistComponent.setBounds(0, getHeight() *3/4, getWidth(), getHeight() *1/4);
+    crossfader.setBounds(getWidth()/8*4, getHeight() - getHeight()/7, getWidth()/8*4, getHeight()/7);
 }
 
 

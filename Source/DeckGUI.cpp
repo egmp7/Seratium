@@ -13,7 +13,8 @@
 
 //==============================================================================
 
-DeckGUI::DeckGUI(DJAudioPlayer* _player, 
+DeckGUI::DeckGUI(DJAudioPlayer* _player,
+                 Crossfader* _crossfader,
                  AudioFormatManager & formatManagerToUse,
                  AudioThumbnailCache & cacheToUse,
                  bool _mirror)
@@ -22,7 +23,8 @@ mirror(_mirror),
 waveformDisplay(formatManagerToUse, cacheToUse, _player),
 currentTrackTime(0),
 remainingTrackTime(0),
-player(_player)
+player(_player),
+crossfader(_crossfader)
 {
     // play button
     addAndMakeVisible(playButton);
@@ -145,7 +147,7 @@ void DeckGUI::sliderValueChanged(juce::Slider *slider)
 {
     if (slider == &volSlider)
     {
-        player->setGain(slider->getValue());
+        crossfader->setFaderGain(slider->getValue(), getComponentID());
     }
     if (slider == &speedSlider)
     {

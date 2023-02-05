@@ -4,6 +4,8 @@
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="M17iFL" name="OtoDekcs">
     <GROUP id="{07B04AD9-CD9D-193A-822D-2E327A7E33A5}" name="Source">
+      <FILE id="NFX0Uf" name="Crossfader.cpp" compile="1" resource="0" file="Source/Crossfader.cpp"/>
+      <FILE id="qTH5Q0" name="Crossfader.h" compile="0" resource="0" file="Source/Crossfader.h"/>
       <FILE id="o7Fdhm" name="DeckAnimation.cpp" compile="1" resource="0"
             file="Source/DeckAnimation.cpp"/>
       <FILE id="E2LzWQ" name="DeckAnimation.h" compile="0" resource="0" file="Source/DeckAnimation.h"/>

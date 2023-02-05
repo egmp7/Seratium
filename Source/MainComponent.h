@@ -5,6 +5,7 @@
 #include "DJAudioPlayer.h"
 #include "DeckGUI.h"
 #include "PlaylistComponent.h"
+#include "Crossfader.h"
 
 //==============================================================================
 /*
@@ -38,8 +39,10 @@ private:
     DJAudioPlayer player2{formatManager};
 
     // View
-    DeckGUI deckGUI1{&player1, formatManager, thumbCache, false};
-    DeckGUI deckGUI2{&player2, formatManager, thumbCache, true};
+    DeckGUI deckGUI1{&player1, &crossfader, formatManager, thumbCache, false};
+    DeckGUI deckGUI2{&player2, &crossfader, formatManager, thumbCache, true};
+    
+    Crossfader crossfader{&player1, &player2};
     
     MixerAudioSource mixerSource;
     

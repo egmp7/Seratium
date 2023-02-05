@@ -14,6 +14,7 @@
 #include "DJAudioPlayer.h"
 #include "WaveformDisplay.h"
 #include "DeckAnimation.h"
+#include "Crossfader.h"
 
 using namespace juce;
 using namespace std;
@@ -28,6 +29,7 @@ class DeckGUI  : public Component,
 {
 public:
     DeckGUI(DJAudioPlayer* player,
+            Crossfader* _crossfader,
             AudioFormatManager & formatManagerToUse,
             AudioThumbnailCache & cacheToUse,
             bool _mirror);
@@ -85,6 +87,7 @@ private:
     
     // Controllers
     DJAudioPlayer* player;
+    Crossfader* crossfader;
     
     //Utilities
     FileChooser fChooser{"Select a file... Mijo"};
