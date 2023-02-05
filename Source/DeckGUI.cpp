@@ -19,7 +19,7 @@ DeckGUI::DeckGUI(DJAudioPlayer* _player,
                  bool _mirror)
 :
 mirror(_mirror),
-waveformDisplay(formatManagerToUse, cacheToUse),
+waveformDisplay(formatManagerToUse, cacheToUse, _player),
 currentTrackTime(0),
 remainingTrackTime(0),
 player(_player)

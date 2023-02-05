@@ -11,16 +11,20 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "DJAudioPlayer.h"
 
 using namespace juce;
 using namespace std;
 
 class WaveformDisplay  : public Component,
-                         public ChangeListener
+                         public ChangeListener,
+                         public MouseListener
+
 {
 public:
     WaveformDisplay(AudioFormatManager & formatManagerToUse,
-                    AudioThumbnailCache & cacheToUse);
+                    AudioThumbnailCache & cacheToUse,
+                    DJAudioPlayer* _player);
     ~WaveformDisplay() override;
     
 //==============================================================================
@@ -38,12 +42,16 @@ public:
     
     /**set the relative position of the playhead**/
     void setPositionRelative(double pos);
+    
+    /**Updates position of track when user click in the waveform component**/
+    void mouseDown (const MouseEvent &event) override;
 
 private:
     
     bool fileLoaded;
     double position;
     AudioThumbnail audioThumb;
+    DJAudioPlayer* player;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WaveformDisplay)
 };

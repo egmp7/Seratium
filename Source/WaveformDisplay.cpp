@@ -15,12 +15,13 @@
 
 //==============================================================================
 WaveformDisplay::WaveformDisplay(AudioFormatManager & formatManagerToUse,
-                                 AudioThumbnailCache & cacheToUse)
+                                 AudioThumbnailCache & cacheToUse,
+                                 DJAudioPlayer* _player)
  :
 fileLoaded(false),
 position(0),
-audioThumb(1000,formatManagerToUse, cacheToUse)
-                                 
+audioThumb(1000,formatManagerToUse, cacheToUse),
+player(_player)
 {
     audioThumb.addChangeListener(this);
 }
@@ -28,7 +29,6 @@ audioThumb(1000,formatManagerToUse, cacheToUse)
 WaveformDisplay::~WaveformDisplay()
 {
 }
-
 void WaveformDisplay::paint (Graphics& g)
 {
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
@@ -56,17 +56,14 @@ void WaveformDisplay::paint (Graphics& g)
                     Justification::centred, true);
     }
 }
-
 void WaveformDisplay::resized()
 {
 }
-
 void WaveformDisplay::changeListenerCallback (ChangeBroadcaster *source)
 {
     cout << "WaveformDisplay::changeListenerCallback Changed received" << endl;
     repaint();
 }
-
 void WaveformDisplay::loadURL(URL audioURL)
 {
     std::cout << "WaveformDisplay::loadURL" << std::endl;
@@ -84,7 +81,6 @@ void WaveformDisplay::loadURL(URL audioURL)
     }
     
 }
-
 void WaveformDisplay::setPositionRelative(double pos)
 {
     if (pos != position && !isnan(pos))
@@ -93,3 +89,13 @@ void WaveformDisplay::setPositionRelative(double pos)
     repaint();
     }
 }
+void WaveformDisplay::mouseDown(const MouseEvent &event) 
+{
+    // get mouse position from component
+    Point <int> p = event.getMouseDownPosition();
+    // get relative position
+    float relativePosition = (float)p.getX()/(float)getWidth();
+    // set relative position in player
+    player->setPositionRelative(relativePosition);
+}
+
