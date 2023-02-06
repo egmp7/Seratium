@@ -58,7 +58,7 @@ mirror(_mirror)
     addAndMakeVisible(timeTracker);
 
     // Timer class
-    startTimer(20);
+    startTimer(500);
 }
 
 DeckGUI::~DeckGUI()
@@ -130,7 +130,7 @@ void DeckGUI::buttonClicked(Button* button)
             // load audio file
             player->loadURL(juce::URL{chosenFile});
             // load waveform display
-            waveformDisplay.loadURL(juce::URL{chosenFile});
+            loadWaveform(chosenFile);
         });
     }
 }
@@ -158,7 +158,7 @@ void DeckGUI::filesDropped (const juce::StringArray &files, int x, int y)
     if (files.size() ==1)
     {
         player->loadURL(URL{File{files[0]}});
-        waveformDisplay.loadURL(URL{File{files[0]}});
+        loadWaveform(files[0]);
     }
 }
 
@@ -166,11 +166,13 @@ void DeckGUI::timerCallback()
 {
     // Set position of the waveform line component
     waveformDisplay.setPositionRelative(player->getPositionRelative());
-    // Set position of the deck animation component
-    deckAnimation.setPosition(player->getPosition());
     // Set position of the time tracker component
     timeTracker.setCurrentTime(player->getPosition());
     // Set track length of the time tracker component
     timeTracker.setRemainingTime(player->getTrackLength());
+}
+void DeckGUI::loadWaveform(File file)
+{
+    waveformDisplay.loadURL(URL{file});
 }
 

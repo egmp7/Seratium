@@ -36,33 +36,24 @@ public:
             bool _mirror);
     ~DeckGUI() override;
 
-//==============================================================================
     
     void paint (juce::Graphics&) override;
     void resized() override;
     
 //==============================================================================
     
-    // Buttons and Sliders
-    
     /** implement Button::Listener*/
     void buttonClicked(Button *) override;
     /** implement Slider::Listener*/
     void sliderValueChanged (Slider *slider) override;
-    
-//==============================================================================
-    
-    // Drag and Drop
-    
     /**Checks when user hover the component*/
     bool isInterestedInFileDrag (const StringArray &files) override;
     /**Runs when the user release the click*/
     void filesDropped (const StringArray &files, int x, int y) override;
-    
-//==============================================================================
-
     /**Callback function that runs in a different threath**/
     void timerCallback() override;
+    /**Draws audio thumbnail**/
+    void loadWaveform(File file);
 
 private:
     
@@ -78,12 +69,11 @@ private:
     Slider speedSlider;
     WaveformDisplay waveformDisplay;
     TimeTracker timeTracker;
-    DeckAnimation deckAnimation;
+    DeckAnimation deckAnimation {player};
     
     //Utilities
-    FileChooser fChooser{"Select a file... Mijo"};
+    FileChooser fChooser{"Select a file..."};
     bool mirror;
 
-    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeckGUI)
 };

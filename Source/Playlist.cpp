@@ -12,121 +12,197 @@
 #include "Playlist.h"
 
 //==============================================================================
-Playlist::Playlist()
+Playlist::Playlist(DJAudioPlayer* _player1,
+                   DJAudioPlayer* _player2,
+                   DeckGUI* _deckGUI1,
+                   DeckGUI* _deckGUI2,
+                   AudioFormatManager & _formatManagerToUse)
+:
+player(_formatManagerToUse),
+player1(_player1),
+player2(_player2),
+deckGUI1(_deckGUI1),
+deckGUI2(_deckGUI2)
 {
-    // In your constructor, you should add any child components, and
-    // initialise any special settings that your component needs.
-    
-    
-    trackTitles.push_back("Track 1");
-    trackTitles.push_back("Track 2");
-    trackTitles.push_back("Track 3");
-    trackTitles.push_back("Track 4");
-    trackTitles.push_back("Track 5");
-    trackTitles.push_back("Track 6");
-    trackTitles.push_back("Track 7");
+    addAndMakeVisible(tableComponent);
+                                        // name             id  width
+    tableComponent.getHeader().addColumn("A",               1,  50);
+    tableComponent.getHeader().addColumn("B",               2,  50);
+    tableComponent.getHeader().addColumn("Track title",     3,  300);
+    tableComponent.getHeader().addColumn("Length",          4,  80);
+    tableComponent.getHeader().addColumn("Path",            5,  400);
+    tableComponent.getHeader().addColumn("Extension",       6,  80);
 
-    tableComponent.getHeader().addColumn("Track title", 1, 400);
-    tableComponent.getHeader().addColumn("", 2, 200);
     tableComponent.setModel(this);
     
-    addAndMakeVisible(tableComponent);
 }
 
 Playlist::~Playlist()
 {
 }
-// virtual
-void Playlist::paint (juce::Graphics& g)
+
+void Playlist::paint (Graphics& g)
 {
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
-
-       You should replace everything in this method with your own
-       drawing code..
-    */
-
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
-
-    g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
-    g.setColour (juce::Colours::white);
-    g.setFont (14.0f);
-    g.drawText ("Playlist", getLocalBounds(),
-                juce::Justification::centred, true);   // draw some placeholder text
+    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
+    g.setColour (Colours::grey);
+    g.drawRect (getLocalBounds(), 1);
 }
-// virtual
+
 void Playlist::resized()
 {
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
-    tableComponent.setBounds(0, 0, getWidth(), getHeight());
+
+    tableComponent.setBounds(getLocalBounds());
 }
 
-// virtual
+//==============================================================================
+
 int Playlist::getNumRows()
 {
-    return trackTitles.size();
+    return (int) tracks.size();
 }
-// virtual
-void Playlist::paintRowBackground (juce::Graphics & g,
-                         int rowNumber,
-                         int width,
-                         int height,
-                         bool rowIsSelected)
+
+void Playlist::paintRowBackground (Graphics & g,
+             int rowNumber,
+             int width,
+             int height,
+             bool rowIsSelected)
 {
     if (rowIsSelected)
     {
-        g.fillAll(juce::Colours::orange);
+        g.fillAll(Colours::orange);
     }
     else
     {
-        g.fillAll(juce::Colours::darkgrey);
+        g.fillAll(Colours::darkgrey);
     }
 }
 
-// virtual
-void Playlist::paintCell (juce::Graphics & g,
-                int rowNumber,
-                int columnId,
-                int width,
-                int height,
-                bool rowIsSelected)
+void Playlist::paintCell (Graphics & g,
+            int rowNumber,
+            int columnId,
+            int width,
+            int height,
+            bool rowIsSelected)
 {
-    g.drawText(trackTitles[rowNumber],
-               2, 0,
-               width-4,
-               height,
-               juce::Justification::centredLeft,
-               true);
+    if (columnId == 3)
+    {
+        g.drawText(tracks[rowNumber].getFileNameWithoutExtension(),
+                   2, 0,
+                   width-4,
+                   height,
+                   Justification::centredLeft,
+                   true);
+    }
+    if (columnId == 4)
+    {
+        g.drawText(String{tracksDuration[rowNumber]},
+                   2, 0,
+                   width-4,
+                   height,
+                   Justification::centredLeft,
+                   true);
+    }
+    if (columnId == 5)
+    {
+        g.drawText(tracks[rowNumber].getFullPathName(),
+                   2, 0,
+                   width-4,
+                   height,
+                   Justification::centredLeft,
+                   true);
+    }
+    if (columnId == 6)
+    {
+        g.drawText(tracks[rowNumber].getFileExtension(),
+                   2, 0,
+                   width-4,
+                   height,
+                   Justification::centredLeft,
+                   true);
+    }
 }
-// virtual
-juce::Component* Playlist::refreshComponentForCell (int rowNumber,
-                                    int columnId,
-                                    bool isRowSelected,
-                                    juce::Component *existingComponentToUpdate)
+
+Component* Playlist::refreshComponentForCell (int rowNumber,
+            int columnId,
+            bool isRowSelected,
+            Component *existingComponentToUpdate)
 {
+    if(columnId ==1)
+    {
+        if(existingComponentToUpdate == nullptr)
+        {
+            TextButton* btn = new TextButton{"A"};
+            
+            String id {to_string(rowNumber)};
+            
+            btn->setComponentID(id);
+            btn->setName("A");
+            btn->addListener(this);
+            existingComponentToUpdate = btn;
+        }
+    }
     if(columnId ==2)
     {
         if(existingComponentToUpdate == nullptr)
         {
-            juce::TextButton* btn = new juce::TextButton{"play"};
+            TextButton* btn = new TextButton{"B"};
             
-            juce::String id {to_string(rowNumber)};
-            
+            String id {to_string(rowNumber)};
             
             btn->setComponentID(id);
+            btn->setName("B");
             btn->addListener(this);
             existingComponentToUpdate = btn;
         }
     }
     return existingComponentToUpdate;
 }
-// virtual
-void Playlist::buttonClicked (juce::Button* button)
+
+void Playlist::buttonClicked (Button* button)
 {
     int id = stoi(button->getComponentID().toStdString());
-    cout << "Playlist::buttonClicked " << trackTitles[id] << endl;
+    
+    if(button->getName() == "A")
+    {
+        player1->loadURL(URL{tracks[id]});
+        deckGUI1->loadWaveform(tracks[id]);
+    }
+    else
+    {
+        player2->loadURL(URL{tracks[id]});
+        deckGUI2->loadWaveform(tracks[id]);
+    }
+        
 }
 
+bool Playlist::isInterestedInFileDrag (const StringArray &files)
+{
+    cout << "Playlist::isInterestedInFileDrag" << endl;
+    return true;
+}
+
+void Playlist::filesDropped (const StringArray &files, int x, int y)
+{
+    for (String file : *&files)
+    {
+        bool fileAlreadyExists = false;
+        
+        for (File f : tracks)
+        {
+            if(f.operator == (file))
+                fileAlreadyExists = true;
+        }
+        
+        if (fileAlreadyExists)
+            continue;
+        else
+        {
+            player.loadURL(URL{File{file}});
+            tracksDuration.push_back(player.getTrackLength());
+            tracks.push_back(File{file});
+        }
+    }
+    
+    // update table
+    tableComponent.updateContent();
+}

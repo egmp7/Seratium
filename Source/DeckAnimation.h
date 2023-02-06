@@ -19,7 +19,7 @@ class DeckAnimation : public AnimatedAppComponent
                       
 {
 public:
-    DeckAnimation();
+    DeckAnimation(DJAudioPlayer* _player);
     ~DeckAnimation() override;
     
     void paint (Graphics& g) override;
@@ -30,6 +30,7 @@ public:
     
 private:
     
+    DJAudioPlayer* player;
     float position;
     
     /**creates an animation for the  x coordenate

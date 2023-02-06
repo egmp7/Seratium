@@ -17,8 +17,7 @@ using namespace juce;
 using namespace std;
 
 class WaveformDisplay  : public Component,
-                         public ChangeListener,
-                         public MouseListener
+                         public ChangeListener
 
 {
 public:

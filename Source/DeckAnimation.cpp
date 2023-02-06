@@ -10,7 +10,10 @@
 
 #include "DeckAnimation.h"
 
-DeckAnimation::DeckAnimation() : position(0.0f)
+DeckAnimation::DeckAnimation(DJAudioPlayer* _player)
+:
+player(_player),
+position(0.0f)
 {
     setFramesPerSecond (60); // Init Animation
 }
@@ -20,7 +23,7 @@ DeckAnimation::~DeckAnimation()
 }
 void DeckAnimation::update ()
 {
-    
+    setPosition(player->getPosition());
 }
 void DeckAnimation::paint (Graphics& g)
 {
