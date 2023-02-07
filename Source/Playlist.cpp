@@ -35,6 +35,9 @@ deckGUI2(_deckGUI2)
 
     tableComponent.setModel(this);
     
+    addAndMakeVisible(searchComponent);
+    searchComponent.addListener(this);
+    
 }
 
 Playlist::~Playlist()
@@ -52,13 +55,14 @@ void Playlist::resized()
 {
 
     tableComponent.setBounds(getLocalBounds());
+    searchComponent.setBounds(0, 0, 300, 50);
 }
 
 //==============================================================================
 
 int Playlist::getNumRows()
 {
-    return (int) tracks.size();
+    return (int) tracksView.size();
 }
 
 void Playlist::paintRowBackground (Graphics & g,
@@ -86,7 +90,7 @@ void Playlist::paintCell (Graphics & g,
 {
     if (columnId == 3)
     {
-        g.drawText(tracks[rowNumber].getFileNameWithoutExtension(),
+        g.drawText(tracksView[rowNumber].getFileNameWithoutExtension(),
                    2, 0,
                    width-4,
                    height,
@@ -95,7 +99,7 @@ void Playlist::paintCell (Graphics & g,
     }
     if (columnId == 4)
     {
-        g.drawText(String{tracksDuration[rowNumber]},
+        g.drawText(String{"00.00"},
                    2, 0,
                    width-4,
                    height,
@@ -104,7 +108,7 @@ void Playlist::paintCell (Graphics & g,
     }
     if (columnId == 5)
     {
-        g.drawText(tracks[rowNumber].getFullPathName(),
+        g.drawText(tracksView[rowNumber].getFullPathName(),
                    2, 0,
                    width-4,
                    height,
@@ -113,7 +117,7 @@ void Playlist::paintCell (Graphics & g,
     }
     if (columnId == 6)
     {
-        g.drawText(tracks[rowNumber].getFileExtension(),
+        g.drawText(tracksView[rowNumber].getFileExtension(),
                    2, 0,
                    width-4,
                    height,
@@ -164,13 +168,13 @@ void Playlist::buttonClicked (Button* button)
     
     if(button->getName() == "A")
     {
-        player1->loadURL(URL{tracks[id]});
-        deckGUI1->loadWaveform(tracks[id]);
+        player1->loadURL(URL{tracksView[id]});
+        deckGUI1->loadWaveform(tracksView[id]);
     }
     else
     {
-        player2->loadURL(URL{tracks[id]});
-        deckGUI2->loadWaveform(tracks[id]);
+        player2->loadURL(URL{tracksView[id]});
+        deckGUI2->loadWaveform(tracksView[id]);
     }
         
 }
@@ -187,7 +191,7 @@ void Playlist::filesDropped (const StringArray &files, int x, int y)
     {
         bool fileAlreadyExists = false;
         
-        for (File f : tracks)
+        for (File f : trackList)
         {
             if(f.operator == (file))
                 fileAlreadyExists = true;
@@ -199,9 +203,11 @@ void Playlist::filesDropped (const StringArray &files, int x, int y)
         {
             player.loadURL(URL{File{file}});
             tracksDuration.push_back(player.getTrackLength());
-            tracks.push_back(File{file});
+            trackList.push_back(File{file});
         }
     }
+    // make a copy of trackList
+    tracksView = trackList;
     
     // update table
     tableComponent.updateContent();
@@ -213,8 +219,18 @@ var Playlist::getDragSourceDescription ( const SparseSet< int > & currentlySelec
     //dragAndDropContainer.startDragging(file, & tableComponent);
     cout<< "Playlist::getDragSourceDescription" <<endl;
     
-    String filePath = tracks[currentlySelectedRows[0]].getFullPathName();
+    String filePath = trackList[currentlySelectedRows[0]].getFullPathName();
     return filePath;
 }
 
-
+void Playlist::textEditorTextChanged (TextEditor & textEditor)
+{
+    tracksView.clear();
+    // search files
+    for (File track : trackList)
+    {
+        if(track.getFileName().containsIgnoreCase(textEditor.getText()))
+            tracksView.push_back(track);
+    }
+    tableComponent.updateContent();
+}

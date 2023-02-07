@@ -26,7 +26,8 @@ class Playlist  : public Component,
                   public TableListBoxModel,
                   public Button::Listener,
                   public FileDragAndDropTarget,
-                  public DragAndDropContainer
+                  public DragAndDropContainer,
+                  public TextEditor::Listener
 {
 public:
     Playlist(DJAudioPlayer* _player1,
@@ -68,6 +69,8 @@ public:
     /**Creates a DragAndDropContainer from table cell*/
     var getDragSourceDescription ( const SparseSet< int > & currentlySelectedRows) override;
     
+    void textEditorTextChanged (TextEditor &) override;
+    
 private:
     
     DJAudioPlayer player;
@@ -78,8 +81,11 @@ private:
     
     TableListBox tableComponent;
     
-    vector<File> tracks;
+    vector<File> trackList;
     vector<float> tracksDuration;
+    vector<File> tracksView;
+    
+    TextEditor searchComponent{"search"};
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Playlist)
 };
