@@ -206,3 +206,15 @@ void Playlist::filesDropped (const StringArray &files, int x, int y)
     // update table
     tableComponent.updateContent();
 }
+
+var Playlist::getDragSourceDescription ( const SparseSet< int > & currentlySelectedRows)
+{
+    //String file =
+    //dragAndDropContainer.startDragging(file, & tableComponent);
+    cout<< "Playlist::getDragSourceDescription" <<endl;
+    
+    String filePath = tracks[currentlySelectedRows[0]].getFullPathName();
+    return filePath;
+}
+
+

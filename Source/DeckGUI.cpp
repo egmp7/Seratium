@@ -40,7 +40,7 @@ mirror(_mirror)
     addAndMakeVisible(volSlider);
     volSlider.addListener(this);
     volSlider.setRange(0.0, 1.0);
-    volSlider.setSliderStyle(Slider::SliderStyle::LinearVertical);
+    volSlider.setSliderStyle(Slider::SliderStyle::LinearBarVertical);
     volSlider.setTextBoxStyle(Slider::NoTextBox, false, 100, 20);
     volSlider.setValue(1);
 
@@ -158,7 +158,7 @@ void DeckGUI::filesDropped (const juce::StringArray &files, int x, int y)
     if (files.size() ==1)
     {
         player->loadURL(URL{File{files[0]}});
-        loadWaveform(files[0]);
+        loadWaveform(File{files[0]});
     }
 }
 
@@ -171,8 +171,19 @@ void DeckGUI::timerCallback()
     // Set track length of the time tracker component
     timeTracker.setRemainingTime(player->getTrackLength());
 }
+
+bool DeckGUI::isInterestedInDragSource (const SourceDetails &dragSourceDetails)
+{
+    return true;
+}
+
+void  DeckGUI::itemDropped (const SourceDetails &dragSourceDetails)
+{
+    cout<<"DeckGUI::itemDropped"<<endl;
+    player->loadURL(URL{File{String(dragSourceDetails.description)}});
+    loadWaveform(File{String(dragSourceDetails.description)});
+}
 void DeckGUI::loadWaveform(File file)
 {
     waveformDisplay.loadURL(URL{file});
 }
-

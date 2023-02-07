@@ -25,7 +25,8 @@ using namespace juce;
 class Playlist  : public Component,
                   public TableListBoxModel,
                   public Button::Listener,
-                  public FileDragAndDropTarget
+                  public FileDragAndDropTarget,
+                  public DragAndDropContainer
 {
 public:
     Playlist(DJAudioPlayer* _player1,
@@ -36,37 +37,37 @@ public:
     
     ~Playlist() override;
 
-    void paint (juce::Graphics&) override;
+    void paint (Graphics&) override;
     void resized() override;
-    
+    /**Returns the number of rows in the table**/
     int getNumRows() override;
-    
+    /**Paints row background**/
     void paintRowBackground (Graphics & g,
                     int rowNumber,
                     int width,
                     int height,
                     bool rowIsSelected) override;
-    
+    /**Prints data in the table**/
     void paintCell (Graphics & g,
                     int rowNumber,
                     int columnId,
                     int width,
                     int height,
                     bool rowIsSelected) override;
-    
+    /**Prints a functional component in a cell**/
     Component* refreshComponentForCell (int rowNumber,
                     int columnId,
                     bool isRowSelected,
                     Component *existingComponentToUpdate) override ;
-    
-    void buttonClicked (juce::Button* button) override;
-    
+    /**Loads audio track to the application **/
+    void buttonClicked (Button* button) override;
     /**Checks when user hover the component*/
     bool isInterestedInFileDrag (const StringArray &files) override;
     /**Runs when the user release the click*/
     void filesDropped (const StringArray &files, int x, int y) override;
+    /**Creates a DragAndDropContainer from table cell*/
+    var getDragSourceDescription ( const SparseSet< int > & currentlySelectedRows) override;
     
-
 private:
     
     DJAudioPlayer player;
@@ -76,6 +77,7 @@ private:
     DeckGUI* deckGUI2;
     
     TableListBox tableComponent;
+    
     vector<File> tracks;
     vector<float> tracksDuration;
     

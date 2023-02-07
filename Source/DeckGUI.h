@@ -26,7 +26,8 @@ class DeckGUI  : public Component,
                  public Button::Listener,
                  public Slider::Listener,
                  public FileDragAndDropTarget,
-                 public Timer
+                 public Timer,
+                 public DragAndDropTarget
 {
 public:
     DeckGUI(DJAudioPlayer* player,
@@ -42,17 +43,21 @@ public:
     
 //==============================================================================
     
-    /** implement Button::Listener*/
+    /**Implement Button::Listener*/
     void buttonClicked(Button *) override;
-    /** implement Slider::Listener*/
+    /**Implement Slider::Listener*/
     void sliderValueChanged (Slider *slider) override;
-    /**Checks when user hover the component*/
+    /**Checks drag and drop  system files*/
     bool isInterestedInFileDrag (const StringArray &files) override;
-    /**Runs when the user release the click*/
+    /**Loads system audio files to the application*/
     void filesDropped (const StringArray &files, int x, int y) override;
-    /**Callback function that runs in a different threath**/
+    /**Checks for drag and drop object sources*/
+    bool isInterestedInDragSource (const SourceDetails &dragSourceDetails) override;
+    /**Loads audio files to the application**/
+    void  itemDropped (const SourceDetails &dragSourceDetails) override;
+    /**Callback function that runs in a separate threath**/
     void timerCallback() override;
-    /**Draws audio thumbnail**/
+    /**Helper to redraw audio thumbnails*/
     void loadWaveform(File file);
 
 private:
