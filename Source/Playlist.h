@@ -16,6 +16,7 @@
 
 #include "DJAudioPlayer.h"
 #include "DeckGUI.h"
+#include "TrackEntry.h"
 
 using namespace std;
 using namespace juce;
@@ -73,6 +74,9 @@ public:
     
 private:
     
+    /**Checks if a file already exists in tracks vector**/
+    bool checkFileInTracks(String path);
+    
     DJAudioPlayer player;
     DJAudioPlayer* player1;
     DJAudioPlayer* player2;
@@ -81,9 +85,8 @@ private:
     
     TableListBox tableComponent;
     
-    vector<File> trackList;
-    vector<float> tracksDuration;
-    vector<File> tracksView;
+    vector<TrackEntry> tracks;
+    vector<TrackEntry> tracksView;
     
     TextEditor searchComponent{"search"};
     

@@ -77,7 +77,7 @@ void Playlist::paintRowBackground (Graphics & g,
     }
     else
     {
-        g.fillAll(Colours::darkgrey);
+        g.fillAll(Colours::grey);
     }
 }
 
@@ -90,7 +90,7 @@ void Playlist::paintCell (Graphics & g,
 {
     if (columnId == 3)
     {
-        g.drawText(tracksView[rowNumber].getFileNameWithoutExtension(),
+        g.drawText(tracksView[rowNumber].name,
                    2, 0,
                    width-4,
                    height,
@@ -99,7 +99,7 @@ void Playlist::paintCell (Graphics & g,
     }
     if (columnId == 4)
     {
-        g.drawText(String{"00.00"},
+        g.drawText(String{tracksView[rowNumber].duration},
                    2, 0,
                    width-4,
                    height,
@@ -108,7 +108,7 @@ void Playlist::paintCell (Graphics & g,
     }
     if (columnId == 5)
     {
-        g.drawText(tracksView[rowNumber].getFullPathName(),
+        g.drawText(tracksView[rowNumber].path,
                    2, 0,
                    width-4,
                    height,
@@ -117,7 +117,7 @@ void Playlist::paintCell (Graphics & g,
     }
     if (columnId == 6)
     {
-        g.drawText(tracksView[rowNumber].getFileExtension(),
+        g.drawText(tracksView[rowNumber].extension,
                    2, 0,
                    width-4,
                    height,
@@ -168,13 +168,13 @@ void Playlist::buttonClicked (Button* button)
     
     if(button->getName() == "A")
     {
-        player1->loadURL(URL{tracksView[id]});
-        deckGUI1->loadWaveform(tracksView[id]);
+        player1->loadURL(URL{tracksView[id].file});
+        deckGUI1->loadWaveform(tracksView[id].file);
     }
     else
     {
-        player2->loadURL(URL{tracksView[id]});
-        deckGUI2->loadWaveform(tracksView[id]);
+        player2->loadURL(URL{tracksView[id].file});
+        deckGUI2->loadWaveform(tracksView[id].file);
     }
         
 }
@@ -189,48 +189,61 @@ void Playlist::filesDropped (const StringArray &files, int x, int y)
 {
     for (String file : *&files)
     {
-        bool fileAlreadyExists = false;
-        
-        for (File f : trackList)
-        {
-            if(f.operator == (file))
-                fileAlreadyExists = true;
-        }
-        
-        if (fileAlreadyExists)
-            continue;
-        else
+        if (!checkFileInTracks(file)) // create a new file
         {
             player.loadURL(URL{File{file}});
-            tracksDuration.push_back(player.getTrackLength());
-            trackList.push_back(File{file});
+            
+            TrackEntry track{
+                File{file},
+                File{file}.getFileNameWithoutExtension(),
+                File{file}.getFileExtension(),
+                File{file}.getFullPathName(),
+                (float)player.getTrackLength()};
+            
+            tracks.push_back(track);
+            player.releaseResources();
         }
+        else // do not create a new file
+            continue;
     }
-    // make a copy of trackList
-    tracksView = trackList;
+    
+    // copy of tracks vector
+    tracksView = tracks;
     
     // update table
     tableComponent.updateContent();
 }
 
+bool Playlist::checkFileInTracks(String path)
+{
+    for (TrackEntry track : tracks)
+    {
+        if(track.path == (path))
+            return true;
+    }
+    return false;
+}
+
 var Playlist::getDragSourceDescription ( const SparseSet< int > & currentlySelectedRows)
 {
-    //String file =
-    //dragAndDropContainer.startDragging(file, & tableComponent);
     cout<< "Playlist::getDragSourceDescription" <<endl;
     
-    String filePath = trackList[currentlySelectedRows[0]].getFullPathName();
+    String filePath = tracksView[currentlySelectedRows[0]].path;
     return filePath;
 }
 
 void Playlist::textEditorTextChanged (TextEditor & textEditor)
 {
     tracksView.clear();
-    // search files
-    for (File track : trackList)
+    
+    // search in tracks
+    for (TrackEntry track : tracks)
     {
-        if(track.getFileName().containsIgnoreCase(textEditor.getText()))
+        if(track.name.containsIgnoreCase(textEditor.getText()))
+        {
             tracksView.push_back(track);
+        }
     }
+    
     tableComponent.updateContent();
 }

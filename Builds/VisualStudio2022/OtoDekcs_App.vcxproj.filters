@@ -2,6 +2,9 @@
 
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="OtoDekcs\Source\Models">
+      <UniqueIdentifier>{D7DDE0FD-162E-9B71-F5AC-8CF4914F2290}</UniqueIdentifier>
+    </Filter>
     <Filter Include="OtoDekcs\Source\Controllers">
       <UniqueIdentifier>{EC74F80A-FD9A-8710-6A02-BAFDCFF2AF0F}</UniqueIdentifier>
     </Filter>
@@ -577,6 +580,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\TrackEntry.cpp">
+      <Filter>OtoDekcs\Source\Models</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\DJAudioPlayer.cpp">
       <Filter>OtoDekcs\Source\Controllers</Filter>
     </ClCompile>
@@ -2910,6 +2916,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\TrackEntry.h">
+      <Filter>OtoDekcs\Source\Models</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\DJAudioPlayer.h">
       <Filter>OtoDekcs\Source\Controllers</Filter>
     </ClInclude>
