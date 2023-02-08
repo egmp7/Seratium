@@ -132,7 +132,7 @@ void DeckGUI::buttonClicked(Button* button)
             // load waveform display
             loadWaveform(chosenFile);
             // update current time
-            timeTracker.currentTime = 0.0f;
+            timeTracker.setCurrentTimeToZero();
         });
     }
 }
@@ -161,7 +161,7 @@ void DeckGUI::filesDropped (const juce::StringArray &files, int x, int y)
     {
         player->loadURL(URL{File{files[0]}});
         loadWaveform(File{files[0]});
-        timeTracker.currentTime = 0.0f;
+        timeTracker.setCurrentTimeToZero();
     }
 }
 
@@ -186,7 +186,7 @@ void  DeckGUI::itemDropped (const SourceDetails &dragSourceDetails)
     
     player->loadURL(URL{File{String(dragSourceDetails.description)}});
     loadWaveform(File{String(dragSourceDetails.description)});
-    timeTracker.currentTime = 0.0f;
+    timeTracker.setCurrentTimeToZero();
 }
 void DeckGUI::loadWaveform(File file)
 {

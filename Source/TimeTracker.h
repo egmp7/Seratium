@@ -27,16 +27,18 @@ public:
     void paint (juce::Graphics&) override;
     void resized() override;
         
-    /**set the current value of the track position in seconds**/
+    /**sets the current value of the track position in seconds**/
     void setCurrentTime(float time);
     
-    /**set the remaining value of the track length in seconds*/
+    /**sets the remaining value of the track length in seconds*/
     void setRemainingTime(float trackLength);
     
-    float currentTime;
-
+    /**sets the current time to zero**/
+    void setCurrentTimeToZero();
+    
 private:
     
+    float currentTime;
     float remainingTime;
         
     Rectangle<float> currentTimeRect;

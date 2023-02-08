@@ -13,6 +13,8 @@
 
 //==============================================================================
 TimeTracker::TimeTracker()
+:currentTime(0.0f),
+remainingTime(0.0f)
 {
 }
 
@@ -49,7 +51,7 @@ void TimeTracker::resized()
 }
 void TimeTracker::setCurrentTime(float time)
 {
-    if(currentTime != time && time != 0)
+    if(currentTime != time && time != 0.0f)
     {
         currentTime = time;
     }
@@ -57,10 +59,16 @@ void TimeTracker::setCurrentTime(float time)
 
 void TimeTracker::setRemainingTime(float trackLength)
 {
-    if(trackLength != 0)
+    if(trackLength != 0.0f)
     {
         remainingTime = trackLength - currentTime;
         repaint();
     }
+}
+
+void TimeTracker::setCurrentTimeToZero()
+{
+    currentTime = 0;
+    remainingTime = 0;
 }
 
