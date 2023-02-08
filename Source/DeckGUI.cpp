@@ -126,13 +126,13 @@ void DeckGUI::buttonClicked(Button* button)
         fChooser.launchAsync(fileChooserFlags, [this](const FileChooser& chooser)
         {
             // get chosen file
-            File chosenFile = chooser.getResult();
+            File file = chooser.getResult();
             // load audio file
-            player->loadURL(juce::URL{chosenFile});
+            player->loadURL(URL{file});
             // load waveform display
-            loadWaveform(chosenFile);
+            loadWaveform(URL{file});
             // update current time
-            timeTracker.setCurrentTimeToZero();
+            updateTimeTracker();
         });
     }
 }
@@ -159,9 +159,11 @@ void DeckGUI::filesDropped (const juce::StringArray &files, int x, int y)
 {
     if (files.size() ==1)
     {
-        player->loadURL(URL{File{files[0]}});
-        loadWaveform(File{files[0]});
-        timeTracker.setCurrentTimeToZero();
+        File file = files[0];
+        
+        player->loadURL(URL{file});
+        loadWaveform(URL{file});
+        updateTimeTracker();
     }
 }
 
@@ -184,11 +186,18 @@ void  DeckGUI::itemDropped (const SourceDetails &dragSourceDetails)
 {
     cout<<"DeckGUI::itemDropped"<<endl;
     
-    player->loadURL(URL{File{String(dragSourceDetails.description)}});
-    loadWaveform(File{String(dragSourceDetails.description)});
-    timeTracker.setCurrentTimeToZero();
+    File file = String(dragSourceDetails.description);
+    
+    player->loadURL(URL{file});
+    loadWaveform(URL{file});
+    updateTimeTracker();
 }
-void DeckGUI::loadWaveform(File file)
+void DeckGUI::loadWaveform(URL file)
 {
-    waveformDisplay.loadURL(URL{file});
+    waveformDisplay.loadURL(file);
+}
+
+void DeckGUI::updateTimeTracker()
+{
+    timeTracker.setCurrentTimeToZero();
 }

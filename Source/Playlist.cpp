@@ -12,26 +12,17 @@
 #include "Playlist.h"
 
 //==============================================================================
-Playlist::Playlist(DJAudioPlayer* _player1,
-                   DJAudioPlayer* _player2,
-                   DeckGUI* _deckGUI1,
-                   DeckGUI* _deckGUI2,
-                   AudioFormatManager & _formatManagerToUse)
+Playlist::Playlist(AudioFormatManager & _formatManagerToUse)
 :
-player(_formatManagerToUse),
-player1(_player1),
-player2(_player2),
-deckGUI1(_deckGUI1),
-deckGUI2(_deckGUI2)
+player(_formatManagerToUse)
 {
     addAndMakeVisible(tableComponent);
                                         // name             id  width
-    tableComponent.getHeader().addColumn("A",               1,  50);
-    tableComponent.getHeader().addColumn("B",               2,  50);
-    tableComponent.getHeader().addColumn("Track title",     3,  300);
-    tableComponent.getHeader().addColumn("Length",          4,  80);
-    tableComponent.getHeader().addColumn("Path",            5,  400);
-    tableComponent.getHeader().addColumn("Extension",       6,  80);
+    tableComponent.getHeader().addColumn("#",               1,  25);
+    tableComponent.getHeader().addColumn("Track title",     2,  300);
+    tableComponent.getHeader().addColumn("Length",          3,  80);
+    tableComponent.getHeader().addColumn("Path",            4,  400);
+    tableComponent.getHeader().addColumn("Extension",       5,  80);
 
     tableComponent.setModel(this);
     
@@ -55,7 +46,7 @@ void Playlist::resized()
 {
 
     tableComponent.setBounds(getLocalBounds());
-    searchComponent.setBounds(0, 0, 300, 50);
+    searchComponent.setBounds(getWidth() -300, 0, 300, 26);
 }
 
 //==============================================================================
@@ -72,12 +63,13 @@ void Playlist::paintRowBackground (Graphics & g,
              bool rowIsSelected)
 {
     if (rowIsSelected)
-    {
         g.fillAll(Colours::orange);
-    }
     else
     {
-        g.fillAll(Colours::grey);
+        if(rowNumber % 2 == 0)
+            g.fillAll(Colours::darkgrey);
+        else
+            g.fillAll(Colours::grey);
     }
 }
 
@@ -88,7 +80,16 @@ void Playlist::paintCell (Graphics & g,
             int height,
             bool rowIsSelected)
 {
-    if (columnId == 3)
+    if (columnId == 1)
+    {
+        g.drawText(String{rowNumber+1},
+                   2, 0,
+                   width-4,
+                   height,
+                   Justification::centredLeft,
+                   true);
+    }
+    if (columnId == 2)
     {
         g.drawText(playlistView[rowNumber].name,
                    2, 0,
@@ -97,7 +98,7 @@ void Playlist::paintCell (Graphics & g,
                    Justification::centredLeft,
                    true);
     }
-    if (columnId == 4)
+    if (columnId == 3)
     {
         g.drawText(Format::floatToTime(playlistView[rowNumber].duration)+"s",
                    2, 0,
@@ -106,7 +107,7 @@ void Playlist::paintCell (Graphics & g,
                    Justification::centredLeft,
                    true);
     }
-    if (columnId == 5)
+    if (columnId == 4)
     {
         g.drawText(playlistView[rowNumber].path,
                    2, 0,
@@ -115,7 +116,7 @@ void Playlist::paintCell (Graphics & g,
                    Justification::centredLeft,
                    true);
     }
-    if (columnId == 6)
+    if (columnId == 5)
     {
         g.drawText(playlistView[rowNumber].extension,
                    2, 0,
@@ -125,60 +126,6 @@ void Playlist::paintCell (Graphics & g,
                    true);
     }
 }
-
-Component* Playlist::refreshComponentForCell (int rowNumber,
-            int columnId,
-            bool isRowSelected,
-            Component *existingComponentToUpdate)
-{
-    if(columnId ==1)
-    {
-        if(existingComponentToUpdate == nullptr)
-        {
-            TextButton* btn = new TextButton{"A"};
-            
-            String id {to_string(rowNumber)};
-            
-            btn->setComponentID(id);
-            btn->setName("A");
-            btn->addListener(this);
-            existingComponentToUpdate = btn;
-        }
-    }
-    if(columnId ==2)
-    {
-        if(existingComponentToUpdate == nullptr)
-        {
-            TextButton* btn = new TextButton{"B"};
-            
-            String id {to_string(rowNumber)};
-            
-            btn->setComponentID(id);
-            btn->setName("B");
-            btn->addListener(this);
-            existingComponentToUpdate = btn;
-        }
-    }
-    return existingComponentToUpdate;
-}
-
-void Playlist::buttonClicked (Button* button)
-{
-    int id = stoi(button->getComponentID().toStdString());
-    
-    if(button->getName() == "A")
-    {
-        player1->loadURL(URL{playlistView[id].file});
-        deckGUI1->loadWaveform(playlistView[id].file);
-    }
-    else
-    {
-        player2->loadURL(URL{playlistView[id].file});
-        deckGUI2->loadWaveform(playlistView[id].file);
-    }
-        
-}
-
 bool Playlist::isInterestedInFileDrag (const StringArray &files)
 {
     cout << "Playlist::isInterestedInFileDrag" << endl;

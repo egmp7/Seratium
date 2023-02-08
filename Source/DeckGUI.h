@@ -57,8 +57,10 @@ public:
     void itemDropped (const SourceDetails &dragSourceDetails) override;
     /**Callback function that runs in a separate threath**/
     void timerCallback() override;
-    /**Helper to redraw audio thumbnails*/
-    void loadWaveform(File file);
+    /**Calls the waveform load function*/
+    void loadWaveform(URL file);
+    /**Updates time tracker**/
+    void updateTimeTracker();
 
 private:
     

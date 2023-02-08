@@ -20,7 +20,7 @@ MainGUI::MainGUI(DJAudioPlayer* _player1,
 deckGUI1(_player1, &crossfader, _formatManagerToUse, _thumbCacheToUse, false),
 deckGUI2(_player2, &crossfader, _formatManagerToUse, _thumbCacheToUse, true),
 crossfader(_player1, _player2),
-playlist(_player1, _player2, &deckGUI1, &deckGUI2, _formatManagerToUse)
+playlist(_formatManagerToUse)
 {
     addAndMakeVisible(deckGUI1);
     deckGUI1.setComponentID("deckGUI1");

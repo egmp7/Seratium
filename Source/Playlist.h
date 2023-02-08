@@ -26,17 +26,12 @@ using namespace juce;
 
 class Playlist  : public Component,
                   public TableListBoxModel,
-                  public Button::Listener,
                   public FileDragAndDropTarget,
                   public DragAndDropContainer,
                   public TextEditor::Listener
 {
 public:
-    Playlist(DJAudioPlayer* _player1,
-             DJAudioPlayer* _player2,
-             DeckGUI* _deckGUI1,
-             DeckGUI* _deckGUI2,
-             AudioFormatManager & _formatManagerToUse);
+    Playlist(AudioFormatManager & _formatManagerToUse);
     
     ~Playlist() override;
 
@@ -57,13 +52,6 @@ public:
                     int width,
                     int height,
                     bool rowIsSelected) override;
-    /**Prints a functional component in a cell**/
-    Component* refreshComponentForCell (int rowNumber,
-                    int columnId,
-                    bool isRowSelected,
-                    Component *existingComponentToUpdate) override ;
-    /**Loads audio track to the application **/
-    void buttonClicked (Button* button) override;
     /**Checks when user hover the component*/
     bool isInterestedInFileDrag (const StringArray &files) override;
     /**Runs when the user release the click*/
@@ -78,18 +66,16 @@ private:
     /**Checks if a file already exists in tracks vector**/
     bool checkFileInPlaylist(String path);
     
+    // Controller
     DJAudioPlayer player;
-    DJAudioPlayer* player1;
-    DJAudioPlayer* player2;
-    DeckGUI* deckGUI1;
-    DeckGUI* deckGUI2;
     
+    // Components
     TableListBox tableComponent;
+    TextEditor searchComponent{"search"};
     
     vector<TrackEntry> playlist;
     vector<TrackEntry> playlistView;
     
-    TextEditor searchComponent{"search"};
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Playlist)
 };
