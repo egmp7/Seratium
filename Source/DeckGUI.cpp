@@ -131,6 +131,8 @@ void DeckGUI::buttonClicked(Button* button)
             player->loadURL(juce::URL{chosenFile});
             // load waveform display
             loadWaveform(chosenFile);
+            // update current time
+            timeTracker.currentTime = 0.0f;
         });
     }
 }
@@ -159,6 +161,7 @@ void DeckGUI::filesDropped (const juce::StringArray &files, int x, int y)
     {
         player->loadURL(URL{File{files[0]}});
         loadWaveform(File{files[0]});
+        timeTracker.currentTime = 0.0f;
     }
 }
 
@@ -180,8 +183,10 @@ bool DeckGUI::isInterestedInDragSource (const SourceDetails &dragSourceDetails)
 void  DeckGUI::itemDropped (const SourceDetails &dragSourceDetails)
 {
     cout<<"DeckGUI::itemDropped"<<endl;
+    
     player->loadURL(URL{File{String(dragSourceDetails.description)}});
     loadWaveform(File{String(dragSourceDetails.description)});
+    timeTracker.currentTime = 0.0f;
 }
 void DeckGUI::loadWaveform(File file)
 {

@@ -4,6 +4,10 @@
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="M17iFL" name="OtoDekcs">
     <GROUP id="{07B04AD9-CD9D-193A-822D-2E327A7E33A5}" name="Source">
+      <GROUP id="{894F5243-9357-EAE8-C664-0BE1050ED912}" name="Utilities">
+        <FILE id="TbVM3V" name="Format.cpp" compile="1" resource="0" file="Source/Format.cpp"/>
+        <FILE id="A1Izje" name="Format.h" compile="0" resource="0" file="Source/Format.h"/>
+      </GROUP>
       <GROUP id="{C2496291-4ECA-E06E-4C3B-76FE0611C39F}" name="Models">
         <FILE id="tGdiz2" name="TrackEntry.cpp" compile="1" resource="0" file="Source/TrackEntry.cpp"/>
         <FILE id="BcQFJq" name="TrackEntry.h" compile="0" resource="0" file="Source/TrackEntry.h"/>

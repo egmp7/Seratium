@@ -14,7 +14,6 @@
 //==============================================================================
 TimeTracker::TimeTracker()
 {
-
 }
 
 TimeTracker::~TimeTracker()
@@ -30,9 +29,10 @@ void TimeTracker::paint (juce::Graphics& g)
     g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
     
     // draw timeTracker 
-    g.setColour(Colours::white);
-    g.drawText(String(currentTime) + "s", currentTimeRect, Justification::centred);
-    g.drawText(String(remainingTime) + "s", remainingTimeRect, Justification::centred);
+    g.setColour(Colours::lime);
+    g.drawText(Format::floatToTime(currentTime) + "s", currentTimeRect, Justification::centred);
+    g.setColour(Colours::red);
+    g.drawText(Format::floatToTime(remainingTime) + "s", remainingTimeRect, Justification::centred);
 
 }
 
@@ -47,7 +47,7 @@ void TimeTracker::resized()
                                 getWidth(),
                                 getHeight()/2);
 }
-void TimeTracker::setCurrentTime(int time)
+void TimeTracker::setCurrentTime(float time)
 {
     if(currentTime != time && time != 0)
     {
@@ -55,7 +55,7 @@ void TimeTracker::setCurrentTime(int time)
     }
 }
 
-void TimeTracker::setRemainingTime(int trackLength)
+void TimeTracker::setRemainingTime(float trackLength)
 {
     if(trackLength != 0)
     {

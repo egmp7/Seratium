@@ -54,7 +54,7 @@ public:
     /**Checks for drag and drop object sources*/
     bool isInterestedInDragSource (const SourceDetails &dragSourceDetails) override;
     /**Loads audio files to the application**/
-    void  itemDropped (const SourceDetails &dragSourceDetails) override;
+    void itemDropped (const SourceDetails &dragSourceDetails) override;
     /**Callback function that runs in a separate threath**/
     void timerCallback() override;
     /**Helper to redraw audio thumbnails*/

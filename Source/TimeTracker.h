@@ -11,6 +11,7 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "Format.h"
 
 using namespace juce;
 
@@ -27,18 +28,19 @@ public:
     void resized() override;
         
     /**set the current value of the track position in seconds**/
-    void setCurrentTime(int time);
+    void setCurrentTime(float time);
     
     /**set the remaining value of the track length in seconds*/
-    void setRemainingTime(int trackLength);
+    void setRemainingTime(float trackLength);
+    
+    float currentTime;
 
 private:
     
+    float remainingTime;
+        
     Rectangle<float> currentTimeRect;
     Rectangle<float> remainingTimeRect;
-    int currentTime;
-    int remainingTime;
-
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TimeTracker)
 };

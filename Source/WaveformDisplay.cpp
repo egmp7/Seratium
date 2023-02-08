@@ -46,7 +46,7 @@ void WaveformDisplay::paint (Graphics& g)
                                0,                           // channel 0
                                1.0f);                       // boost size
         g.setColour(juce::Colours::lightgreen);
-        g.drawRect(position * getWidth(), 0, getWidth() / 20, getHeight());;
+        g.drawRect(position * getWidth(), 0, 1, getHeight());;
     }
     else    // file not loaded
     {

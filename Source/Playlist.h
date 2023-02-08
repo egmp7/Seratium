@@ -17,6 +17,7 @@
 #include "DJAudioPlayer.h"
 #include "DeckGUI.h"
 #include "TrackEntry.h"
+#include "Format.h"
 
 using namespace std;
 using namespace juce;
@@ -69,13 +70,13 @@ public:
     void filesDropped (const StringArray &files, int x, int y) override;
     /**Creates a DragAndDropContainer from table cell*/
     var getDragSourceDescription ( const SparseSet< int > & currentlySelectedRows) override;
-    
+    /**Search in the playlist**/
     void textEditorTextChanged (TextEditor &) override;
     
 private:
     
     /**Checks if a file already exists in tracks vector**/
-    bool checkFileInTracks(String path);
+    bool checkFileInPlaylist(String path);
     
     DJAudioPlayer player;
     DJAudioPlayer* player1;
@@ -85,8 +86,8 @@ private:
     
     TableListBox tableComponent;
     
-    vector<TrackEntry> tracks;
-    vector<TrackEntry> tracksView;
+    vector<TrackEntry> playlist;
+    vector<TrackEntry> playlistView;
     
     TextEditor searchComponent{"search"};
     
