@@ -33,22 +33,28 @@ public:
     
 //==============================================================================
 
-    /**Listens for changes in the thumbnail to redraw**/
+    /**Listens for changes in the thumbnail to redraw
+     @param source not used*/
     void changeListenerCallback (ChangeBroadcaster *source) override;
     
-    /**Load waveform thumbnail**/
-    void loadURL(juce::URL audioURL);
+    /**Load waveform thumbnail
+     @param audioURL file to be loaded*/
+    void loadURL(URL audioURL);
     
-    /**set the relative position of the playhead**/
-    void setPositionRelative(double pos);
-    
-    /**Updates position of track when user click in the waveform component**/
+    /**Updates position of the playhead when user clicks this component
+     @param event gets the distance between the click and the start of the component */
     void mouseDown (const MouseEvent &event) override;
+    
+    /**set the relative position of the playhead
+     @param pos current position of the player in seconds*/
+    void setPlayheadPosition(double pos);
 
 private:
     
+
+    
     bool fileLoaded;
-    double position;
+    double playheadPosition;
     AudioThumbnail audioThumb;
     DJAudioPlayer* player;
     

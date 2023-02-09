@@ -28,19 +28,17 @@ public:
 
 private:
     
-    // Required for Waveform Display
+    // Required for Waveform Display instantiation
     AudioFormatManager formatManager;
     AudioThumbnailCache thumbCache{100};
 
     // Controllers
+    MixerAudioSource mixerSource;
     DJAudioPlayer player1{formatManager};
     DJAudioPlayer player2{formatManager};
     
     // Views
     MainGUI mainGUI{&player1, &player2, formatManager, thumbCache};
-
-    // Utilities
-    MixerAudioSource mixerSource;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

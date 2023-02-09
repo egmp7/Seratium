@@ -21,8 +21,8 @@ public:
     Format();
     
     /**Transforms a float into a time string eg: mm:ss
-     @param time float secods number
-     @return string mm:ss*/
+     @param time float number
+     @return formatted time mm:ss*/
     static string floatToTime(float time);
 };
 

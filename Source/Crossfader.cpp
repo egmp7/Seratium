@@ -77,11 +77,6 @@ void Crossfader::mainGainAlgorithm()
         mainGainB = faderB;
         mainGainA = faderA * (-2.0f * crossfaderValue + 2.0f);
     }
-    setPlayersGain();
-}
-
-void Crossfader::setPlayersGain()
-{
     player1->setGain(mainGainA);
     player2->setGain(mainGainB);
 }

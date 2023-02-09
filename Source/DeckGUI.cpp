@@ -170,7 +170,7 @@ void DeckGUI::filesDropped (const juce::StringArray &files, int x, int y)
 void DeckGUI::timerCallback()
 {
     // Set position of the waveform line component
-    waveformDisplay.setPositionRelative(player->getPositionRelative());
+    waveformDisplay.setPlayheadPosition(player->getPositionRelative());
     // Set position of the time tracker component
     timeTracker.setCurrentTime(player->getPosition());
     // Set track length of the time tracker component

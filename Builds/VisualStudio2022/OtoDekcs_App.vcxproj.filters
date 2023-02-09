@@ -583,7 +583,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\CSVUtility.cpp">
+    <ClCompile Include="..\..\Source\CSV.cpp">
       <Filter>OtoDekcs\Source\Utilities</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Format.cpp">
@@ -2925,7 +2925,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\CSVUtility.h">
+    <ClInclude Include="..\..\Source\CSV.h">
       <Filter>OtoDekcs\Source\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Format.h">

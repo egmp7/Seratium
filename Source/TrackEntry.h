@@ -18,6 +18,7 @@ using namespace juce;
 class TrackEntry
 {
 public:
+    
     TrackEntry(File _file,
                String _name,
                String _extension,

@@ -72,7 +72,7 @@ ifeq ($(CONFIG),Release)
 endif
 
 OBJECTS_APP := \
-  $(JUCE_OBJDIR)/CSVUtility_3cf4db0f.o \
+  $(JUCE_OBJDIR)/CSV_1cb31167.o \
   $(JUCE_OBJDIR)/Format_3caa4400.o \
   $(JUCE_OBJDIR)/TrackEntry_39b987f0.o \
   $(JUCE_OBJDIR)/DJAudioPlayer_f05158f2.o \
@@ -112,9 +112,9 @@ $(JUCE_OUTDIR)/$(JUCE_TARGET_APP) : $(OBJECTS_APP) $(RESOURCES)
 	-$(V_AT)mkdir -p $(JUCE_OUTDIR)
 	$(V_AT)$(CXX) -o $(JUCE_OUTDIR)/$(JUCE_TARGET_APP) $(OBJECTS_APP) $(JUCE_LDFLAGS) $(JUCE_LDFLAGS_APP) $(RESOURCES) $(TARGET_ARCH)
 
-$(JUCE_OBJDIR)/CSVUtility_3cf4db0f.o: ../../Source/CSVUtility.cpp
+$(JUCE_OBJDIR)/CSV_1cb31167.o: ../../Source/CSV.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling CSVUtility.cpp"
+	@echo "Compiling CSV.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/Format_3caa4400.o: ../../Source/Format.cpp

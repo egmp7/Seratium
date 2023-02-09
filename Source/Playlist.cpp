@@ -29,7 +29,7 @@ player(_formatManagerToUse)
     searchComponent.addListener(this);
     
     // load playlist
-    playlist = CSVUtility::read();
+    playlist = CSV::read();
     playlistView = playlist;
 }
 
@@ -165,8 +165,8 @@ void Playlist::filesDropped (const StringArray &files, int x, int y)
     tableComponent.updateContent();
     
     // save playlist
-    CSVUtility::playlist = &playlist;
-    CSVUtility::save();
+    CSV::playlist = &playlist;
+    CSV::save();
 }
 
 bool Playlist::checkFileInPlaylist(String path)

@@ -17,14 +17,17 @@ position(0.0f)
 {
     setFramesPerSecond (60); // Init Animation
 }
+
 DeckAnimation::~DeckAnimation()
 {
     
 }
+
 void DeckAnimation::update ()
 {
     setPosition(player->getPosition());
 }
+
 void DeckAnimation::paint (Graphics& g)
 {
     float responsiveSize = (float) getLocalBounds().getWidth()*0.009f;
@@ -72,16 +75,19 @@ void DeckAnimation::paint (Graphics& g)
     g.strokePath (path, PathStrokeType (3.0f));
     
 }
+
 void DeckAnimation::setPosition(float pos)
 {
     if(position != pos && !isnan(pos))
         position = pos;
 }
+
 float DeckAnimation::animateX (float radius, int offset)
 {
     // math to animate a point or varius depending on offset
     return (float)getWidth()  / 2.0f + (float) radius * (-std::sin ((float) position * 1.5f + (float) offset * 0.10f));
 }
+
 float DeckAnimation::animateY (float radius, int offset)
 {
     // math to animate a point or varius depending on offset

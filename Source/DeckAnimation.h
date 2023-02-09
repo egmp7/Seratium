@@ -23,24 +23,27 @@ public:
     ~DeckAnimation() override;
     
     void paint (Graphics& g) override;
-    /**Virtual function**/
+    /**Calback function to animate */
     void update () override;
-    /**Stores locally the DJAudioPlayer position*/
+    /**Stores locally the DJAudioPlayer position
+     @param pos position of the DJAudioPlayer*/
     void setPosition(float pos);
     
 private:
     
+    /**Algorithm to produce an ellipse in the x coordenate
+     @param radius size of the ellipse
+     @param offset add extra points to the ellipse, this is required for the Path class*/
+    float animateX (float radius, int offset);
+    /**Algorithm to produce an ellipse in the y coordenate
+     @param radius size of the ellipse
+     @param offset add extra points to the ellipse, this is required for the Path class*/
+    float animateY (float radius, int offset);
+    
     DJAudioPlayer* player;
     float position;
     
-    /**creates an animation for the  x coordenate
-     @param radius float
-     @param offset float*/
-    float animateX (float radius, int offset);
-    /**creates an animation for the  y coordenate
-     @param radius float
-     @param offset float*/
-    float animateY (float radius, int offset);
+    
     
     
 };

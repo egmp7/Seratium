@@ -26,11 +26,13 @@ void DJAudioPlayer::prepareToPlay (int samplesPerBlockExpected, double sampleRat
     transportSource.prepareToPlay(samplesPerBlockExpected, sampleRate);
     resampleSource.prepareToPlay(samplesPerBlockExpected, sampleRate);
 }
-void DJAudioPlayer::getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill)
+
+void DJAudioPlayer::getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill)
 {
     resampleSource.getNextAudioBlock(bufferToFill);
 
 }
+
 void DJAudioPlayer::releaseResources()
 {
     transportSource.releaseResources();
@@ -42,11 +44,13 @@ void DJAudioPlayer::start()
 {
     transportSource.start();
 }
+
 void DJAudioPlayer::stop()
 {
     transportSource.stop();
 }
-void DJAudioPlayer::loadURL(juce::URL audioURL)
+
+void DJAudioPlayer::loadURL(URL audioURL)
 {
     // Audio Format Reader
     auto * reader = formatManager.createReaderFor(audioURL.createInputStream(false));
@@ -55,7 +59,7 @@ void DJAudioPlayer::loadURL(juce::URL audioURL)
     
     {
         // Audio Format Reader Source
-        std::unique_ptr<juce::AudioFormatReaderSource> newSource (new juce::AudioFormatReaderSource (reader,true));
+        std::unique_ptr<juce::AudioFormatReaderSource> newSource (new AudioFormatReaderSource (reader,true));
     
         // Transport Source
         transportSource.setSource(newSource.get(),0,nullptr,reader->sampleRate);
@@ -87,10 +91,12 @@ void DJAudioPlayer::setSpeed(double ratio)
         resampleSource.setResamplingRatio(ratio);
     }
 }
+
 void DJAudioPlayer::setPosition(double posInSeconds)
 {
     transportSource.setPosition(posInSeconds);
 }
+
 void DJAudioPlayer::setPositionRelative(double pos)
 {
     if(pos < 0 || pos > 1.0)
@@ -103,14 +109,17 @@ void DJAudioPlayer::setPositionRelative(double pos)
         setPosition(posInSec);
     }
 }
+
 double DJAudioPlayer::getPosition()
 {
     return transportSource.getCurrentPosition();
 }
+
 double DJAudioPlayer::getPositionRelative()
 {
     return transportSource.getCurrentPosition() / transportSource.getLengthInSeconds();
 }
+
 double DJAudioPlayer::getTrackLength()
 {
     return transportSource.getLengthInSeconds();

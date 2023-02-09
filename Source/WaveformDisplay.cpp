@@ -19,7 +19,7 @@ WaveformDisplay::WaveformDisplay(AudioFormatManager & formatManagerToUse,
                                  DJAudioPlayer* _player)
  :
 fileLoaded(false),
-position(0),
+playheadPosition(0),
 audioThumb(1000,formatManagerToUse, cacheToUse),
 player(_player)
 {
@@ -28,7 +28,9 @@ player(_player)
 
 WaveformDisplay::~WaveformDisplay()
 {
+    
 }
+
 void WaveformDisplay::paint (Graphics& g)
 {
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
@@ -40,13 +42,14 @@ void WaveformDisplay::paint (Graphics& g)
     {
         // draw thumbnail
         audioThumb.drawChannel(g,
-                               getLocalBounds(),            //
+                               getLocalBounds(),            // get size
                                0,                           // start
                                audioThumb.getTotalLength(), // end
                                0,                           // channel 0
                                1.0f);                       // boost size
+        // draw playhead
         g.setColour(juce::Colours::lightgreen);
-        g.drawRect(position * getWidth(), 0, 1, getHeight());;
+        g.drawRect(playheadPosition * getWidth(), 0, 1, getHeight());;
     }
     else    // file not loaded
     {
@@ -56,14 +59,18 @@ void WaveformDisplay::paint (Graphics& g)
                     Justification::centred, true);
     }
 }
+
 void WaveformDisplay::resized()
 {
+    
 }
+
 void WaveformDisplay::changeListenerCallback (ChangeBroadcaster *source)
 {
     cout << "WaveformDisplay::changeListenerCallback Changed received" << endl;
     repaint();
 }
+
 void WaveformDisplay::loadURL(URL audioURL)
 {
     std::cout << "WaveformDisplay::loadURL" << std::endl;
@@ -81,15 +88,17 @@ void WaveformDisplay::loadURL(URL audioURL)
     }
     
 }
-void WaveformDisplay::setPositionRelative(double pos)
+
+void WaveformDisplay::setPlayheadPosition(double pos)
 {
-    if (pos != position && !isnan(pos))
+    if (pos != playheadPosition && !isnan(pos))
     {
-    position = pos;
-    repaint();
+        playheadPosition = pos;
+        repaint();
     }
 }
-void WaveformDisplay::mouseDown(const MouseEvent &event) 
+
+void WaveformDisplay::mouseDown(const MouseEvent &event)
 {
     // get mouse position from component
     Point <int> p = event.getMouseDownPosition();

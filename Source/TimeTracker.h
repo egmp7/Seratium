@@ -24,13 +24,15 @@ public:
     TimeTracker();
     ~TimeTracker() override;
 
-    void paint (juce::Graphics&) override;
+    void paint (Graphics&) override;
     void resized() override;
         
-    /**sets the current value of the track position in seconds**/
+    /**sets the current value of the track position in seconds
+     @param time current time of players*/
     void setCurrentTime(float time);
     
-    /**sets the remaining value of the track length in seconds*/
+    /**sets the remaining value of the track length in seconds
+     @param trackLength remaining time is equal to the difference of total length minus current time*/
     void setRemainingTime(float trackLength);
     
     /**sets the current time to zero**/

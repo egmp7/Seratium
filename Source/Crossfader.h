@@ -19,6 +19,10 @@ using namespace std;
 
 //==============================================================================
 /*
+ 
+ The crossfader component sets the gain value between 0 and 1 for playerA and playerB
+ Also, the state changes when user interacts with volume sliders
+ 
 */
 class Crossfader  : public Component,
                     public Slider::Listener
@@ -30,17 +34,18 @@ public:
     void paint (juce::Graphics&) override;
     void resized() override;
     
-    /**crossfader listener**/
+    /**crossfader listener
+     @param *slider crossfader moved*/
     void sliderValueChanged (Slider *slider) override;
-    /**set fader value**/
+    /**set fader value
+     @param gain value for the faders
+     @param deckID id to recognize which fader needs to be set*/
     void setFaderGain(float gain, String deckID);
 
 private:
     
     /**algorithm to get main gain value**/
     void mainGainAlgorithm();
-    /**set players gain values**/
-    void setPlayersGain();
     
     Slider crossfaderSlider;
     

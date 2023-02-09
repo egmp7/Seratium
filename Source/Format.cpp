@@ -19,6 +19,5 @@ string Format::floatToTime(float time)
         return to_string(minutes)+ ":" + "0" +to_string(seconds) ;
     else
         return to_string(minutes)+ ":" +to_string(seconds);
-
 }
 

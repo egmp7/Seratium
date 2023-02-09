@@ -5,8 +5,8 @@
   <MAINGROUP id="M17iFL" name="OtoDekcs">
     <GROUP id="{07B04AD9-CD9D-193A-822D-2E327A7E33A5}" name="Source">
       <GROUP id="{894F5243-9357-EAE8-C664-0BE1050ED912}" name="Utilities">
-        <FILE id="HI4a6p" name="CSVUtility.cpp" compile="1" resource="0" file="Source/CSVUtility.cpp"/>
-        <FILE id="GTia0F" name="CSVUtility.h" compile="0" resource="0" file="Source/CSVUtility.h"/>
+        <FILE id="HI4a6p" name="CSV.cpp" compile="1" resource="0" file="Source/CSV.cpp"/>
+        <FILE id="GTia0F" name="CSV.h" compile="0" resource="0" file="Source/CSV.h"/>
         <FILE id="TbVM3V" name="Format.cpp" compile="1" resource="0" file="Source/Format.cpp"/>
         <FILE id="A1Izje" name="Format.h" compile="0" resource="0" file="Source/Format.h"/>
       </GROUP>
