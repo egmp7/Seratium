@@ -53,7 +53,9 @@ void DJAudioPlayer::stop()
 void DJAudioPlayer::loadURL(URL audioURL)
 {
     // Audio Format Reader
-    auto * reader = formatManager.createReaderFor(audioURL.createInputStream(false));
+    auto * reader = formatManager.createReaderFor(audioURL.createInputStream(URL::InputStreamOptions (URL::ParameterHandling::inAddress)
+            .withConnectionTimeoutMs (1000)
+            .withNumRedirectsToFollow (0)));
     
     if (reader != nullptr) // good file
     
