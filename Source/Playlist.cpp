@@ -16,19 +16,21 @@ Playlist::Playlist(AudioFormatManager & _formatManagerToUse)
 :
 player(_formatManagerToUse)
 {
+    // table component
     addAndMakeVisible(tableComponent);
-                                        // name             id  width
-    tableComponent.getHeader().addColumn("#",               1,  25);
+    tableComponent.getHeader().addColumn("#",               1,  25); // name,id,width
     tableComponent.getHeader().addColumn("Track title",     2,  300);
     tableComponent.getHeader().addColumn("Length",          3,  80);
     tableComponent.getHeader().addColumn("Path",            4,  400);
     tableComponent.getHeader().addColumn("Extension",       5,  80);
-
     tableComponent.setModel(this);
-    
+    //search component
     addAndMakeVisible(searchComponent);
     searchComponent.addListener(this);
     
+    // load playlist
+    playlist = CSVUtility::read();
+    playlistView = playlist;
 }
 
 Playlist::~Playlist()
@@ -48,8 +50,6 @@ void Playlist::resized()
     tableComponent.setBounds(getLocalBounds());
     searchComponent.setBounds(getWidth() -300, 0, 300, 26);
 }
-
-//==============================================================================
 
 int Playlist::getNumRows()
 {
@@ -80,6 +80,7 @@ void Playlist::paintCell (Graphics & g,
             int height,
             bool rowIsSelected)
 {
+    // #
     if (columnId == 1)
     {
         g.drawText(String{rowNumber+1},
@@ -89,6 +90,7 @@ void Playlist::paintCell (Graphics & g,
                    Justification::centredLeft,
                    true);
     }
+    // name
     if (columnId == 2)
     {
         g.drawText(playlistView[rowNumber].name,
@@ -98,6 +100,7 @@ void Playlist::paintCell (Graphics & g,
                    Justification::centredLeft,
                    true);
     }
+    // length
     if (columnId == 3)
     {
         g.drawText(Format::floatToTime(playlistView[rowNumber].duration)+"s",
@@ -107,6 +110,7 @@ void Playlist::paintCell (Graphics & g,
                    Justification::centredLeft,
                    true);
     }
+    // path
     if (columnId == 4)
     {
         g.drawText(playlistView[rowNumber].path,
@@ -116,6 +120,7 @@ void Playlist::paintCell (Graphics & g,
                    Justification::centredLeft,
                    true);
     }
+    // extension
     if (columnId == 5)
     {
         g.drawText(playlistView[rowNumber].extension,
@@ -136,10 +141,13 @@ void Playlist::filesDropped (const StringArray &files, int x, int y)
 {
     for (String file : *&files)
     {
-        if (!checkFileInPlaylist(file)) // create a new file
+        // check if file exists in playlist
+        if (!checkFileInPlaylist(file))
         {
+            // prepare player
             player.loadURL(URL{File{file}});
             
+            // create a new file
             TrackEntry track{
                 File{file},
                 File{file}.getFileNameWithoutExtension(),
@@ -150,15 +158,15 @@ void Playlist::filesDropped (const StringArray &files, int x, int y)
             playlist.push_back(track);
             player.releaseResources();
         }
-        else // do not create a new file
-            continue;
     }
     
-    // copy of playlist vector
-    playlistView = playlist;
-    
     // update table
+    playlistView = playlist;
     tableComponent.updateContent();
+    
+    // save playlist
+    CSVUtility::playlist = &playlist;
+    CSVUtility::save();
 }
 
 bool Playlist::checkFileInPlaylist(String path)

@@ -18,6 +18,7 @@
 #include "DeckGUI.h"
 #include "TrackEntry.h"
 #include "Format.h"
+#include "CSVUtility.h"
 
 using namespace std;
 using namespace juce;
@@ -52,9 +53,9 @@ public:
                     int width,
                     int height,
                     bool rowIsSelected) override;
-    /**Checks when user hover the component*/
+    /**Checks when user hover the component when drag and drop*/
     bool isInterestedInFileDrag (const StringArray &files) override;
-    /**Runs when the user release the click*/
+    /**Runs when the user release the click when drag and drop*/
     void filesDropped (const StringArray &files, int x, int y) override;
     /**Creates a DragAndDropContainer from table cell*/
     var getDragSourceDescription ( const SparseSet< int > & currentlySelectedRows) override;

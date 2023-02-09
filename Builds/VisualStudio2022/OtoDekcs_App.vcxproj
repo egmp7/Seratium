@@ -141,6 +141,7 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\CSVUtility.cpp"/>
     <ClCompile Include="..\..\Source\Format.cpp"/>
     <ClCompile Include="..\..\Source\TrackEntry.cpp"/>
     <ClCompile Include="..\..\Source\DJAudioPlayer.cpp"/>
@@ -2311,6 +2312,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\CSVUtility.h"/>
     <ClInclude Include="..\..\Source\Format.h"/>
     <ClInclude Include="..\..\Source\TrackEntry.h"/>
     <ClInclude Include="..\..\Source\DJAudioPlayer.h"/>

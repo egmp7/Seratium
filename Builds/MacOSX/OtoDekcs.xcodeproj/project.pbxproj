@@ -44,6 +44,7 @@
 		E71DD7D7D927E78369E755E7 /* include_juce_core.mm */ = {isa = PBXBuildFile; fileRef = DECCCE22DC9600F7E201DC83; };
 		E8F13E0DD89A0F7ABEB05D2D /* include_juce_audio_processors_ara.cpp */ = {isa = PBXBuildFile; fileRef = C5995BB3FBA03F962EA5F19A; };
 		EBE37EB986969E64BA45D135 /* include_juce_gui_extra.mm */ = {isa = PBXBuildFile; fileRef = 248A37134C7C9F0AA64F96E7; };
+		F79C6BF702574578AD827DD5 /* CSVUtility.cpp */ = {isa = PBXBuildFile; fileRef = 99879022E1626BC091EFCF52; };
 		FA2F448FFB3C1F703A558C1C /* Format.cpp */ = {isa = PBXBuildFile; fileRef = A74305D3C019FAB00BB02962; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,8 @@
 		9281C6CB38241EB82B3DBBFE /* MainComponent.h */ /* MainComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainComponent.h; path = ../../Source/MainComponent.h; sourceTree = SOURCE_ROOT; };
 		92A1E0E9ABDA4977D8F4BD37 /* DeckAnimation.cpp */ /* DeckAnimation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DeckAnimation.cpp; path = ../../Source/DeckAnimation.cpp; sourceTree = SOURCE_ROOT; };
 		9467D54498D9F103ECCB8707 /* Crossfader.cpp */ /* Crossfader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Crossfader.cpp; path = ../../Source/Crossfader.cpp; sourceTree = SOURCE_ROOT; };
+		99879022E1626BC091EFCF52 /* CSVUtility.cpp */ /* CSVUtility.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CSVUtility.cpp; path = ../../Source/CSVUtility.cpp; sourceTree = SOURCE_ROOT; };
+		9E5ADF612DA9B40DC2E68507 /* CSVUtility.h */ /* CSVUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CSVUtility.h; path = ../../Source/CSVUtility.h; sourceTree = SOURCE_ROOT; };
 		A0875F2BC81DEEA9CA287C5D /* juce_graphics */ /* juce_graphics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_graphics; path = "~/JUCE/modules/juce_graphics"; sourceTree = "<absolute>"; };
 		A3A1DA9539D33AF9EEF313F7 /* MainGUI.cpp */ /* MainGUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainGUI.cpp; path = ../../Source/MainGUI.cpp; sourceTree = SOURCE_ROOT; };
 		A74305D3C019FAB00BB02962 /* Format.cpp */ /* Format.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Format.cpp; path = ../../Source/Format.cpp; sourceTree = SOURCE_ROOT; };
@@ -191,6 +194,8 @@
 		3599ABCF8A0C1D300C0DC555 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				99879022E1626BC091EFCF52,
+				9E5ADF612DA9B40DC2E68507,
 				A74305D3C019FAB00BB02962,
 				745854090AE29B20F4284D3D,
 			);
@@ -384,6 +389,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F79C6BF702574578AD827DD5,
 				FA2F448FFB3C1F703A558C1C,
 				143E986E3F302504E25B3C7A,
 				B2BFC7B0AF31F08FC1EDC294,

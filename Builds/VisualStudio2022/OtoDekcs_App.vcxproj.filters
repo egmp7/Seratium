@@ -583,6 +583,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\CSVUtility.cpp">
+      <Filter>OtoDekcs\Source\Utilities</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Format.cpp">
       <Filter>OtoDekcs\Source\Utilities</Filter>
     </ClCompile>
@@ -2922,6 +2925,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\CSVUtility.h">
+      <Filter>OtoDekcs\Source\Utilities</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Format.h">
       <Filter>OtoDekcs\Source\Utilities</Filter>
     </ClInclude>
