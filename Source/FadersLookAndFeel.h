@@ -14,9 +14,12 @@
 
 using namespace juce;
 
+enum FaderType{vertical,horizontal};
+
 class FadersLookAndFeel : public LookAndFeel_V4
 {
 public:
+    FadersLookAndFeel(FaderType _faderType);
     /**Draw custom component**/
     void drawLinearSlider(Graphics &,
                                int x,
@@ -38,8 +41,14 @@ private:
     @param scale scale rectangle between 0.0f and 1.0f
     @returns banground rectangle
      */
-    Rectangle<int> sliderBackgroundRectangle (int x, int y, int width, int height, float scale = 1.0f);
+    Rectangle<int> sliderHorizontalBackgroundRectangle (int x, int y, int width, int height, float scale = 1.0f);
     /**Draws stick elements of background **/
-    void drawSticks(Graphics &g , int x, int y , int width, int height);
+    void drawVerticalSticks(Graphics &g , int x, int y , int width, int height);
+    
+    Rectangle<int> sliderVerticalBackgroundRectangle (int x, int y, int width, int height, float scale = 1.0f);
+    /**Draws stick elements of background **/
+    void drawHorizontalSticks(Graphics &g , int x, int y , int width, int height);
+    
+    FaderType faderType;
     
 };

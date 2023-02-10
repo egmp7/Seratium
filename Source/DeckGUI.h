@@ -11,11 +11,15 @@
 #pragma once
 
 #include <JuceHeader.h>
+// controllers
+#include "Crossfader.h"
 #include "DJAudioPlayer.h"
+// child components
 #include "WaveformDisplay.h"
 #include "TimeTracker.h"
 #include "DeckAnimation.h"
-#include "Crossfader.h"
+// lookAndFeel
+#include "FadersLookAndFeel.h"
 
 using namespace juce;
 using namespace std;
@@ -90,6 +94,7 @@ private:
     DeckAnimation deckAnimation {player};
     
     //Utilities
+    FadersLookAndFeel fadersLookAndFeel{FaderType::vertical};
     FileChooser fChooser{"Select a file..."};
     bool mirror;
     float cue;

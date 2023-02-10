@@ -60,7 +60,7 @@ private:
     float mainGainA;
     float mainGainB;
     
-    FadersLookAndFeel crossfaderLookAndFeel;
+    FadersLookAndFeel crossfaderLookAndFeel{FaderType::horizontal};
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Crossfader)
 };
