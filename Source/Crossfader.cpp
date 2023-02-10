@@ -17,18 +17,15 @@ Crossfader::Crossfader(DJAudioPlayer* _player1, DJAudioPlayer* _player2)
 player1(_player1),
 player2(_player2),
 faderA(1.0f),
-faderB(1.0f),
-mainGainA(1.0f),
-mainGainB(1.0f)
+faderB(1.0f)
 {
     addAndMakeVisible(crossfaderSlider);
     crossfaderSlider.addListener(this);
     crossfaderSlider.setRange(0.0f, 1.0f);
     crossfaderSlider.setValue(0.5f);
     crossfaderSlider.setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
+    crossfaderSlider.setLookAndFeel(&crossfaderLookAndFeel);
     
-    player1->setGain(mainGainA);
-    player2->setGain(mainGainB);
 }
 
 Crossfader::~Crossfader()
@@ -81,4 +78,8 @@ void Crossfader::mainGainAlgorithm()
     player2->setGain(mainGainB);
 }
 
-
+float Crossfader::thumPosition()
+{
+    return crossfaderSlider.getPositionOfValue(crossfaderSlider.getValue());
+    
+}

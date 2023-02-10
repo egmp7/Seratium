@@ -15,12 +15,13 @@
 #include "DeckGUI.h"
 #include "Crossfader.h"
 #include "Playlist.h"
+#include "RectanglesUtility.h"
 
 using namespace juce;
 
 //==============================================================================
 
-class MainGUI  : public Component
+class MainGUI  : public AnimatedAppComponent
 {
 public:
     MainGUI(DJAudioPlayer* _player1,
@@ -31,6 +32,12 @@ public:
 
     void paint (Graphics&) override;
     void resized() override;
+    
+    /**Updates the thum position of the sliders**/
+    void update() override;
+    /**Paint objects over components
+     @param g paints the thum images of sliders**/
+    void paintOverChildren(Graphics&) override;
 
 private:
     
@@ -40,6 +47,8 @@ private:
     Crossfader crossfader;
     Playlist playlist;
     
+    Image crossfaderPNG;
+    Rectangle<float> crossfaderThumUpdate;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainGUI)
 };

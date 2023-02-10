@@ -9,6 +9,10 @@
         <FILE id="GTia0F" name="CSV.h" compile="0" resource="0" file="Source/CSV.h"/>
         <FILE id="TbVM3V" name="Format.cpp" compile="1" resource="0" file="Source/Format.cpp"/>
         <FILE id="A1Izje" name="Format.h" compile="0" resource="0" file="Source/Format.h"/>
+        <FILE id="w2a7zu" name="RectanglesUtility.cpp" compile="1" resource="0"
+              file="Source/RectanglesUtility.cpp"/>
+        <FILE id="EleuwS" name="RectanglesUtility.h" compile="0" resource="0"
+              file="Source/RectanglesUtility.h"/>
       </GROUP>
       <GROUP id="{C2496291-4ECA-E06E-4C3B-76FE0611C39F}" name="Models">
         <FILE id="tGdiz2" name="TrackEntry.cpp" compile="1" resource="0" file="Source/TrackEntry.cpp"/>
@@ -37,6 +41,10 @@
       <GROUP id="{ED349D5F-41F9-FDEF-3670-860312757F3A}" name="GUIs">
         <FILE id="dXl0KJ" name="DeckGUI.cpp" compile="1" resource="0" file="Source/DeckGUI.cpp"/>
         <FILE id="cIQalg" name="DeckGUI.h" compile="0" resource="0" file="Source/DeckGUI.h"/>
+        <FILE id="APIT2v" name="FadersLookAndFeel.cpp" compile="1" resource="0"
+              file="Source/FadersLookAndFeel.cpp"/>
+        <FILE id="scDokb" name="FadersLookAndFeel.h" compile="0" resource="0"
+              file="Source/FadersLookAndFeel.h"/>
         <FILE id="zl7TU0" name="MainGUI.cpp" compile="1" resource="0" file="Source/MainGUI.cpp"/>
         <FILE id="YWSQ5P" name="MainGUI.h" compile="0" resource="0" file="Source/MainGUI.h"/>
       </GROUP>

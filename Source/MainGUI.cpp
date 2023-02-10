@@ -30,6 +30,10 @@ playlist(_formatManagerToUse)
     
     addAndMakeVisible(crossfader);
     addAndMakeVisible(playlist);
+    
+    crossfaderPNG = ImageFileFormat::loadFrom(File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/crossfader.png"));
+    
+    setFramesPerSecond (60);
 }
 
 MainGUI::~MainGUI()
@@ -69,4 +73,20 @@ void MainGUI::resized()
                        decksHeight,
                        getWidth(),
                        getHeight() / 4);
+}
+
+void MainGUI::paintOverChildren(Graphics & g)
+{
+    g.drawImage(crossfaderPNG,crossfaderThumUpdate,RectanglePlacement());
+
+}
+
+void MainGUI::update()
+{
+    crossfaderThumUpdate = RectanglesUtility::catchHorizontalThumRectangle(
+        crossfader.getX(),
+        crossfader.getY(),
+        crossfader.getWidth(),
+        crossfader.getHeight(),
+        crossfader.thumPosition() + crossfader.getX());
 }

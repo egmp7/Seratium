@@ -143,6 +143,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\CSV.cpp"/>
     <ClCompile Include="..\..\Source\Format.cpp"/>
+    <ClCompile Include="..\..\Source\RectanglesUtility.cpp"/>
     <ClCompile Include="..\..\Source\TrackEntry.cpp"/>
     <ClCompile Include="..\..\Source\DJAudioPlayer.cpp"/>
     <ClCompile Include="..\..\Source\Crossfader.cpp"/>
@@ -151,6 +152,7 @@
     <ClCompile Include="..\..\Source\TimeTracker.cpp"/>
     <ClCompile Include="..\..\Source\WaveformDisplay.cpp"/>
     <ClCompile Include="..\..\Source\DeckGUI.cpp"/>
+    <ClCompile Include="..\..\Source\FadersLookAndFeel.cpp"/>
     <ClCompile Include="..\..\Source\MainGUI.cpp"/>
     <ClCompile Include="..\..\Source\Main.cpp"/>
     <ClCompile Include="..\..\Source\MainComponent.cpp"/>
@@ -2314,6 +2316,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\CSV.h"/>
     <ClInclude Include="..\..\Source\Format.h"/>
+    <ClInclude Include="..\..\Source\RectanglesUtility.h"/>
     <ClInclude Include="..\..\Source\TrackEntry.h"/>
     <ClInclude Include="..\..\Source\DJAudioPlayer.h"/>
     <ClInclude Include="..\..\Source\Crossfader.h"/>
@@ -2322,6 +2325,7 @@
     <ClInclude Include="..\..\Source\TimeTracker.h"/>
     <ClInclude Include="..\..\Source\WaveformDisplay.h"/>
     <ClInclude Include="..\..\Source\DeckGUI.h"/>
+    <ClInclude Include="..\..\Source\FadersLookAndFeel.h"/>
     <ClInclude Include="..\..\Source\MainGUI.h"/>
     <ClInclude Include="..\..\Source\MainComponent.h"/>
     <ClInclude Include="C:\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h"/>

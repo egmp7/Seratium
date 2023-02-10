@@ -589,6 +589,9 @@
     <ClCompile Include="..\..\Source\Format.cpp">
       <Filter>OtoDekcs\Source\Utilities</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\RectanglesUtility.cpp">
+      <Filter>OtoDekcs\Source\Utilities</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\TrackEntry.cpp">
       <Filter>OtoDekcs\Source\Models</Filter>
     </ClCompile>
@@ -611,6 +614,9 @@
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\DeckGUI.cpp">
+      <Filter>OtoDekcs\Source\GUIs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\FadersLookAndFeel.cpp">
       <Filter>OtoDekcs\Source\GUIs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\MainGUI.cpp">
@@ -2931,6 +2937,9 @@
     <ClInclude Include="..\..\Source\Format.h">
       <Filter>OtoDekcs\Source\Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\RectanglesUtility.h">
+      <Filter>OtoDekcs\Source\Utilities</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\TrackEntry.h">
       <Filter>OtoDekcs\Source\Models</Filter>
     </ClInclude>
@@ -2953,6 +2962,9 @@
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\DeckGUI.h">
+      <Filter>OtoDekcs\Source\GUIs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\FadersLookAndFeel.h">
       <Filter>OtoDekcs\Source\GUIs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MainGUI.h">

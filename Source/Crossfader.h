@@ -11,8 +11,8 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include <vector>
 #include "DJAudioPlayer.h"
+#include "FadersLookAndFeel.h"
 
 using namespace juce;
 using namespace std;
@@ -37,11 +37,14 @@ public:
     /**crossfader listener
      @param *slider crossfader moved*/
     void sliderValueChanged (Slider *slider) override;
+    /**returns the position of the thum in pixels from the edge of this component
+     @returns position in pixels*/
+    float thumPosition();
     /**set fader value
      @param gain value for the faders
      @param deckID id to recognize which fader needs to be set*/
     void setFaderGain(float gain, String deckID);
-
+    
 private:
     
     /**algorithm to get main gain value**/
@@ -57,5 +60,7 @@ private:
     float mainGainA;
     float mainGainB;
     
+    FadersLookAndFeel crossfaderLookAndFeel;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Crossfader)
 };
