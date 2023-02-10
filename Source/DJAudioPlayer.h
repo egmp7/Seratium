@@ -60,6 +60,9 @@ public:
     /**get  track  length in seconds
      @returns track length in seconds*/
     double getTrackLength();
+    /**Checks if player is playing
+     @returns true if the player is playing*/
+    bool isPlaying();
 
 private:
     

@@ -80,8 +80,8 @@ private:
     Crossfader* crossfader;
         
     // GUI Components
-    TextButton playButton{"PLAY"};
-    TextButton stopButton{"STOP"};
+    TextButton playPauseButton{"PLAY/STOP"};
+    TextButton cueButton{"CUE"};
     TextButton loadButton{"LOAD"};
     Slider volSlider;
     Slider speedSlider;
@@ -92,6 +92,8 @@ private:
     //Utilities
     FileChooser fChooser{"Select a file..."};
     bool mirror;
+    float cue;
+    int cueCounter;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeckGUI)
 };

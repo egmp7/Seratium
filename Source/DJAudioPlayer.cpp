@@ -126,3 +126,8 @@ double DJAudioPlayer::getTrackLength()
 {
     return transportSource.getLengthInSeconds();
 }
+
+bool DJAudioPlayer::isPlaying()
+{
+    return transportSource.isPlaying();
+}

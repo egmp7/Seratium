@@ -25,12 +25,12 @@ waveformDisplay(formatManagerToUse, cacheToUse, _player),
 mirror(_mirror)
 {
     // play button
-    addAndMakeVisible(playButton);
-    playButton.addListener(this);
+    addAndMakeVisible(playPauseButton);
+    playPauseButton.addListener(this);
 
     // stop button
-    addAndMakeVisible(stopButton);
-    stopButton.addListener(this);
+    addAndMakeVisible(cueButton);
+    cueButton.addListener(this);
 
     // load button
     addAndMakeVisible(loadButton);
@@ -65,6 +65,7 @@ DeckGUI::~DeckGUI()
 {
     stopTimer();
 }
+
 void DeckGUI::paint (juce::Graphics& g)
 {
     g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
@@ -90,16 +91,16 @@ void DeckGUI::resized()
         speedSlider.setBounds           (0,         rowH,       columnW*2,  rowH*5);
         deckAnimation.setBounds         (columnW*2, rowH,       columnW*4,  rowH*5);
         volSlider.setBounds             (columnW*6, rowH,       columnW*2,  rowH*5);
-        playButton.setBounds            (0,         rowH*6,     columnW*2,  rowH);
-        stopButton.setBounds            (columnW*2, rowH*6,     columnW*2,  rowH);
+        playPauseButton.setBounds       (0,         rowH*6,     columnW*2,  rowH);
+        cueButton.setBounds             (columnW*2, rowH*6,     columnW*2,  rowH);
     }
     else
     {
         speedSlider.setBounds           (columnW*6, rowH,       columnW*2,  rowH*5);
         deckAnimation.setBounds         (columnW*2, rowH,       columnW*4,  rowH*5);
         volSlider.setBounds             (0,         rowH,       columnW*2,  rowH*5);
-        playButton.setBounds            (columnW*6, rowH*6,     columnW*2,  rowH);
-        stopButton.setBounds            (columnW*4, rowH*6,     columnW*2,  rowH);
+        playPauseButton.setBounds       (columnW*6, rowH*6,     columnW*2,  rowH);
+        cueButton.setBounds             (columnW*4, rowH*6,     columnW*2,  rowH);
     }
 }
 
@@ -109,14 +110,43 @@ void DeckGUI::resized()
  @param button juce::Button*/
 void DeckGUI::buttonClicked(Button* button)
 {
-    if(button == &playButton)
+    // playPause button Logic
+    if(button == &playPauseButton)
     {
-        player->start();
+        if (player->isPlaying())
+            player->stop();
+        else
+        {
+            player->start();
+        }
+        cueCounter = 0;
     }
-    if (button == &stopButton)
+    // cue button Logic
+    if (button == &cueButton)
     {
-        player->stop();
+        if(player->isPlaying())
+        {
+            player->stop();
+            player->setPosition(cue);
+            cueCounter += 1;
+        }
+        else
+        {
+            cue = player->getPosition();
+            player->setPosition(cue);
+            cueCounter += 1;
+            if(cueCounter ==2)
+            {
+                cue = 0;
+                player->setPosition(cue);
+                cueCounter = 0;
+            }
+            player->stop();
+            updateTimeTracker();
+        }
+        
     }
+    // load button logic
     if (button == &loadButton)  // open the file chooser
     {
         // get flag integer
