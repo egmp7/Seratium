@@ -24,17 +24,59 @@ crossfader(_crossfader),
 waveformDisplay(formatManagerToUse, cacheToUse, _player),
 mirror(_mirror)
 {
-    // play button
+    // playPause button
     addAndMakeVisible(playPauseButton);
     playPauseButton.addListener(this);
+    playPauseButton.setImages(
+          true,
+          true,
+          true,
+          ImageFileFormat::loadFrom(
+                File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/playPause.png")),
+          0.8f,
+          Colours::transparentWhite,
+          Image{},
+          1.0,
+          Colours::transparentWhite,
+          Image{},
+          1.0,
+          Colours::transparentWhite);
 
-    // stop button
+    // cue button
     addAndMakeVisible(cueButton);
     cueButton.addListener(this);
+    cueButton.setImages(
+          true,
+          true,
+          true,
+          ImageFileFormat::loadFrom(
+                File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/cue.png")),
+          0.8f,
+          Colours::transparentWhite,
+          Image{},
+          1.0,
+          Colours::transparentWhite,
+          Image{},
+          1.0,
+          Colours::transparentWhite);
 
     // load button
     addAndMakeVisible(loadButton);
     loadButton.addListener(this);
+    loadButton.setImages(
+          true,
+          true,
+          true,
+          ImageFileFormat::loadFrom(
+                File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/load.png")),
+          0.8f,
+          Colours::transparentWhite,
+          Image{},
+          1.0,
+          Colours::transparentWhite,
+          Image{},
+          1.0,
+          Colours::transparentWhite);
 
     // vol slider
     addAndMakeVisible(volSlider);

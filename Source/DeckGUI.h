@@ -80,9 +80,9 @@ private:
     Crossfader* crossfader;
         
     // GUI Components
-    TextButton playPauseButton{"PLAY/STOP"};
-    TextButton cueButton{"CUE"};
-    TextButton loadButton{"LOAD"};
+    ImageButton playPauseButton{"Play/Pause"};
+    ImageButton cueButton{"CUE"};
+    ImageButton loadButton{"LOAD"};
     Slider volSlider;
     Slider speedSlider;
     WaveformDisplay waveformDisplay;
