@@ -56,27 +56,28 @@ void MainGUI::paint (juce::Graphics& g)
 
 void MainGUI::resized()
 {
-    int decksWidth = getWidth();
-    int decksHeight = getHeight() * 3 / 4;
+    float x = getWidth()/24;
+    float y = getHeight()/16;
+    
 
     deckGUI1.setBounds  (0,
                          0,
-                         decksWidth / 2,
-                         decksHeight);
+                         x * 12,
+                         y * 12);
     
-    deckGUI2.setBounds  (decksWidth / 2,
+    deckGUI2.setBounds  (x * 12,
                          0,
-                         decksWidth / 2,
-                         decksHeight);
+                         x * 12,
+                         y * 12);
     
-    crossfader.setBounds(decksWidth / 4,
-                         decksHeight - decksHeight / 7,
-                         decksWidth / 2,
-                         decksHeight / 7);
+    crossfader.setBounds(x * 8,
+                         y * 10,
+                         x * 8,
+                         y);
     playlist.setBounds(0,
-                       decksHeight,
-                       getWidth(),
-                       getHeight() / 4);
+                       y * 12,
+                       x * 24,
+                       y * 4);
 }
 
 void MainGUI::paintOverChildren(Graphics & g)

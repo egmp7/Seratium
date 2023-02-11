@@ -46,9 +46,9 @@ void Playlist::paint (Graphics& g)
 
 void Playlist::resized()
 {
-
-    tableComponent.setBounds(getLocalBounds());
-    searchComponent.setBounds(getWidth() -300, 0, 300, 26);
+    
+    tableComponent.setBounds(0,24,getWidth(),getHeight() - 24 );
+    searchComponent.setBounds(0, 0, getWidth(), 24);
 }
 
 int Playlist::getNumRows()

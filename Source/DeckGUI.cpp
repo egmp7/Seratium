@@ -121,30 +121,28 @@ void DeckGUI::paint (juce::Graphics& g)
 
 void DeckGUI::resized()
 {
+    double x = getWidth() / 12;
+    double y = getHeight() / 12;
     
-    double rowH = getHeight() / 7;
-    double columnW = getWidth() / 8;
-    
-    // GUI Components               x          y           width       height
-    loadButton.setBounds            (0,         0,          columnW,    rowH);
-    waveformDisplay.setBounds       (columnW,   0,          columnW*6,  rowH);
-    timeTracker.setBounds           (columnW*7, 0,          columnW,    rowH);
+    // GUI Components               x           y           width       height
+    loadButton.setBounds            (x,         0,          x,          y);
+    waveformDisplay.setBounds       (x,         y,          x * 10,     y * 2);
+    timeTracker.setBounds           (x * 9,     0,          x * 2,      y);
+    deckAnimation.setBounds         (x * 3,     y * 3,      x * 6,      y * 6);
     
     if(!mirror)
     {
-        speedSlider.setBounds           (0,         rowH,       columnW*2,  rowH*5);
-        deckAnimation.setBounds         (columnW*2, rowH,       columnW*4,  rowH*5);
-        volSlider.setBounds             (columnW*6, rowH,       columnW*2,  rowH*5);
-        playPauseButton.setBounds       (0,         rowH*6,     columnW*2,  rowH);
-        cueButton.setBounds             (columnW*2, rowH*6,     columnW*2,  rowH);
+        speedSlider.setBounds       (x,         y * 4,       x,         y * 5);
+        volSlider.setBounds         (x * 10,    y * 4,       x,         y * 5);
+        playPauseButton.setBounds   (x,         y * 10,      x * 1.5,   y * 1.5);
+        cueButton.setBounds         (x * 3,     y * 10,      x * 1.5,   y * 1.5);
     }
     else
     {
-        speedSlider.setBounds           (columnW*6, rowH,       columnW*2,  rowH*5);
-        deckAnimation.setBounds         (columnW*2, rowH,       columnW*4,  rowH*5);
-        volSlider.setBounds             (0,         rowH,       columnW*2,  rowH*5);
-        playPauseButton.setBounds       (columnW*6, rowH*6,     columnW*2,  rowH);
-        cueButton.setBounds             (columnW*4, rowH*6,     columnW*2,  rowH);
+        speedSlider.setBounds       (x * 10,    y * 4,       x,         y * 5);
+        volSlider.setBounds         (x,         y * 4,       x,         y * 5);
+        playPauseButton.setBounds   (x * 5.5f,  y * 10,      x * 1.5,   y * 1.5);
+        cueButton.setBounds         (x * 7.5f,  y * 10,      x * 1.5,   y * 1.5);
     }
 }
 
