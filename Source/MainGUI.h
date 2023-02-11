@@ -16,6 +16,7 @@
 #include "Crossfader.h"
 #include "Playlist.h"
 #include "RectanglesUtility.h"
+#include "SliderModel.h"
 
 using namespace juce;
 
@@ -48,7 +49,14 @@ private:
     Playlist playlist;
     
     Image crossfaderPNG;
+    Image volPNG;
+    Image speedPNG;
+    
     Rectangle<float> crossfaderThumUpdate;
+    Rectangle<float> volFaderThumUpdate1;
+    Rectangle<float> volFaderThumUpdate2;
+    Rectangle<float> speedFaderThumUpdate1;
+    Rectangle<float> speedFaderThumUpdate2;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainGUI)
 };

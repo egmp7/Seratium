@@ -32,6 +32,10 @@ playlist(_formatManagerToUse)
     addAndMakeVisible(playlist);
     
     crossfaderPNG = ImageFileFormat::loadFrom(File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/crossfader.png"));
+    volPNG =
+        ImageFileFormat::loadFrom(File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/volFader.png"));
+    speedPNG =
+        ImageFileFormat::loadFrom(File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/speedFader.png"));
     
     setFramesPerSecond (60);
 }
@@ -78,6 +82,13 @@ void MainGUI::resized()
 void MainGUI::paintOverChildren(Graphics & g)
 {
     g.drawImage(crossfaderPNG,crossfaderThumUpdate,RectanglePlacement());
+    g.drawImage(volPNG,volFaderThumUpdate1,RectanglePlacement());
+    g.drawImage(volPNG,volFaderThumUpdate2,RectanglePlacement());
+    g.drawImage(speedPNG,speedFaderThumUpdate1,RectanglePlacement());
+    g.drawImage(speedPNG,speedFaderThumUpdate2,RectanglePlacement());
+
+
+
 
 }
 
@@ -89,4 +100,40 @@ void MainGUI::update()
         crossfader.getWidth(),
         crossfader.getHeight(),
         crossfader.thumPosition() + crossfader.getX());
+    
+    SliderModel volumeSliderModel1 = deckGUI1.getVolSliderModel();
+    
+    volFaderThumUpdate1 = RectanglesUtility::catchVerticalThumRectangle(
+       volumeSliderModel1.x,
+       volumeSliderModel1.y,
+       volumeSliderModel1.width,
+       volumeSliderModel1.height,
+       volumeSliderModel1.value);
+    
+    SliderModel volumeSliderModel2 = deckGUI2.getVolSliderModel();
+    
+    volFaderThumUpdate2 = RectanglesUtility::catchVerticalThumRectangle(
+       volumeSliderModel2.x + getWidth()/2,
+       volumeSliderModel2.y,
+       volumeSliderModel2.width,
+       volumeSliderModel2.height,
+       volumeSliderModel2.value);
+    
+    SliderModel speedSliderModel1 = deckGUI1.getSpeedSliderModel();
+    
+    speedFaderThumUpdate1 = RectanglesUtility::catchVerticalThumRectangle(
+       speedSliderModel1.x,
+       speedSliderModel1.y,
+       speedSliderModel1.width,
+       speedSliderModel1.height,
+       speedSliderModel1.value);
+    
+    SliderModel speedSliderModel2 = deckGUI2.getSpeedSliderModel();
+    
+    speedFaderThumUpdate2 = RectanglesUtility::catchVerticalThumRectangle(
+       speedSliderModel2.x + getWidth()/2,
+       speedSliderModel2.y,
+       speedSliderModel2.width,
+       speedSliderModel2.height,
+       speedSliderModel2.value);
 }

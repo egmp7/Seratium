@@ -82,6 +82,7 @@ mirror(_mirror)
     addAndMakeVisible(volSlider);
     volSlider.addListener(this);
     volSlider.setRange(0.0, 1.0);
+    volSlider.setSliderStyle(Slider::SliderStyle::LinearVertical);
     volSlider.setTextBoxStyle(Slider::NoTextBox, false, 100, 20);
     volSlider.setValue(1);
     volSlider.setLookAndFeel(&fadersLookAndFeel);
@@ -90,6 +91,7 @@ mirror(_mirror)
     addAndMakeVisible(speedSlider);
     speedSlider.addListener(this);
     speedSlider.setRange(0.5, 1.5);
+    speedSlider.setSliderStyle(Slider::SliderStyle::LinearVertical);
     speedSlider.setTextBoxStyle(Slider::NoTextBox, false, 100, 20);
     speedSlider.setValue(1);
     speedSlider.setLookAndFeel(&fadersLookAndFeel);
@@ -114,9 +116,6 @@ void DeckGUI::paint (juce::Graphics& g)
     
     g.setColour (juce::Colours::grey);
     g.drawRect (getLocalBounds(), 1);
-    
-    g.setColour(Colours::red);
-    g.drawRect(volSlider.getBounds());
     
 }
 
@@ -276,3 +275,28 @@ void DeckGUI::updateTimeTracker()
 {
     timeTracker.setCurrentTimeToZero();
 }
+
+SliderModel DeckGUI::getVolSliderModel()
+{
+    SliderModel volSliderModel{
+        volSlider.getX(),
+        volSlider.getY(),
+        volSlider.getWidth(),
+        volSlider.getHeight(),
+        (float)volSlider.getValue()
+    };
+    return volSliderModel;
+}
+
+SliderModel DeckGUI::getSpeedSliderModel()
+{
+    SliderModel speedSliderModel{
+        speedSlider.getX(),
+        speedSlider.getY(),
+        speedSlider.getWidth(),
+        speedSlider.getHeight(),
+        (float)speedSlider.getValue() - 0.5f
+    };
+    return speedSliderModel;
+}
+

@@ -15,6 +15,8 @@
               file="Source/RectanglesUtility.h"/>
       </GROUP>
       <GROUP id="{C2496291-4ECA-E06E-4C3B-76FE0611C39F}" name="Models">
+        <FILE id="Qh3H7C" name="SliderModel.cpp" compile="1" resource="0" file="Source/SliderModel.cpp"/>
+        <FILE id="LkZ9nC" name="SliderModel.h" compile="0" resource="0" file="Source/SliderModel.h"/>
         <FILE id="tGdiz2" name="TrackEntry.cpp" compile="1" resource="0" file="Source/TrackEntry.cpp"/>
         <FILE id="BcQFJq" name="TrackEntry.h" compile="0" resource="0" file="Source/TrackEntry.h"/>
       </GROUP>

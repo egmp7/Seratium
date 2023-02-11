@@ -144,6 +144,7 @@
     <ClCompile Include="..\..\Source\CSV.cpp"/>
     <ClCompile Include="..\..\Source\Format.cpp"/>
     <ClCompile Include="..\..\Source\RectanglesUtility.cpp"/>
+    <ClCompile Include="..\..\Source\SliderModel.cpp"/>
     <ClCompile Include="..\..\Source\TrackEntry.cpp"/>
     <ClCompile Include="..\..\Source\DJAudioPlayer.cpp"/>
     <ClCompile Include="..\..\Source\Crossfader.cpp"/>
@@ -2317,6 +2318,7 @@
     <ClInclude Include="..\..\Source\CSV.h"/>
     <ClInclude Include="..\..\Source\Format.h"/>
     <ClInclude Include="..\..\Source\RectanglesUtility.h"/>
+    <ClInclude Include="..\..\Source\SliderModel.h"/>
     <ClInclude Include="..\..\Source\TrackEntry.h"/>
     <ClInclude Include="..\..\Source\DJAudioPlayer.h"/>
     <ClInclude Include="..\..\Source\Crossfader.h"/>

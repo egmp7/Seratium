@@ -33,3 +33,17 @@ Rectangle<float> RectanglesUtility::catchHorizontalThumRectangle(int x, int y, i
         sliderHeigth);
     
 }
+
+Rectangle<float> RectanglesUtility::catchVerticalThumRectangle(int x, int y, int width, int height, float sliderPos, float scale)
+{
+    int sliderWidth = 30.0f;
+    int sliderHeight = 53.3333f;
+    
+    int midX = x + width/2;
+
+    return Rectangle<float> (
+        midX - sliderWidth/2,
+        y + height - sliderPos * height - sliderHeight/2,
+        sliderWidth,
+        sliderHeight);
+}

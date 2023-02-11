@@ -11,6 +11,8 @@
 #pragma once
 
 #include <JuceHeader.h>
+//Models
+#include "SliderModel.h"
 // controllers
 #include "Crossfader.h"
 #include "DJAudioPlayer.h"
@@ -76,6 +78,10 @@ public:
     void updateTimeTracker();
     /**Callback function to run setter **/
     void timerCallback() override;
+    /**Get the slider meta data to draw custom volume thumbnails**/
+    SliderModel getVolSliderModel();
+    /**Get the slider meta data to draw custom speed thumbnails**/
+    SliderModel getSpeedSliderModel();
 
 private:
     

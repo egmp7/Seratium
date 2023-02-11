@@ -592,6 +592,9 @@
     <ClCompile Include="..\..\Source\RectanglesUtility.cpp">
       <Filter>OtoDekcs\Source\Utilities</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\SliderModel.cpp">
+      <Filter>OtoDekcs\Source\Models</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\TrackEntry.cpp">
       <Filter>OtoDekcs\Source\Models</Filter>
     </ClCompile>
@@ -2939,6 +2942,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\RectanglesUtility.h">
       <Filter>OtoDekcs\Source\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SliderModel.h">
+      <Filter>OtoDekcs\Source\Models</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\TrackEntry.h">
       <Filter>OtoDekcs\Source\Models</Filter>
