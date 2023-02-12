@@ -11,6 +11,7 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include <map>
 //Models
 #include "SliderModel.h"
 // controllers
@@ -20,6 +21,8 @@
 #include "WaveformDisplay.h"
 #include "TimeTracker.h"
 #include "DeckAnimation.h"
+#include "Volume.h"
+#include "Speed.h"
 // lookAndFeel
 #include "FadersLookAndFeel.h"
 
@@ -82,6 +85,10 @@ public:
     SliderModel getVolSliderModel();
     /**Get the slider meta data to draw custom speed thumbnails**/
     SliderModel getSpeedSliderModel();
+    
+    /**Get the slider value of the volume and speed components
+     @returns volume and speed float values**/
+    map<string,float> getSliderValues();
 
 private:
     
@@ -93,8 +100,13 @@ private:
     ImageButton playPauseButton{"Play/Pause"};
     ImageButton cueButton{"CUE"};
     ImageButton loadButton{"LOAD"};
+    
+    Volume volume;
+    Speed speed;
+    
     Slider volSlider;
     Slider speedSlider;
+    
     WaveformDisplay waveformDisplay;
     TimeTracker timeTracker;
     DeckAnimation deckAnimation {player};

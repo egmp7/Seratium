@@ -86,6 +86,8 @@ mirror(_mirror)
     volSlider.setTextBoxStyle(Slider::NoTextBox, false, 100, 20);
     volSlider.setValue(1);
     volSlider.setLookAndFeel(&fadersLookAndFeel);
+    
+    addAndMakeVisible(volume);
 
     // speed slider
     addAndMakeVisible(speedSlider);
@@ -95,6 +97,8 @@ mirror(_mirror)
     speedSlider.setTextBoxStyle(Slider::NoTextBox, false, 100, 20);
     speedSlider.setValue(1);
     speedSlider.setLookAndFeel(&fadersLookAndFeel);
+    
+    addAndMakeVisible(speed);
 
     // other components
     addAndMakeVisible(waveformDisplay);
@@ -133,14 +137,18 @@ void DeckGUI::resized()
     if(!mirror)
     {
         speedSlider.setBounds       (x,         y * 4,       x,         y * 5);
+        speed.setBounds       (x,         y * 4,       x,         y * 5);
         volSlider.setBounds         (x * 10,    y * 4,       x,         y * 5);
+        volume.setBounds         (x * 10,    y * 4,       x,         y * 5);
         playPauseButton.setBounds   (x,         y * 10,      x * 1.5,   y * 1.5);
         cueButton.setBounds         (x * 3,     y * 10,      x * 1.5,   y * 1.5);
     }
     else
     {
         speedSlider.setBounds       (x * 10,    y * 4,       x,         y * 5);
+        speed.setBounds       (x * 10,    y * 4,       x,         y * 5);
         volSlider.setBounds         (x,         y * 4,       x,         y * 5);
+        volume.setBounds         (x,         y * 4,       x,         y * 5);
         playPauseButton.setBounds   (x * 5.5f,  y * 10,      x * 1.5,   y * 1.5);
         cueButton.setBounds         (x * 7.5f,  y * 10,      x * 1.5,   y * 1.5);
     }
@@ -296,5 +304,14 @@ SliderModel DeckGUI::getSpeedSliderModel()
         (float)speedSlider.getValue() - 0.5f
     };
     return speedSliderModel;
+}
+
+map<string,float> DeckGUI::getSliderValues()
+{
+    map<string,float> sliderValues;
+    
+    sliderValues["volume"] = volume.getValue();
+    
+    return sliderValues;
 }
 

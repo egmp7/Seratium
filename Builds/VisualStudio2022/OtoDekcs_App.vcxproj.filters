@@ -592,6 +592,9 @@
     <ClCompile Include="..\..\Source\RectanglesUtility.cpp">
       <Filter>OtoDekcs\Source\Utilities</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Fader.cpp">
+      <Filter>OtoDekcs\Source\Models</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\SliderModel.cpp">
       <Filter>OtoDekcs\Source\Models</Filter>
     </ClCompile>
@@ -610,7 +613,13 @@
     <ClCompile Include="..\..\Source\Playlist.cpp">
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Speed.cpp">
+      <Filter>OtoDekcs\Source\Components</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\TimeTracker.cpp">
+      <Filter>OtoDekcs\Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Volume.cpp">
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\WaveformDisplay.cpp">
@@ -2943,6 +2952,9 @@
     <ClInclude Include="..\..\Source\RectanglesUtility.h">
       <Filter>OtoDekcs\Source\Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Fader.h">
+      <Filter>OtoDekcs\Source\Models</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\SliderModel.h">
       <Filter>OtoDekcs\Source\Models</Filter>
     </ClInclude>
@@ -2961,7 +2973,13 @@
     <ClInclude Include="..\..\Source\Playlist.h">
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Speed.h">
+      <Filter>OtoDekcs\Source\Components</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\TimeTracker.h">
+      <Filter>OtoDekcs\Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Volume.h">
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\WaveformDisplay.h">

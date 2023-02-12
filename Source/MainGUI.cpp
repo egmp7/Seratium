@@ -52,6 +52,9 @@ void MainGUI::paint (juce::Graphics& g)
 
     g.setColour (juce::Colours::grey);
     g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
+    
+    //map <string,float> test = deckGUI1.getSliderValues();
+    
 }
 
 void MainGUI::resized()
@@ -83,8 +86,8 @@ void MainGUI::resized()
 void MainGUI::paintOverChildren(Graphics & g)
 {
     g.drawImage(crossfaderPNG,crossfaderThumUpdate,RectanglePlacement());
-    g.drawImage(volPNG,volFaderThumUpdate1,RectanglePlacement());
-    g.drawImage(volPNG,volFaderThumUpdate2,RectanglePlacement());
+    //g.drawImage(volPNG,volFaderThumUpdate1,RectanglePlacement());
+    //g.drawImage(volPNG,volFaderThumUpdate2,RectanglePlacement());
     g.drawImage(speedPNG,speedFaderThumUpdate1,RectanglePlacement());
     g.drawImage(speedPNG,speedFaderThumUpdate2,RectanglePlacement());
 

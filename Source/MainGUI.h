@@ -17,6 +17,7 @@
 #include "Playlist.h"
 #include "RectanglesUtility.h"
 #include "SliderModel.h"
+#include "Fader.h"
 
 using namespace juce;
 

@@ -75,13 +75,16 @@ OBJECTS_APP := \
   $(JUCE_OBJDIR)/CSV_1cb31167.o \
   $(JUCE_OBJDIR)/Format_3caa4400.o \
   $(JUCE_OBJDIR)/RectanglesUtility_e6f41549.o \
+  $(JUCE_OBJDIR)/Fader_6a7919d7.o \
   $(JUCE_OBJDIR)/SliderModel_2020ed29.o \
   $(JUCE_OBJDIR)/TrackEntry_39b987f0.o \
   $(JUCE_OBJDIR)/DJAudioPlayer_f05158f2.o \
   $(JUCE_OBJDIR)/Crossfader_7ba93bf.o \
   $(JUCE_OBJDIR)/DeckAnimation_a9ebe6bc.o \
   $(JUCE_OBJDIR)/Playlist_ab18835b.o \
+  $(JUCE_OBJDIR)/Speed_3c455028.o \
   $(JUCE_OBJDIR)/TimeTracker_dc5b988c.o \
+  $(JUCE_OBJDIR)/Volume_ccd2e9a3.o \
   $(JUCE_OBJDIR)/WaveformDisplay_c81a80a6.o \
   $(JUCE_OBJDIR)/DeckGUI_914d8333.o \
   $(JUCE_OBJDIR)/FadersLookAndFeel_62446b62.o \
@@ -130,6 +133,11 @@ $(JUCE_OBJDIR)/RectanglesUtility_e6f41549.o: ../../Source/RectanglesUtility.cpp
 	@echo "Compiling RectanglesUtility.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
+$(JUCE_OBJDIR)/Fader_6a7919d7.o: ../../Source/Fader.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling Fader.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
 $(JUCE_OBJDIR)/SliderModel_2020ed29.o: ../../Source/SliderModel.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling SliderModel.cpp"
@@ -160,9 +168,19 @@ $(JUCE_OBJDIR)/Playlist_ab18835b.o: ../../Source/Playlist.cpp
 	@echo "Compiling Playlist.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
+$(JUCE_OBJDIR)/Speed_3c455028.o: ../../Source/Speed.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling Speed.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
 $(JUCE_OBJDIR)/TimeTracker_dc5b988c.o: ../../Source/TimeTracker.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling TimeTracker.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/Volume_ccd2e9a3.o: ../../Source/Volume.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling Volume.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/WaveformDisplay_c81a80a6.o: ../../Source/WaveformDisplay.cpp
