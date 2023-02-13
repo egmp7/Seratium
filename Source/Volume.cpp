@@ -12,8 +12,9 @@
 #include "Volume.h"
 
 //==============================================================================
-Volume::Volume()
-
+Volume::Volume(Crossfader* _crossfader)
+:
+crossfader(_crossfader)
 {
     addAndMakeVisible(volumeSlider);
     volumeSlider.addListener(this);
@@ -42,7 +43,8 @@ void Volume::resized()
 
 void Volume::sliderValueChanged(Slider* slider)
 {
-    // crossfader
-//    cout<<getComponentID()<<endl;
-//    crossfader->setFaderGain(slider->getValue(), getComponentID());
+    if(getComponentID() == "volLeft")
+        crossfader->setVolumeL(slider->getValue());
+    if(getComponentID() == "volRight")
+        crossfader->setVolumeR(slider->getValue());
 }

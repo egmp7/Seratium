@@ -35,13 +35,13 @@ public Slider::Listener
     
 public:
     
-    Volume();
+    Volume(Crossfader*);
     ~Volume() override;
 
     void paint (Graphics&) override;
     void resized() override;
     
-    /**Sets the value of the volumeSlider
+    /**Sets the value of the crossfader volumes
      @param slider pointer from Slider::Listener**/
     void sliderValueChanged(Slider* slider) override;
 

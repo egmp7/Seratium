@@ -22,6 +22,7 @@ DeckGUI::DeckGUI(DJAudioPlayer* _player,
 player(_player),
 crossfader(_crossfader),
 waveformDisplay(formatManagerToUse, cacheToUse, _player),
+volume(_crossfader),
 speed(_player),
 deckAnimation(_player),
 deck(_deck)
@@ -83,6 +84,10 @@ deck(_deck)
 
     // components
     addAndMakeVisible(volume);
+    if(deck == Deck::Left)
+        volume.setComponentID("volLeft");
+    if(deck == Deck::Right)
+        volume.setComponentID("volRight");
     addAndMakeVisible(speed);
     addAndMakeVisible(waveformDisplay);
     addAndMakeVisible(deckAnimation);

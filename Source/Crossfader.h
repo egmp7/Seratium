@@ -41,22 +41,27 @@ public:
     /**set fader value
      @param gain value for the faders
      @param deckID id to recognize which fader needs to be set*/
-    void setFaderGain(float gain, String deckID);
+    /**Sets VolumeL value
+     @param value between 0.0f and 1.0f**/
+    void setVolumeL(float value);
+    /**Sets VolumeR value
+     @param value between 0.0f and 1.0f**/
+    void setVolumeR(float value);
     
 private:
     
     /**algorithm to get main gain value**/
-    void mainGainAlgorithm();
+    void mixVolumesAlgorithm();
     
     Slider crossfaderSlider;
     
     DJAudioPlayer* player1;
     DJAudioPlayer* player2;
     
-    float faderA;
-    float faderB;
-    float mainGainA;
-    float mainGainB;
+    float volumeL;
+    float volumeR;
+    float mainVolumeL;
+    float mainVolumeR;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Crossfader)
 };

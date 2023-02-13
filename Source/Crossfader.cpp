@@ -16,8 +16,8 @@ Crossfader::Crossfader(DJAudioPlayer* _player1, DJAudioPlayer* _player2)
 :
 player1(_player1),
 player2(_player2),
-faderA(1.0f),
-faderB(1.0f)
+volumeL(1.0f),
+volumeR(1.0f)
 {
     addAndMakeVisible(crossfaderSlider);
     crossfaderSlider.addListener(this);
@@ -44,34 +44,34 @@ void Crossfader::resized()
 
 void Crossfader::sliderValueChanged (Slider *slider)
 {
-    // MAYBE DELETE THIS
-    if (slider == &crossfaderSlider)
-        mainGainAlgorithm();
+    mixVolumesAlgorithm();
 }
 
-void Crossfader::setFaderGain(float gain, String deckID)
+void Crossfader::setVolumeL(float value)
 {
-//    if(deckID == "deckGUI1")
-//        faderA = gain;
-//    else
-//        faderB = gain;
-//
-//    mainGainAlgorithm();
+    volumeL = value;
+    mixVolumesAlgorithm();
 }
 
-void Crossfader::mainGainAlgorithm()
+void Crossfader::setVolumeR(float value)
+{
+    volumeR = value;
+    mixVolumesAlgorithm();
+}
+
+void Crossfader::mixVolumesAlgorithm()
 {
     float crossfaderValue = crossfaderSlider.getValue();
     
     if(crossfaderValue < 0.5f)
     {
-        mainGainA = faderA;
-        mainGainB = faderB * (2.0f * crossfaderValue);
+        mainVolumeL = volumeL;
+        mainVolumeR = volumeR * (2.0f * crossfaderValue);
     }
     else{
-        mainGainB = faderB;
-        mainGainA = faderA * (-2.0f * crossfaderValue + 2.0f);
+        mainVolumeL = volumeL * (-2.0f * crossfaderValue + 2.0f);
+        mainVolumeR = volumeR;
     }
-    player1->setGain(mainGainA);
-    player2->setGain(mainGainB);
+    player1->setGain(mainVolumeL);
+    player2->setGain(mainVolumeR);
 }

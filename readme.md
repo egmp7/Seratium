@@ -1,11 +1,24 @@
 -main.cpp
     -MainComponent
-        -PLayer
+        -PLayer 1
+        -PLayer 2
         -MainGUI
-            -DeckGUI
+            -DeckGUI 1
                 -DeckAnimation
                 -TimeTracker
                 -WaveformDisplay
+                -Volume
+                    -FaderLookAndFeel
+                -Speed
+                    -FaderLookAndFeel
+            -DeckGUI 2
+                -DeckAnimation
+                -TimeTracker
+                -WaveformDisplay
+                -Volume
+                    -FaderLookAndFeel
+                -Speed
+                    -FaderLookAndFeel
             -Playlist
             -Crossfader
 
@@ -15,3 +28,4 @@ Static
 
 Model
 TrackEntry
+
