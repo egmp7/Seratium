@@ -21,6 +21,7 @@
 #include "Speed.h"
 #include "CurrentTime.h"
 #include "RemainingTime.h"
+#include "PlayPauseButton.h"
 #include "CueButton.h"
 #include "LoadButton.h"
 #include "TrackName.h"
@@ -32,11 +33,13 @@ using namespace std;
 
 enum class Deck{Left,Right};
 
-class DeckGUI  : public Component,
-                 public Button::Listener,
-                 public FileDragAndDropTarget,
-                 public Timer,
-                 public DragAndDropTarget
+class DeckGUI  :
+
+public Component,
+public FileDragAndDropTarget,
+public DragAndDropTarget,
+public Timer
+
 {
 public:
     DeckGUI(DJAudioPlayer* player,
@@ -51,9 +54,6 @@ public:
     
 //==============================================================================
     
-    /**Implementation for  Button when clicked
-     @param button button clicked */
-    void buttonClicked(Button *) override;
     /**Checks drag and drop  system files when entering the component rectangle
      @param &files an array of files  selected when dragging
      @returns true when item is inside the component*/
@@ -80,7 +80,7 @@ private:
     Crossfader* crossfader;
         
     // GUI Components
-    ImageButton playPauseButton{"Play/Pause"};
+    PlayPauseButton playPauseButton{player, &cueButton};
     LoadButton loadButton {player, &waveformDisplay, &trackName};
     WaveformDisplay waveformDisplay;
     Volume volume;

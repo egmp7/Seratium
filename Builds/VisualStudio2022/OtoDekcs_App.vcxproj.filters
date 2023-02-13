@@ -11,6 +11,9 @@
     <Filter Include="OtoDekcs\Source\Controllers">
       <UniqueIdentifier>{EC74F80A-FD9A-8710-6A02-BAFDCFF2AF0F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OtoDekcs\Source\Components\DeckComponents">
+      <UniqueIdentifier>{ADD543F3-6763-106C-E4C3-E07535990EE0}</UniqueIdentifier>
+    </Filter>
     <Filter Include="OtoDekcs\Source\Components">
       <UniqueIdentifier>{911E779E-8EF6-5A5A-FAF4-5FECA02483FD}</UniqueIdentifier>
     </Filter>
@@ -595,37 +598,40 @@
     <ClCompile Include="..\..\Source\DJAudioPlayer.cpp">
       <Filter>OtoDekcs\Source\Controllers</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\WaveformDisplay.cpp">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DeckAnimation.cpp">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Volume.cpp">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Speed.cpp">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\CurrentTime.cpp">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\RemainingTime.cpp">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\CueButton.cpp">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\LoadButton.cpp">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PlayPauseButton.cpp">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TrackName.cpp">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Playlist.cpp">
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Crossfader.cpp">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\WaveformDisplay.cpp">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\DeckAnimation.cpp">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Volume.cpp">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Speed.cpp">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\CurrentTime.cpp">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\RemainingTime.cpp">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\CueButton.cpp">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\LoadButton.cpp">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\TrackName.cpp">
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\MainGUI.cpp">
@@ -2958,37 +2964,40 @@
     <ClInclude Include="..\..\Source\DJAudioPlayer.h">
       <Filter>OtoDekcs\Source\Controllers</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\WaveformDisplay.h">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\DeckAnimation.h">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Volume.h">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Speed.h">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\CurrentTime.h">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\RemainingTime.h">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\CueButton.h">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\LoadButton.h">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PlayPauseButton.h">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TrackName.h">
+      <Filter>OtoDekcs\Source\Components\DeckComponents</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Playlist.h">
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Crossfader.h">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\WaveformDisplay.h">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\DeckAnimation.h">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Volume.h">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Speed.h">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\CurrentTime.h">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\RemainingTime.h">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\CueButton.h">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\LoadButton.h">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\TrackName.h">
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MainGUI.h">

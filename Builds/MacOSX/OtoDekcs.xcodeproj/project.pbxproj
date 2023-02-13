@@ -23,6 +23,7 @@
 		4A48C164BF66C025993925BC /* include_juce_audio_devices.mm */ = {isa = PBXBuildFile; fileRef = 722646977006D98708C385A1; };
 		4DB483AD886EBA0E1A6C6BC7 /* CSV.cpp */ = {isa = PBXBuildFile; fileRef = E95C6E847E89FF62C9956707; };
 		5017E2389387C43B53518738 /* Crossfader.cpp */ = {isa = PBXBuildFile; fileRef = 9467D54498D9F103ECCB8707; };
+		529B85A8EA3DEB0547169BA1 /* PlayPauseButton.cpp */ = {isa = PBXBuildFile; fileRef = 9448234B084FD95A14A50A6F; };
 		539F65FD06B1124F4CAA06A2 /* RemainingTime.cpp */ = {isa = PBXBuildFile; fileRef = 0FA97B02693ACDBB17AE29C2; };
 		5555AB1C1969383BA00BB248 /* include_juce_audio_formats.mm */ = {isa = PBXBuildFile; fileRef = B336101482C7AC187D1C4FDF; };
 		578F7217474116C430302945 /* CurrentTime.cpp */ = {isa = PBXBuildFile; fileRef = 109C00247343F8415599E150; };
@@ -94,12 +95,14 @@
 		7427D78A3EFDA5458F1C878B /* Playlist.h */ /* Playlist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Playlist.h; path = ../../Source/Playlist.h; sourceTree = SOURCE_ROOT; };
 		745854090AE29B20F4284D3D /* Format.h */ /* Format.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Format.h; path = ../../Source/Format.h; sourceTree = SOURCE_ROOT; };
 		7A004E24C18999D2BC97E9AE /* RecentFilesMenuTemplate.nib */ /* RecentFilesMenuTemplate.nib */ = {isa = PBXFileReference; lastKnownFileType = file.nib; name = RecentFilesMenuTemplate.nib; path = RecentFilesMenuTemplate.nib; sourceTree = SOURCE_ROOT; };
+		81802F1628202B9A0B9B5DCB /* PlayPauseButton.h */ /* PlayPauseButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlayPauseButton.h; path = ../../Source/PlayPauseButton.h; sourceTree = SOURCE_ROOT; };
 		89A11FB9595BA6C50907A84B /* Main.cpp */ /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = ../../Source/Main.cpp; sourceTree = SOURCE_ROOT; };
 		8AAAD226F6791C54C6C1911E /* CueButton.cpp */ /* CueButton.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CueButton.cpp; path = ../../Source/CueButton.cpp; sourceTree = SOURCE_ROOT; };
 		8AD222C1BDAFB4992A6C9643 /* Info-App.plist */ /* Info-App.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-App.plist"; path = "Info-App.plist"; sourceTree = SOURCE_ROOT; };
 		8C66059A7C24506EDBA159BC /* MainGUI.h */ /* MainGUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainGUI.h; path = ../../Source/MainGUI.h; sourceTree = SOURCE_ROOT; };
 		9281C6CB38241EB82B3DBBFE /* MainComponent.h */ /* MainComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainComponent.h; path = ../../Source/MainComponent.h; sourceTree = SOURCE_ROOT; };
 		92A1E0E9ABDA4977D8F4BD37 /* DeckAnimation.cpp */ /* DeckAnimation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DeckAnimation.cpp; path = ../../Source/DeckAnimation.cpp; sourceTree = SOURCE_ROOT; };
+		9448234B084FD95A14A50A6F /* PlayPauseButton.cpp */ /* PlayPauseButton.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PlayPauseButton.cpp; path = ../../Source/PlayPauseButton.cpp; sourceTree = SOURCE_ROOT; };
 		9467D54498D9F103ECCB8707 /* Crossfader.cpp */ /* Crossfader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Crossfader.cpp; path = ../../Source/Crossfader.cpp; sourceTree = SOURCE_ROOT; };
 		A0875F2BC81DEEA9CA287C5D /* juce_graphics */ /* juce_graphics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_graphics; path = "~/JUCE/modules/juce_graphics"; sourceTree = "<absolute>"; };
 		A3A1DA9539D33AF9EEF313F7 /* MainGUI.cpp */ /* MainGUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainGUI.cpp; path = ../../Source/MainGUI.cpp; sourceTree = SOURCE_ROOT; };
@@ -212,6 +215,33 @@
 			name = Source;
 			sourceTree = "<group>";
 		};
+		2DA21838EA827515B8DC8437 /* DeckComponents */ = {
+			isa = PBXGroup;
+			children = (
+				56888AE98A74633ABA063333,
+				BC182665A02065C6D415E1AA,
+				92A1E0E9ABDA4977D8F4BD37,
+				29BF658B35BFDB9F2CF6AE74,
+				E587157546DCE7B1CC4650F4,
+				F26CE30EC5D11DD3982A7A31,
+				39355F82B7E0D25EDCC99C38,
+				6906722E00A2175FD21F9536,
+				109C00247343F8415599E150,
+				707127B8C772BB2A5E8EBE20,
+				0FA97B02693ACDBB17AE29C2,
+				72852D11EEF43D22D4D72969,
+				8AAAD226F6791C54C6C1911E,
+				C9A7AD40A43BFE7B9B72D03C,
+				44CD93F87C8E1BBFF3FD7B87,
+				251BDB783CAC87D13CEDF27B,
+				9448234B084FD95A14A50A6F,
+				81802F1628202B9A0B9B5DCB,
+				E1F9E1973A77D9336F488419,
+				1F9CA01F880102A8FF5F1FF2,
+			);
+			name = DeckComponents;
+			sourceTree = "<group>";
+		};
 		3599ABCF8A0C1D300C0DC555 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,28 +296,11 @@
 		9E2668B885C287A1BF5AB6E4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2DA21838EA827515B8DC8437,
 				ECC127A13102B6BE1708C7C0,
 				7427D78A3EFDA5458F1C878B,
 				9467D54498D9F103ECCB8707,
 				1527EAD1FE9C73BE3D5453FB,
-				56888AE98A74633ABA063333,
-				BC182665A02065C6D415E1AA,
-				92A1E0E9ABDA4977D8F4BD37,
-				29BF658B35BFDB9F2CF6AE74,
-				E587157546DCE7B1CC4650F4,
-				F26CE30EC5D11DD3982A7A31,
-				39355F82B7E0D25EDCC99C38,
-				6906722E00A2175FD21F9536,
-				109C00247343F8415599E150,
-				707127B8C772BB2A5E8EBE20,
-				0FA97B02693ACDBB17AE29C2,
-				72852D11EEF43D22D4D72969,
-				8AAAD226F6791C54C6C1911E,
-				C9A7AD40A43BFE7B9B72D03C,
-				44CD93F87C8E1BBFF3FD7B87,
-				251BDB783CAC87D13CEDF27B,
-				E1F9E1973A77D9336F488419,
-				1F9CA01F880102A8FF5F1FF2,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -428,8 +441,6 @@
 				FA2F448FFB3C1F703A558C1C,
 				143E986E3F302504E25B3C7A,
 				B2BFC7B0AF31F08FC1EDC294,
-				AACDC3791971DB4FC80BBE1E,
-				5017E2389387C43B53518738,
 				8C6D5CDDB3AFE04B1079B049,
 				24AD01FBBEE1E5B7631E1A68,
 				93C3CD6C0DC9189C0BF7279C,
@@ -438,7 +449,10 @@
 				539F65FD06B1124F4CAA06A2,
 				136D0974B95B91335797299F,
 				282796ABA3963F01CB597542,
+				529B85A8EA3DEB0547169BA1,
 				878B127BBA4B89FC721C8018,
+				AACDC3791971DB4FC80BBE1E,
+				5017E2389387C43B53518738,
 				96D48552CBFF39BEC9A331CE,
 				D3BCF8DD53900887C86C9305,
 				7399898ADD70DCD41C207764,

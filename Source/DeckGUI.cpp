@@ -27,30 +27,13 @@ speed(_player),
 deckAnimation(_player),
 deck(_deck)
 {
-    // playPause button
-    addAndMakeVisible(playPauseButton);
-    playPauseButton.addListener(this);
-    playPauseButton.setImages(
-          true,
-          true,
-          true,
-          ImageFileFormat::loadFrom(
-                File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/playPause.png")),
-          0.8f,
-          Colours::transparentWhite,
-          Image{},
-          1.0,
-          Colours::transparentWhite,
-          Image{},
-          1.0,
-          Colours::transparentWhite);
-
-
+    
     // components
-    addAndMakeVisible(trackName);
-    addAndMakeVisible(volume);
+    addAndMakeVisible(playPauseButton);
     addAndMakeVisible(cueButton);
     addAndMakeVisible(loadButton);
+    addAndMakeVisible(trackName);
+    addAndMakeVisible(volume);
     addAndMakeVisible(speed);
     addAndMakeVisible(waveformDisplay);
     addAndMakeVisible(deckAnimation);
@@ -117,22 +100,6 @@ void DeckGUI::resized()
 
 //==============================================================================
 
-/** Process user click
- @param button juce::Button*/
-void DeckGUI::buttonClicked(Button* button)
-{
-    // playPause button Logic
-    if(button == &playPauseButton)
-    {
-        if (player->isPlaying())
-            player->stop();
-        else
-        {
-            player->start();
-        }
-        cueButton.resetCueCounter();
-    }
-}
 
 bool DeckGUI::isInterestedInFileDrag (const juce::StringArray &files)
 {
@@ -152,18 +119,6 @@ void DeckGUI::filesDropped (const juce::StringArray &files, int x, int y)
     }
 }
 
-void DeckGUI::timerCallback()
-{
-    // Set position of the waveform line component
-    waveformDisplay.setPlayheadPosition(player->getPositionRelative());
-    // Set current time of player in seconds
-    currentTime.setTime(player->getPosition());
-    // Set current time in remaining time
-    remainingTime.setTime(player->getPosition());
-    // Set Tracklength in remaining time
-    remainingTime.setTrackLength(player->getTrackLength());
-}
-
 bool DeckGUI::isInterestedInDragSource (const SourceDetails &dragSourceDetails)
 {
     return true;
@@ -179,4 +134,16 @@ void  DeckGUI::itemDropped (const SourceDetails &dragSourceDetails)
     waveformDisplay.loadURL(URL{file});
     trackName.setFileName(file.getFileName());
 
+}
+
+void DeckGUI::timerCallback()
+{
+    // Set position of the waveform line component
+    waveformDisplay.setPlayheadPosition(player->getPositionRelative());
+    // Set current time of player in seconds
+    currentTime.setTime(player->getPosition());
+    // Set current time in remaining time
+    remainingTime.setTime(player->getPosition());
+    // Set Tracklength in remaining time
+    remainingTime.setTrackLength(player->getTrackLength());
 }

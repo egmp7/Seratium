@@ -76,8 +76,6 @@ OBJECTS_APP := \
   $(JUCE_OBJDIR)/Format_3caa4400.o \
   $(JUCE_OBJDIR)/TrackEntry_39b987f0.o \
   $(JUCE_OBJDIR)/DJAudioPlayer_f05158f2.o \
-  $(JUCE_OBJDIR)/Playlist_ab18835b.o \
-  $(JUCE_OBJDIR)/Crossfader_7ba93bf.o \
   $(JUCE_OBJDIR)/WaveformDisplay_c81a80a6.o \
   $(JUCE_OBJDIR)/DeckAnimation_a9ebe6bc.o \
   $(JUCE_OBJDIR)/Volume_ccd2e9a3.o \
@@ -86,7 +84,10 @@ OBJECTS_APP := \
   $(JUCE_OBJDIR)/RemainingTime_756d3fc4.o \
   $(JUCE_OBJDIR)/CueButton_953b4e26.o \
   $(JUCE_OBJDIR)/LoadButton_ac60d41.o \
+  $(JUCE_OBJDIR)/PlayPauseButton_3b68755.o \
   $(JUCE_OBJDIR)/TrackName_57a6acd7.o \
+  $(JUCE_OBJDIR)/Playlist_ab18835b.o \
+  $(JUCE_OBJDIR)/Crossfader_7ba93bf.o \
   $(JUCE_OBJDIR)/MainGUI_ad702823.o \
   $(JUCE_OBJDIR)/DeckGUI_914d8333.o \
   $(JUCE_OBJDIR)/FaderLookAndFeel_1849bb1.o \
@@ -139,16 +140,6 @@ $(JUCE_OBJDIR)/DJAudioPlayer_f05158f2.o: ../../Source/DJAudioPlayer.cpp
 	@echo "Compiling DJAudioPlayer.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/Playlist_ab18835b.o: ../../Source/Playlist.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling Playlist.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/Crossfader_7ba93bf.o: ../../Source/Crossfader.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling Crossfader.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
-
 $(JUCE_OBJDIR)/WaveformDisplay_c81a80a6.o: ../../Source/WaveformDisplay.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling WaveformDisplay.cpp"
@@ -189,9 +180,24 @@ $(JUCE_OBJDIR)/LoadButton_ac60d41.o: ../../Source/LoadButton.cpp
 	@echo "Compiling LoadButton.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
+$(JUCE_OBJDIR)/PlayPauseButton_3b68755.o: ../../Source/PlayPauseButton.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling PlayPauseButton.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
 $(JUCE_OBJDIR)/TrackName_57a6acd7.o: ../../Source/TrackName.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling TrackName.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/Playlist_ab18835b.o: ../../Source/Playlist.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling Playlist.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/Crossfader_7ba93bf.o: ../../Source/Crossfader.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling Crossfader.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/MainGUI_ad702823.o: ../../Source/MainGUI.cpp
