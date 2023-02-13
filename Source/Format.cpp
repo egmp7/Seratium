@@ -14,10 +14,17 @@ string Format::floatToTime(float time)
 {
     int minutes = time / 60;
     int seconds = (int)time % 60;
-        
+    
+    string min,sec,mili;
+
+    min = to_string(minutes);
+    sec = to_string(seconds);
+    mili = to_string(time - minutes * 60 - seconds).substr(2,2);
+    
     if(seconds < 10)
-        return to_string(minutes)+ ":" + "0" +to_string(seconds) ;
+        return min + ":" + "0" + sec +":" + mili ;
     else
-        return to_string(minutes)+ ":" +to_string(seconds);
+        return min + ":" + sec + ":" + mili;
 }
+
 

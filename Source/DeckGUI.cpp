@@ -95,7 +95,7 @@ deck(_deck)
     addAndMakeVisible(currentTime);
 
     // Timer class
-    startTimer(500);
+    startTimer(50);
 }
 
 DeckGUI::~DeckGUI()
@@ -231,6 +231,8 @@ void DeckGUI::timerCallback()
     timeTracker.setCurrentTime(player->getPosition());
     // Set track length of the time tracker component
     timeTracker.setRemainingTime(player->getTrackLength());
+    // Set current time of player in seconds
+    currentTime.setTime(player->getPosition());
 }
 
 bool DeckGUI::isInterestedInDragSource (const SourceDetails &dragSourceDetails)

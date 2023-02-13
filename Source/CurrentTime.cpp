@@ -14,30 +14,36 @@
 //==============================================================================
 CurrentTime::CurrentTime()
 {
-    // In your constructor, you should add any child components, and
-    // initialise any special settings that your component needs.
-
 }
 
 CurrentTime::~CurrentTime()
 {
 }
 
-void CurrentTime::paint (juce::Graphics& g)
+void CurrentTime::paint (Graphics& g)
 {
 
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
+    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
 
-    g.setColour (juce::Colours::grey);
+    g.setColour (Colours::grey);
     g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
 
-    g.setColour (juce::Colours::white);
+    g.setColour (Colours::white);
     g.setFont (14.0f);
-    g.drawText ("currentTime", getLocalBounds(),
-                juce::Justification::centred, true);   // draw some placeholder text
+    g.drawText (Format::floatToTime(time), getLocalBounds(),
+                Justification::centred, true);   // draw some placeholder text
 }
 
 void CurrentTime::resized()
 {
     
 }
+void CurrentTime::setTime(float _time)
+{
+    if(time != _time && !isnan(_time))
+    {
+        time = _time;
+        repaint();
+    }
+}
+
