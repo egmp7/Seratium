@@ -95,6 +95,8 @@ private:
     // Components
     TableListBox tableComponent;
     TextEditor searchComponent{"search"};
+    Label labelSearch{"searchCoponent","Search"};
+    Rectangle<int> title;
     
     vector<TrackEntry> playlist;
     vector<TrackEntry> playlistView;

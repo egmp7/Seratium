@@ -28,6 +28,9 @@ player(_formatManagerToUse)
     addAndMakeVisible(searchComponent);
     searchComponent.addListener(this);
     
+    addAndMakeVisible(labelSearch);
+    labelSearch.attachToComponent(&searchComponent, true);
+    
     // load playlist
     playlist = CSV::read();
     playlistView = playlist;
@@ -42,13 +45,24 @@ void Playlist::paint (Graphics& g)
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
     g.setColour (Colours::grey);
     g.drawRect (getLocalBounds(), 1);
+    
+    g.drawText(" Playlist", title, Justification::centredLeft);
 }
 
 void Playlist::resized()
 {
+    int x = getWidth()/5;
+    int titleAndSearchHeight = 24;
     
-    tableComponent.setBounds(0,24,getWidth(),getHeight() - 24 );
-    searchComponent.setBounds(0, 0, getWidth(), 24);
+    tableComponent.setBounds(0,
+                             titleAndSearchHeight,
+                             getWidth(),
+                             getHeight() - titleAndSearchHeight);
+    searchComponent.setBounds(x * 3,
+                              0,
+                              x * 2,
+                              titleAndSearchHeight);
+    title.setBounds(0, 0, x * 3, titleAndSearchHeight);
 }
 
 int Playlist::getNumRows()
