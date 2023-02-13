@@ -57,7 +57,9 @@ private:
     Slider crossfaderSlider;
     FaderLookAndFeel crossfaderLookAndFeel
         {ImageFileFormat::loadFrom(
-           File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/crossfader.png"))};
+           File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/crossfader.png")),
+        FaderStyle::MidGrow
+        };
         
     DJAudioPlayer* player1;
     DJAudioPlayer* player2;

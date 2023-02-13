@@ -45,7 +45,9 @@ private:
     Slider speedSlider;
     FaderLookAndFeel speedLookAndFeel
         {ImageFileFormat::loadFrom(
-           File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/speedFader.png"))};
+           File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/speedFader.png")),
+        FaderStyle::MidGrow
+        };
     DJAudioPlayer* player;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Speed)

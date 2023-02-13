@@ -15,10 +15,13 @@
 using namespace juce;
 using namespace std;
 
+enum FaderStyle {MidGrow,FullGrow};
+
 class FaderLookAndFeel : public LookAndFeel_V4
 {
 public:
-    FaderLookAndFeel(Image _thumbImage);
+    FaderLookAndFeel(Image _thumbImage,
+                     FaderStyle);
     /**Draw custom slider
     @param x left edge of component
     @param y left edge of component
@@ -60,6 +63,8 @@ private:
     int* height;
     float* sliderPos;
     Slider::SliderStyle sliderStyle;
+    Slider* slider;
+    FaderStyle faderStyle;
     
     
 };

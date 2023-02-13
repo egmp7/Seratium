@@ -50,7 +50,9 @@ private:
     Slider volumeSlider;
     FaderLookAndFeel volumeLookAndFeel
         {ImageFileFormat::loadFrom(
-           File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/volFader.png"))};
+           File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/volFader.png")),
+        FaderStyle::FullGrow
+        };
     
     Crossfader* crossfader;
     

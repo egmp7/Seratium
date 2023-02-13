@@ -10,9 +10,11 @@
 
 #include "FaderLookAndFeel.h"
 
-FaderLookAndFeel::FaderLookAndFeel(Image _thumbImage)
+FaderLookAndFeel::FaderLookAndFeel(Image _thumbImage,
+                                   FaderStyle _faderStyle)
 :
-thumbImage(_thumbImage)
+thumbImage(_thumbImage),
+faderStyle(_faderStyle)
 {
     
 }
@@ -35,6 +37,7 @@ void FaderLookAndFeel::drawLinearSlider(Graphics &g,
     height = &_height;
     sliderPos = &_sliderPos;
     sliderStyle = _sliderStyle;
+    slider = &_slider;
     
     // draw custom slider
     g.setColour(Colours::white);
@@ -43,7 +46,10 @@ void FaderLookAndFeel::drawLinearSlider(Graphics &g,
     g.setColour(Colours::darkgrey);
     g.fillRoundedRectangle(backgroundRectangle(), 2.0f);
     g.setColour(Colours::grey);
-    g.fillRoundedRectangle(trackRectangle(), 2.0f);
+    if(FaderStyle::FullGrow == faderStyle)
+        g.fillRoundedRectangle(trackRectangle(), 2.0f);
+    if(FaderStyle::MidGrow == faderStyle)
+        g.fillRect(trackRectangle());
     g.setColour(Colours::green);
     g.drawImage(thumbImage, thumbRectangle(),RectanglePlacement());
             
@@ -77,7 +83,8 @@ Rectangle<float> FaderLookAndFeel::backgroundRectangle ()
 
 Rectangle<float> FaderLookAndFeel::trackRectangle ()
 {
-    if (sliderStyle == Slider::SliderStyle::LinearVertical)
+    if (sliderStyle == Slider::SliderStyle::LinearVertical
+        && faderStyle == FaderStyle::FullGrow)
     {
         // vertical slider
         int backgroundWidth = 6.0f;
@@ -88,6 +95,51 @@ Rectangle<float> FaderLookAndFeel::trackRectangle ()
                                 backgroundWidth,
                                  *y + *height - *sliderPos);
     }
+    
+    if (sliderStyle == Slider::SliderStyle::LinearVertical
+        && faderStyle == FaderStyle::MidGrow)
+    {
+        int backgroundWidth = 6.0f;
+        int midX = *width/2;
+        int midY = *y + *height/2;
+        float range = ((float)slider->getMaximum() - (float)slider->getMinimum());
+        float fX;
+        
+        cout<< range<< endl;
+        
+        if(slider->getValue() < range/2)
+            fX = (-2 * (slider->getValue()-0.5f) +1);
+        else
+            fX = -(2 * (slider->getValue()-0.5f) -1);
+    
+        return Rectangle<float> (
+                                 midX - backgroundWidth/2,
+                                 midY,
+                                 backgroundWidth,
+                                 fX * *height/2);
+    }
+    
+    if (sliderStyle == Slider::SliderStyle::LinearHorizontal
+        && faderStyle == FaderStyle::MidGrow)
+    {
+        int backgroundHeight = 6.0f;
+        int midX = *x + *width/2;
+        int midY = *height/2;
+        float range = ((float)slider->getMaximum() - (float)slider->getMinimum());
+        float fX;
+        
+        if(slider->getValue() < range/2)
+            fX = -(-2 * slider->getValue() +1);
+        else
+            fX = 2 * slider->getValue() -1;
+    
+        return Rectangle<float> (
+                                 midX,
+                                 midY - backgroundHeight/2,
+                                 fX * *width/2,
+                                 backgroundHeight);
+    }
+    
     
     return Rectangle<float>{};
 }
