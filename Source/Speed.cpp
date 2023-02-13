@@ -12,13 +12,17 @@
 #include "Speed.h"
 
 //==============================================================================
-Speed::Speed()
+Speed::Speed(DJAudioPlayer* _player)
+:
+player(_player)
 {
     addAndMakeVisible(speedSlider);
+    speedSlider.addListener(this);
     speedSlider.setSliderStyle(Slider::SliderStyle::LinearVertical);
     speedSlider.setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
     speedSlider.setValue(1.0f);
     speedSlider.setRange(0.5f, 1.5f);
+    speedSlider.setLookAndFeel(&speedLookAndFeel);
 }
 
 Speed::~Speed()
@@ -39,5 +43,5 @@ void Speed::resized()
 
 void Speed::sliderValueChanged(Slider* slider)
 {
-    //
+    player->setSpeed(slider->getValue());
 }

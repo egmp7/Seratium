@@ -16,8 +16,8 @@ MainGUI::MainGUI(DJAudioPlayer* _player1,
                  AudioFormatManager & _formatManagerToUse,
                  AudioThumbnailCache & _thumbCacheToUse)
 :
-deckGUI1(_player1, &crossfader, _formatManagerToUse, _thumbCacheToUse, false),
-deckGUI2(_player2, &crossfader, _formatManagerToUse, _thumbCacheToUse, true),
+deckGUI1(_player1, &crossfader, _formatManagerToUse, _thumbCacheToUse, Deck::Left),
+deckGUI2(_player2, &crossfader, _formatManagerToUse, _thumbCacheToUse, Deck::Right),
 crossfader(_player1, _player2),
 playlist(_formatManagerToUse)
 {

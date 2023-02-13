@@ -26,6 +26,8 @@ using namespace std;
 
 //==============================================================================
 
+enum class Deck{Left,Right};
+
 class DeckGUI  : public Component,
                  public Button::Listener,
                  public FileDragAndDropTarget,
@@ -37,7 +39,7 @@ public:
             Crossfader* _crossfader,
             AudioFormatManager & formatManagerToUse,
             AudioThumbnailCache & cacheToUse,
-            bool _mirror);
+            Deck);
     ~DeckGUI() override;
 
     void paint (juce::Graphics&) override;
@@ -82,15 +84,15 @@ private:
     ImageButton playPauseButton{"Play/Pause"};
     ImageButton cueButton{"CUE"};
     ImageButton loadButton{"LOAD"};
-    Volume volume;
-    Speed speed;
     WaveformDisplay waveformDisplay;
     TimeTracker timeTracker;
-    DeckAnimation deckAnimation {player};
+    Volume volume;
+    Speed speed;
+    DeckAnimation deckAnimation;
     
     //Utilities
     FileChooser fChooser{"Select a file..."};
-    bool mirror;
+    Deck deck;
     float cue;
     int cueCounter;
 

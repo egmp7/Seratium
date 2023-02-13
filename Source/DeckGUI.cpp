@@ -17,12 +17,14 @@ DeckGUI::DeckGUI(DJAudioPlayer* _player,
                  Crossfader* _crossfader,
                  AudioFormatManager & formatManagerToUse,
                  AudioThumbnailCache & cacheToUse,
-                 bool _mirror)
+                 Deck _deck)
 :
 player(_player),
 crossfader(_crossfader),
 waveformDisplay(formatManagerToUse, cacheToUse, _player),
-mirror(_mirror)
+speed(_player),
+deckAnimation(_player),
+deck(_deck)
 {
     // playPause button
     addAndMakeVisible(playPauseButton);
@@ -115,14 +117,14 @@ void DeckGUI::resized()
     timeTracker.setBounds           (x * 9,     0,          x * 2,      y);
     deckAnimation.setBounds         (x * 3,     y * 3,      x * 6,      y * 6);
     
-    if(!mirror)
+    if(deck == Deck::Left)
     {
         speed.setBounds       (x,         y * 4,       x,         y * 5);
         volume.setBounds         (x * 10,    y * 4,       x,         y * 5);
         playPauseButton.setBounds   (x,         y * 10,      x * 1.5,   y * 1.5);
         cueButton.setBounds         (x * 3,     y * 10,      x * 1.5,   y * 1.5);
     }
-    else
+    if(deck == Deck::Right)
     {
         speed.setBounds       (x * 10,    y * 4,       x,         y * 5);
         volume.setBounds         (x,         y * 4,       x,         y * 5);
