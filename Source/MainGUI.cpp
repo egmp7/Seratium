@@ -22,11 +22,7 @@ crossfader(_player1, _player2),
 playlist(_formatManagerToUse)
 {
     addAndMakeVisible(deckGUI1);
-    deckGUI1.setComponentID("deckGUI1");
-
     addAndMakeVisible(deckGUI2);
-    deckGUI2.setComponentID("deckGUI2");
-    
     addAndMakeVisible(crossfader);
     addAndMakeVisible(playlist);
 }
@@ -41,32 +37,40 @@ void MainGUI::paint (juce::Graphics& g)
 
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
     g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);
-        
+    g.drawRect (getLocalBounds(), 1);        
+}
+
+void MainGUI::paintOverChildren(Graphics & g)
+{
+    g.setColour (juce::Colours::red);
+    g.fillRect(logo);
 }
 
 void MainGUI::resized()
 {
-    float x = getWidth()/24;
-    float y = getHeight()/16;
+    double x = getWidth() / 24;
+    double px = x/4;
+    double y = getHeight() / 16;
+    double py = y/4;
     
 
     deckGUI1.setBounds  (0,
                          0,
                          x * 12,
-                         y * 12);
+                         y * 11);
     
     deckGUI2.setBounds  (x * 12,
                          0,
                          x * 12,
-                         y * 12);
+                         y * 11);
     
     crossfader.setBounds(x * 8,
-                         y * 10,
+                         9*y + 2*py,
                          x * 8,
                          y);
     playlist.setBounds(0,
-                       y * 12,
+                       y * 11,
                        x * 24,
-                       y * 4);
+                       y * 5);
+    logo.setBounds(11*x, 5*y+py, 2*x, 2*y);
 }

@@ -70,31 +70,33 @@ void DeckGUI::paint (juce::Graphics& g)
 void DeckGUI::resized()
 {
     double x = getWidth() / 12;
-    double y = getHeight() / 12;
+    double px = x/4;
+    double y = getHeight() / 11;
+    double py = y/4;
     
     // GUI Components               x           y           width       height
-    loadButton.setBounds            (x,         0,          x,          y);
-    trackName.setBounds             (x * 2,     0,          x * 7,      y);
-    remainingTime.setBounds         (x * 9,     0,          x * 2,      y);
-    waveformDisplay.setBounds       (x,         y,          x * 10,     y * 2);
-    deckAnimation.setBounds         (x * 3,     y * 3,      x * 6,      y * 6);
+    loadButton.setBounds            (x,         py,         x,          y);
+    trackName.setBounds             (x * 2,     py,         x * 7,      y);
+    remainingTime.setBounds         (x * 9,     py,         x * 2,      y);
+    waveformDisplay.setBounds       (x,         y + py,     x * 10,     y * 2);
+    deckAnimation.setBounds         (3*x + 2*px,3*y + 3*py, x * 5,      y * 5);
     
     if(deck == Deck::Left)
     {
-        speed.setBounds             (x,         y * 4,       x,         y * 5);
-        volume.setBounds            (x * 10,    y * 4,       x,         y * 5);
-        playPauseButton.setBounds   (x,         y * 10,      x * 1.5,   y * 1.5);
-        cueButton.setBounds         (x * 3,     y * 10,      x * 1.5,   y * 1.5);
-        currentTime.setBounds       (x * 5,     y * 10,      x * 1.5,   y * 1.5);
+        speed.setBounds             (x + 2*px,  3*y + 3*py,  x,         y * 5);
+        volume.setBounds            (9*x + 2*px,3*y + 3*py,  x,         y * 5);
+        playPauseButton.setBounds   (x,         9*y +py,     x * 1.5,   y * 1.5);
+        cueButton.setBounds         (x * 3,     9*y +py,     x * 1.5,   y * 1.5);
+        currentTime.setBounds       (x * 5,     9*y +py,     x * 1.5,   y * 1.5);
 
     }
     if(deck == Deck::Right)
     {
-        speed.setBounds             (x * 10,    y * 4,       x,         y * 5);
-        volume.setBounds            (x,         y * 4,       x,         y * 5);
-        currentTime.setBounds       (x * 5.5f,  y * 10,      x * 1.5,   y * 1.5);
-        cueButton.setBounds         (x * 7.5f,  y * 10,      x * 1.5,   y * 1.5);
-        playPauseButton.setBounds   (x * 9.5f,  y * 10,      x * 1.5,   y * 1.5);
+        speed.setBounds             (9*x + 2*px,3*y + 3*py,  x,         y * 5);
+        volume.setBounds            (x + 2*px,  3*y + 3*py,  x,         y * 5);
+        currentTime.setBounds       (x * 5.5f,  9*y +py,     x * 1.5,   y * 1.5);
+        cueButton.setBounds         (x * 7.5f,  9*y +py,     x * 1.5,   y * 1.5);
+        playPauseButton.setBounds   (x * 9.5f,  9*y +py,     x * 1.5,   y * 1.5);
     }
 }
 

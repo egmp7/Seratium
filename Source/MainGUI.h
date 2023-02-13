@@ -33,6 +33,7 @@ public:
 
     void paint (Graphics&) override;
     void resized() override;
+    void paintOverChildren(Graphics & g) override;
 
 private:
     
@@ -41,6 +42,7 @@ private:
     DeckGUI deckGUI2;
     Crossfader crossfader;
     Playlist playlist;
+    Rectangle<float> logo;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainGUI)
 };
