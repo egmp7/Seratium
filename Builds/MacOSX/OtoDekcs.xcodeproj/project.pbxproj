@@ -12,6 +12,7 @@
 		084AF587D80993714178B6DA /* WebKit.framework */ = {isa = PBXBuildFile; fileRef = B4E3BFA08EB5EB0CA4F61F1A; };
 		09F9A13F832B14052E964CCB /* Foundation.framework */ = {isa = PBXBuildFile; fileRef = AD310EF656CFEC523E72B7D1; };
 		0AD29D2B4707E971657C9A58 /* include_juce_audio_processors.mm */ = {isa = PBXBuildFile; fileRef = B6B5EFB133E6807C01C9924E; };
+		136D0974B95B91335797299F /* CueButton.cpp */ = {isa = PBXBuildFile; fileRef = 8AAAD226F6791C54C6C1911E; };
 		143E986E3F302504E25B3C7A /* TrackEntry.cpp */ = {isa = PBXBuildFile; fileRef = 33D6B425FA586B61573A9FC2; };
 		14C87249C3877D2E43F20F65 /* Cocoa.framework */ = {isa = PBXBuildFile; fileRef = DC8D05AB1D6E094224F0B46B; };
 		24AD01FBBEE1E5B7631E1A68 /* DeckAnimation.cpp */ = {isa = PBXBuildFile; fileRef = 92A1E0E9ABDA4977D8F4BD37; };
@@ -89,6 +90,7 @@
 		745854090AE29B20F4284D3D /* Format.h */ /* Format.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Format.h; path = ../../Source/Format.h; sourceTree = SOURCE_ROOT; };
 		7A004E24C18999D2BC97E9AE /* RecentFilesMenuTemplate.nib */ /* RecentFilesMenuTemplate.nib */ = {isa = PBXFileReference; lastKnownFileType = file.nib; name = RecentFilesMenuTemplate.nib; path = RecentFilesMenuTemplate.nib; sourceTree = SOURCE_ROOT; };
 		89A11FB9595BA6C50907A84B /* Main.cpp */ /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = ../../Source/Main.cpp; sourceTree = SOURCE_ROOT; };
+		8AAAD226F6791C54C6C1911E /* CueButton.cpp */ /* CueButton.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CueButton.cpp; path = ../../Source/CueButton.cpp; sourceTree = SOURCE_ROOT; };
 		8AD222C1BDAFB4992A6C9643 /* Info-App.plist */ /* Info-App.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-App.plist"; path = "Info-App.plist"; sourceTree = SOURCE_ROOT; };
 		8C66059A7C24506EDBA159BC /* MainGUI.h */ /* MainGUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainGUI.h; path = ../../Source/MainGUI.h; sourceTree = SOURCE_ROOT; };
 		9281C6CB38241EB82B3DBBFE /* MainComponent.h */ /* MainComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainComponent.h; path = ../../Source/MainComponent.h; sourceTree = SOURCE_ROOT; };
@@ -106,6 +108,7 @@
 		C153A9CD8D988F27ACC83DBB /* include_juce_graphics.mm */ /* include_juce_graphics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_graphics.mm; path = ../../JuceLibraryCode/include_juce_graphics.mm; sourceTree = SOURCE_ROOT; };
 		C42D5D7EC9E3CF8323590F63 /* include_juce_audio_processors_lv2_libs.cpp */ /* include_juce_audio_processors_lv2_libs.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_audio_processors_lv2_libs.cpp; path = ../../JuceLibraryCode/include_juce_audio_processors_lv2_libs.cpp; sourceTree = SOURCE_ROOT; };
 		C5995BB3FBA03F962EA5F19A /* include_juce_audio_processors_ara.cpp */ /* include_juce_audio_processors_ara.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_audio_processors_ara.cpp; path = ../../JuceLibraryCode/include_juce_audio_processors_ara.cpp; sourceTree = SOURCE_ROOT; };
+		C9A7AD40A43BFE7B9B72D03C /* CueButton.h */ /* CueButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CueButton.h; path = ../../Source/CueButton.h; sourceTree = SOURCE_ROOT; };
 		CF6DB82EB2D045FEA00FC85E /* App */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OtoDekcs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D14C67873425553D3036138B /* FaderLookAndFeel.h */ /* FaderLookAndFeel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FaderLookAndFeel.h; path = ../../Source/FaderLookAndFeel.h; sourceTree = SOURCE_ROOT; };
 		D16361D6DE52C802FDF263CE /* include_juce_gui_basics.mm */ /* include_juce_gui_basics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_basics.mm; path = ../../JuceLibraryCode/include_juce_gui_basics.mm; sourceTree = SOURCE_ROOT; };
@@ -273,6 +276,8 @@
 				707127B8C772BB2A5E8EBE20,
 				0FA97B02693ACDBB17AE29C2,
 				72852D11EEF43D22D4D72969,
+				8AAAD226F6791C54C6C1911E,
+				C9A7AD40A43BFE7B9B72D03C,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -421,6 +426,7 @@
 				9D22E31603352A81952AC8B1,
 				578F7217474116C430302945,
 				539F65FD06B1124F4CAA06A2,
+				136D0974B95B91335797299F,
 				96D48552CBFF39BEC9A331CE,
 				D3BCF8DD53900887C86C9305,
 				7399898ADD70DCD41C207764,

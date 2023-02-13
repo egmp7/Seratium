@@ -21,6 +21,7 @@
 #include "Speed.h"
 #include "CurrentTime.h"
 #include "RemainingTime.h"
+#include "CueButton.h"
 
 using namespace juce;
 using namespace std;
@@ -81,7 +82,6 @@ private:
         
     // GUI Components
     ImageButton playPauseButton{"Play/Pause"};
-    ImageButton cueButton{"CUE"};
     ImageButton loadButton{"LOAD"};
     WaveformDisplay waveformDisplay;
     Volume volume;
@@ -89,14 +89,13 @@ private:
     DeckAnimation deckAnimation;
     CurrentTime currentTime;
     RemainingTime remainingTime;
+    CueButton cueButton{player};
     
     //Utilities
     FileChooser fChooser{"Select a file..."};
     Rectangle<int> fileNameRectangle;
     String fileName;
     Deck deck;
-    float cue;
-    int cueCounter;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeckGUI)
 };

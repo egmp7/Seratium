@@ -619,6 +619,9 @@
     <ClCompile Include="..\..\Source\RemainingTime.cpp">
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\CueButton.cpp">
+      <Filter>OtoDekcs\Source\Components</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\MainGUI.cpp">
       <Filter>OtoDekcs\Source\GUIs</Filter>
     </ClCompile>
@@ -2971,6 +2974,9 @@
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\RemainingTime.h">
+      <Filter>OtoDekcs\Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\CueButton.h">
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MainGUI.h">

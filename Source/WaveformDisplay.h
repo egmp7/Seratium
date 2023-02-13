@@ -12,6 +12,7 @@
 
 #include <JuceHeader.h>
 #include "DJAudioPlayer.h"
+#include "CueButton.h"
 
 using namespace juce;
 using namespace std;
@@ -23,7 +24,8 @@ class WaveformDisplay  : public Component,
 public:
     WaveformDisplay(AudioFormatManager & formatManagerToUse,
                     AudioThumbnailCache & cacheToUse,
-                    DJAudioPlayer*);
+                    DJAudioPlayer*,
+                    CueButton*);
     ~WaveformDisplay() override;
     
 //==============================================================================
@@ -52,6 +54,7 @@ private:
     double playheadPosition;
     AudioThumbnail audioThumb;
     DJAudioPlayer* player;
+    CueButton* cueButton;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WaveformDisplay)
 };

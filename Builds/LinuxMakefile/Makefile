@@ -84,6 +84,7 @@ OBJECTS_APP := \
   $(JUCE_OBJDIR)/Speed_3c455028.o \
   $(JUCE_OBJDIR)/CurrentTime_27d35747.o \
   $(JUCE_OBJDIR)/RemainingTime_756d3fc4.o \
+  $(JUCE_OBJDIR)/CueButton_953b4e26.o \
   $(JUCE_OBJDIR)/MainGUI_ad702823.o \
   $(JUCE_OBJDIR)/DeckGUI_914d8333.o \
   $(JUCE_OBJDIR)/FaderLookAndFeel_1849bb1.o \
@@ -174,6 +175,11 @@ $(JUCE_OBJDIR)/CurrentTime_27d35747.o: ../../Source/CurrentTime.cpp
 $(JUCE_OBJDIR)/RemainingTime_756d3fc4.o: ../../Source/RemainingTime.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling RemainingTime.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/CueButton_953b4e26.o: ../../Source/CueButton.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling CueButton.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/MainGUI_ad702823.o: ../../Source/MainGUI.cpp

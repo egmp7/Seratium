@@ -21,7 +21,7 @@ DeckGUI::DeckGUI(DJAudioPlayer* _player,
 :
 player(_player),
 crossfader(_crossfader),
-waveformDisplay(formatManagerToUse, cacheToUse, _player),
+waveformDisplay(formatManagerToUse, cacheToUse, _player, &cueButton),
 volume(_crossfader),
 speed(_player),
 deckAnimation(_player),
@@ -36,24 +36,6 @@ deck(_deck)
           true,
           ImageFileFormat::loadFrom(
                 File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/playPause.png")),
-          0.8f,
-          Colours::transparentWhite,
-          Image{},
-          1.0,
-          Colours::transparentWhite,
-          Image{},
-          1.0,
-          Colours::transparentWhite);
-
-    // cue button
-    addAndMakeVisible(cueButton);
-    cueButton.addListener(this);
-    cueButton.setImages(
-          true,
-          true,
-          true,
-          ImageFileFormat::loadFrom(
-                File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/cue.png")),
           0.8f,
           Colours::transparentWhite,
           Image{},
@@ -81,18 +63,20 @@ deck(_deck)
           1.0,
           Colours::transparentWhite);
 
-
     // components
     addAndMakeVisible(volume);
-    if(deck == Deck::Left)
-        volume.setComponentID("volLeft");
-    if(deck == Deck::Right)
-        volume.setComponentID("volRight");
+    addAndMakeVisible(cueButton);
     addAndMakeVisible(speed);
     addAndMakeVisible(waveformDisplay);
     addAndMakeVisible(deckAnimation);
     addAndMakeVisible(currentTime);
     addAndMakeVisible(remainingTime);
+    
+    // ids
+    if(deck == Deck::Left)
+        volume.setComponentID("volLeft");
+    if(deck == Deck::Right)
+        volume.setComponentID("volRight");
 
     // Timer class
     startTimer(50);
@@ -161,31 +145,7 @@ void DeckGUI::buttonClicked(Button* button)
         {
             player->start();
         }
-        cueCounter = 0;
-    }
-    // cue button Logic
-    if (button == &cueButton)
-    {
-        if(player->isPlaying())
-        {
-            player->stop();
-            player->setPosition(cue);
-            cueCounter += 1;
-        }
-        else
-        {
-            cue = player->getPosition();
-            player->setPosition(cue);
-            cueCounter += 1;
-            if(cueCounter ==2)
-            {
-                cue = 0;
-                player->setPosition(cue);
-                cueCounter = 0;
-            }
-            player->stop();
-        }
-        
+        cueButton.resetCueCounter();
     }
     // load button logic
     if (button == &loadButton)  // open the file chooser

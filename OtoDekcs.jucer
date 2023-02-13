@@ -40,6 +40,8 @@
         <FILE id="bUnxOU" name="RemainingTime.cpp" compile="1" resource="0"
               file="Source/RemainingTime.cpp"/>
         <FILE id="KKB7Mw" name="RemainingTime.h" compile="0" resource="0" file="Source/RemainingTime.h"/>
+        <FILE id="X2V74c" name="CueButton.cpp" compile="1" resource="0" file="Source/CueButton.cpp"/>
+        <FILE id="sy42BX" name="CueButton.h" compile="0" resource="0" file="Source/CueButton.h"/>
       </GROUP>
       <GROUP id="{ED349D5F-41F9-FDEF-3670-860312757F3A}" name="GUIs">
         <FILE id="zl7TU0" name="MainGUI.cpp" compile="1" resource="0" file="Source/MainGUI.cpp"/>

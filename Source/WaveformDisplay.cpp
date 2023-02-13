@@ -16,12 +16,14 @@
 //==============================================================================
 WaveformDisplay::WaveformDisplay(AudioFormatManager & formatManagerToUse,
                                  AudioThumbnailCache & cacheToUse,
-                                 DJAudioPlayer* _player)
+                                 DJAudioPlayer* _player,
+                                 CueButton* _cueButton)
  :
 fileLoaded(false),
 playheadPosition(0),
 audioThumb(1000,formatManagerToUse, cacheToUse),
-player(_player)
+player(_player),
+cueButton(_cueButton)
 {
     audioThumb.addChangeListener(this);
 }
@@ -106,5 +108,7 @@ void WaveformDisplay::mouseDown(const MouseEvent &event)
     float relativePosition = (float)p.getX()/(float)getWidth();
     // set relative position in player
     player->setPositionRelative(relativePosition);
+    //reset cueCounter
+    cueButton->resetCueCounter();
 }
 
