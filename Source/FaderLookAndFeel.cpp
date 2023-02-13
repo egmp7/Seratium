@@ -104,9 +104,7 @@ Rectangle<float> FaderLookAndFeel::trackRectangle ()
         int midY = *y + *height/2;
         float range = ((float)slider->getMaximum() - (float)slider->getMinimum());
         float fX;
-        
-        cout<< range<< endl;
-        
+                
         if(slider->getValue() < range/2)
             fX = (-2 * (slider->getValue()-0.5f) +1);
         else

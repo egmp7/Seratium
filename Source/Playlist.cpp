@@ -202,3 +202,31 @@ void Playlist::textEditorTextChanged (TextEditor & textEditor)
     
     tableComponent.updateContent();
 }
+void Playlist::deleteKeyPressed (int lastRowSelected)
+{
+    vector<TrackEntry> temp;
+    vector<TrackEntry> tempView;
+    
+    for(TrackEntry track : playlist)
+    {
+        if(track.path != playlistView[lastRowSelected].path)
+            temp.push_back(track);
+    }
+    for(TrackEntry track : playlistView)
+    {
+        if(track.path != playlistView[lastRowSelected].path)
+            tempView.push_back(track);
+    }
+    
+    // update vectors
+    playlist.clear();
+    playlistView.clear();
+    playlist = temp;
+    playlistView = tempView;
+    
+    // save playlist
+    CSV::playlist = &playlist;
+    CSV::save();
+    
+    tableComponent.updateContent();
+}

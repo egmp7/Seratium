@@ -79,6 +79,9 @@ public:
     /**Search in the playlist
      @param textEditor object methods from text editor*/
     void textEditorTextChanged (TextEditor &) override;
+    /**deletes a track in the playlist when pressing the delete key 
+     @param lastRowSelected**/
+    void deleteKeyPressed (int lastRowSelected) override;
     
 private:
     
