@@ -149,7 +149,6 @@
     <ClCompile Include="..\..\Source\Crossfader.cpp"/>
     <ClCompile Include="..\..\Source\WaveformDisplay.cpp"/>
     <ClCompile Include="..\..\Source\DeckAnimation.cpp"/>
-    <ClCompile Include="..\..\Source\TimeTracker.cpp"/>
     <ClCompile Include="..\..\Source\Volume.cpp"/>
     <ClCompile Include="..\..\Source\Speed.cpp"/>
     <ClCompile Include="..\..\Source\CurrentTime.cpp"/>
@@ -2325,7 +2324,6 @@
     <ClInclude Include="..\..\Source\Crossfader.h"/>
     <ClInclude Include="..\..\Source\WaveformDisplay.h"/>
     <ClInclude Include="..\..\Source\DeckAnimation.h"/>
-    <ClInclude Include="..\..\Source\TimeTracker.h"/>
     <ClInclude Include="..\..\Source\Volume.h"/>
     <ClInclude Include="..\..\Source\Speed.h"/>
     <ClInclude Include="..\..\Source\CurrentTime.h"/>

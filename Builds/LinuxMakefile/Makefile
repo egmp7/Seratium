@@ -80,7 +80,6 @@ OBJECTS_APP := \
   $(JUCE_OBJDIR)/Crossfader_7ba93bf.o \
   $(JUCE_OBJDIR)/WaveformDisplay_c81a80a6.o \
   $(JUCE_OBJDIR)/DeckAnimation_a9ebe6bc.o \
-  $(JUCE_OBJDIR)/TimeTracker_dc5b988c.o \
   $(JUCE_OBJDIR)/Volume_ccd2e9a3.o \
   $(JUCE_OBJDIR)/Speed_3c455028.o \
   $(JUCE_OBJDIR)/CurrentTime_27d35747.o \
@@ -155,11 +154,6 @@ $(JUCE_OBJDIR)/WaveformDisplay_c81a80a6.o: ../../Source/WaveformDisplay.cpp
 $(JUCE_OBJDIR)/DeckAnimation_a9ebe6bc.o: ../../Source/DeckAnimation.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling DeckAnimation.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/TimeTracker_dc5b988c.o: ../../Source/TimeTracker.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling TimeTracker.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/Volume_ccd2e9a3.o: ../../Source/Volume.cpp

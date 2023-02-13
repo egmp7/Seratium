@@ -16,11 +16,11 @@
 #include "DJAudioPlayer.h"
 // child components
 #include "WaveformDisplay.h"
-#include "TimeTracker.h"
 #include "DeckAnimation.h"
 #include "Volume.h"
 #include "Speed.h"
 #include "CurrentTime.h"
+#include "RemainingTime.h"
 
 using namespace juce;
 using namespace std;
@@ -71,8 +71,6 @@ public:
      @param file loading file*/
     void loadWaveform(URL file);
     /**Updates time tracke with a setterr**/
-    void updateTimeTracker();
-    /**Callback function to run setter **/
     void timerCallback() override;
 
 private:
@@ -86,11 +84,11 @@ private:
     ImageButton cueButton{"CUE"};
     ImageButton loadButton{"LOAD"};
     WaveformDisplay waveformDisplay;
-    TimeTracker timeTracker;
     Volume volume;
     Speed speed;
     DeckAnimation deckAnimation;
     CurrentTime currentTime;
+    RemainingTime remainingTime;
     
     //Utilities
     FileChooser fChooser{"Select a file..."};

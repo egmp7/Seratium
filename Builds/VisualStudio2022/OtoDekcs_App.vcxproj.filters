@@ -607,9 +607,6 @@
     <ClCompile Include="..\..\Source\DeckAnimation.cpp">
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TimeTracker.cpp">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Volume.cpp">
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClCompile>
@@ -2962,9 +2959,6 @@
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\DeckAnimation.h">
-      <Filter>OtoDekcs\Source\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\TimeTracker.h">
       <Filter>OtoDekcs\Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Volume.h">

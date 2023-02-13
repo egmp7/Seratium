@@ -31,8 +31,6 @@
         <FILE id="o7Fdhm" name="DeckAnimation.cpp" compile="1" resource="0"
               file="Source/DeckAnimation.cpp"/>
         <FILE id="E2LzWQ" name="DeckAnimation.h" compile="0" resource="0" file="Source/DeckAnimation.h"/>
-        <FILE id="h7QKos" name="TimeTracker.cpp" compile="1" resource="0" file="Source/TimeTracker.cpp"/>
-        <FILE id="IN7Z0R" name="TimeTracker.h" compile="0" resource="0" file="Source/TimeTracker.h"/>
         <FILE id="N89XIO" name="Volume.cpp" compile="1" resource="0" file="Source/Volume.cpp"/>
         <FILE id="PfM5wB" name="Volume.h" compile="0" resource="0" file="Source/Volume.h"/>
         <FILE id="mS7pnI" name="Speed.cpp" compile="1" resource="0" file="Source/Speed.cpp"/>

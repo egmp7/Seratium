@@ -91,8 +91,8 @@ deck(_deck)
     addAndMakeVisible(speed);
     addAndMakeVisible(waveformDisplay);
     addAndMakeVisible(deckAnimation);
-    addAndMakeVisible(timeTracker);
     addAndMakeVisible(currentTime);
+    addAndMakeVisible(remainingTime);
 
     // Timer class
     startTimer(50);
@@ -120,7 +120,7 @@ void DeckGUI::resized()
     // GUI Components               x           y           width       height
     loadButton.setBounds            (x,         0,          x,          y);
     waveformDisplay.setBounds       (x,         y,          x * 10,     y * 2);
-    timeTracker.setBounds           (x * 9,     0,          x * 2,      y);
+    remainingTime.setBounds         (x * 9,     0,          x * 2,      y);
     deckAnimation.setBounds         (x * 3,     y * 3,      x * 6,      y * 6);
     
     if(deck == Deck::Left)
@@ -180,7 +180,6 @@ void DeckGUI::buttonClicked(Button* button)
                 cueCounter = 0;
             }
             player->stop();
-            updateTimeTracker();
         }
         
     }
@@ -199,8 +198,6 @@ void DeckGUI::buttonClicked(Button* button)
             player->loadURL(URL{file});
             // load waveform display
             loadWaveform(URL{file});
-            // update current time
-            updateTimeTracker();
         });
     }
 }
@@ -219,7 +216,6 @@ void DeckGUI::filesDropped (const juce::StringArray &files, int x, int y)
         
         player->loadURL(URL{file});
         loadWaveform(URL{file});
-        updateTimeTracker();
     }
 }
 
@@ -227,12 +223,12 @@ void DeckGUI::timerCallback()
 {
     // Set position of the waveform line component
     waveformDisplay.setPlayheadPosition(player->getPositionRelative());
-    // Set position of the time tracker component
-    timeTracker.setCurrentTime(player->getPosition());
-    // Set track length of the time tracker component
-    timeTracker.setRemainingTime(player->getTrackLength());
     // Set current time of player in seconds
     currentTime.setTime(player->getPosition());
+    // Set current time in remaining time
+    remainingTime.setTime(player->getPosition());
+    // Set Tracklength in remaining time
+    remainingTime.setTrackLength(player->getTrackLength());
 }
 
 bool DeckGUI::isInterestedInDragSource (const SourceDetails &dragSourceDetails)
@@ -248,15 +244,9 @@ void  DeckGUI::itemDropped (const SourceDetails &dragSourceDetails)
     
     player->loadURL(URL{file});
     loadWaveform(URL{file});
-    updateTimeTracker();
 }
+
 void DeckGUI::loadWaveform(URL file)
 {
     waveformDisplay.loadURL(file);
 }
-
-void DeckGUI::updateTimeTracker()
-{
-    timeTracker.setCurrentTimeToZero();
-}
-

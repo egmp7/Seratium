@@ -14,8 +14,6 @@
 //==============================================================================
 RemainingTime::RemainingTime()
 {
-    // In your constructor, you should add any child components, and
-    // initialise any special settings that your component needs.
 
 }
 
@@ -23,29 +21,49 @@ RemainingTime::~RemainingTime()
 {
 }
 
-void RemainingTime::paint (juce::Graphics& g)
+void RemainingTime::paint (Graphics& g)
 {
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
 
-       You should replace everything in this method with your own
-       drawing code..
-    */
+    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
 
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
+    g.setColour (Colours::grey);
+    g.drawRect (getLocalBounds(), 1);
 
-    g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
-    g.setColour (juce::Colours::white);
+    if (remainingTime == 0)
+        g.setColour (Colours::darkgrey);
+    else
+        g.setColour(Colours::red);
     g.setFont (14.0f);
-    g.drawText ("remainingTime", getLocalBounds(),
-                juce::Justification::centred, true);   // draw some placeholder text
+    g.drawText (Format::floatToTime(remainingTime), getLocalBounds(),
+                Justification::centred, true);
+    
 }
 
 void RemainingTime::resized()
 {
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
 
 }
+
+void RemainingTime::setTime(float _time)
+{
+    if(time != _time && !isnan(_time))
+    {
+        time = _time;
+        update();
+    }
+}
+void RemainingTime::setTrackLength(float _trackLength)
+{
+    if(trackLength != _trackLength && !isnan(_trackLength))
+    {
+        trackLength = _trackLength;
+        update();
+    }
+}
+
+void RemainingTime::update()
+{
+    remainingTime = trackLength - time;
+    repaint();
+}
+
