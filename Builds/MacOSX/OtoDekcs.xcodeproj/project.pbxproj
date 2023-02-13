@@ -22,7 +22,9 @@
 		4A48C164BF66C025993925BC /* include_juce_audio_devices.mm */ = {isa = PBXBuildFile; fileRef = 722646977006D98708C385A1; };
 		4DB483AD886EBA0E1A6C6BC7 /* CSV.cpp */ = {isa = PBXBuildFile; fileRef = E95C6E847E89FF62C9956707; };
 		5017E2389387C43B53518738 /* Crossfader.cpp */ = {isa = PBXBuildFile; fileRef = 9467D54498D9F103ECCB8707; };
+		539F65FD06B1124F4CAA06A2 /* RemainingTime.cpp */ = {isa = PBXBuildFile; fileRef = 0FA97B02693ACDBB17AE29C2; };
 		5555AB1C1969383BA00BB248 /* include_juce_audio_formats.mm */ = {isa = PBXBuildFile; fileRef = B336101482C7AC187D1C4FDF; };
+		578F7217474116C430302945 /* CurrentTime.cpp */ = {isa = PBXBuildFile; fileRef = 109C00247343F8415599E150; };
 		5F679ECFCAD4FF536F923A6F /* include_juce_data_structures.mm */ = {isa = PBXBuildFile; fileRef = 4199032952489FD17BE03439; };
 		659AD31F08E11B28D68758A6 /* QuartzCore.framework */ = {isa = PBXBuildFile; fileRef = 6FC54837A531D5BE314D5B4D; };
 		69084C8E8D6A010B12173808 /* CoreAudio.framework */ = {isa = PBXBuildFile; fileRef = 15CFD97FC0DA18E68BFF13F1; };
@@ -53,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		0A62F7796905EE295136D99F /* juce_core */ /* juce_core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_core; path = "~/JUCE/modules/juce_core"; sourceTree = "<absolute>"; };
+		0FA97B02693ACDBB17AE29C2 /* RemainingTime.cpp */ /* RemainingTime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RemainingTime.cpp; path = ../../Source/RemainingTime.cpp; sourceTree = SOURCE_ROOT; };
+		109C00247343F8415599E150 /* CurrentTime.cpp */ /* CurrentTime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CurrentTime.cpp; path = ../../Source/CurrentTime.cpp; sourceTree = SOURCE_ROOT; };
 		1434661571C742DA38128966 /* IOKit.framework */ /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		1527EAD1FE9C73BE3D5453FB /* Crossfader.h */ /* Crossfader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Crossfader.h; path = ../../Source/Crossfader.h; sourceTree = SOURCE_ROOT; };
 		15AFFCD34D3CC22494347E89 /* include_juce_events.mm */ /* include_juce_events.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_events.mm; path = ../../JuceLibraryCode/include_juce_events.mm; sourceTree = SOURCE_ROOT; };
@@ -81,7 +85,9 @@
 		6906722E00A2175FD21F9536 /* Speed.h */ /* Speed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Speed.h; path = ../../Source/Speed.h; sourceTree = SOURCE_ROOT; };
 		6DBC1461707625E037749E33 /* DeckGUI.cpp */ /* DeckGUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DeckGUI.cpp; path = ../../Source/DeckGUI.cpp; sourceTree = SOURCE_ROOT; };
 		6FC54837A531D5BE314D5B4D /* QuartzCore.framework */ /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		707127B8C772BB2A5E8EBE20 /* CurrentTime.h */ /* CurrentTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CurrentTime.h; path = ../../Source/CurrentTime.h; sourceTree = SOURCE_ROOT; };
 		722646977006D98708C385A1 /* include_juce_audio_devices.mm */ /* include_juce_audio_devices.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_devices.mm; path = ../../JuceLibraryCode/include_juce_audio_devices.mm; sourceTree = SOURCE_ROOT; };
+		72852D11EEF43D22D4D72969 /* RemainingTime.h */ /* RemainingTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RemainingTime.h; path = ../../Source/RemainingTime.h; sourceTree = SOURCE_ROOT; };
 		7427D78A3EFDA5458F1C878B /* Playlist.h */ /* Playlist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Playlist.h; path = ../../Source/Playlist.h; sourceTree = SOURCE_ROOT; };
 		745854090AE29B20F4284D3D /* Format.h */ /* Format.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Format.h; path = ../../Source/Format.h; sourceTree = SOURCE_ROOT; };
 		7A004E24C18999D2BC97E9AE /* RecentFilesMenuTemplate.nib */ /* RecentFilesMenuTemplate.nib */ = {isa = PBXFileReference; lastKnownFileType = file.nib; name = RecentFilesMenuTemplate.nib; path = RecentFilesMenuTemplate.nib; sourceTree = SOURCE_ROOT; };
@@ -268,6 +274,10 @@
 				F26CE30EC5D11DD3982A7A31,
 				39355F82B7E0D25EDCC99C38,
 				6906722E00A2175FD21F9536,
+				109C00247343F8415599E150,
+				707127B8C772BB2A5E8EBE20,
+				0FA97B02693ACDBB17AE29C2,
+				72852D11EEF43D22D4D72969,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -415,6 +425,8 @@
 				3592808171F9F2AF276FEFF4,
 				93C3CD6C0DC9189C0BF7279C,
 				9D22E31603352A81952AC8B1,
+				578F7217474116C430302945,
+				539F65FD06B1124F4CAA06A2,
 				96D48552CBFF39BEC9A331CE,
 				D3BCF8DD53900887C86C9305,
 				7399898ADD70DCD41C207764,

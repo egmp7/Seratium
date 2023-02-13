@@ -152,6 +152,8 @@
     <ClCompile Include="..\..\Source\TimeTracker.cpp"/>
     <ClCompile Include="..\..\Source\Volume.cpp"/>
     <ClCompile Include="..\..\Source\Speed.cpp"/>
+    <ClCompile Include="..\..\Source\CurrentTime.cpp"/>
+    <ClCompile Include="..\..\Source\RemainingTime.cpp"/>
     <ClCompile Include="..\..\Source\MainGUI.cpp"/>
     <ClCompile Include="..\..\Source\DeckGUI.cpp"/>
     <ClCompile Include="..\..\Source\FaderLookAndFeel.cpp"/>
@@ -2326,6 +2328,8 @@
     <ClInclude Include="..\..\Source\TimeTracker.h"/>
     <ClInclude Include="..\..\Source\Volume.h"/>
     <ClInclude Include="..\..\Source\Speed.h"/>
+    <ClInclude Include="..\..\Source\CurrentTime.h"/>
+    <ClInclude Include="..\..\Source\RemainingTime.h"/>
     <ClInclude Include="..\..\Source\MainGUI.h"/>
     <ClInclude Include="..\..\Source\DeckGUI.h"/>
     <ClInclude Include="..\..\Source\FaderLookAndFeel.h"/>

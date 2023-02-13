@@ -51,20 +51,25 @@ void FaderLookAndFeel::drawLinearSlider(Graphics &g,
 
 Rectangle<float> FaderLookAndFeel::backgroundRectangle ()
 {
+    int size = 6;
+    
     if (sliderStyle == Slider::SliderStyle::LinearVertical)
     {
-        // vertical slider
-        int backgroundWidth = 6.0f;
         int midX = *width/2;
         
-        return Rectangle<float> (midX - backgroundWidth/2,
+        return Rectangle<float> (midX - size/2,
                                 *y,
-                                backgroundWidth,
+                                size,
                                 *height);
     }
     if (sliderStyle == Slider::SliderStyle::LinearHorizontal)
     {
-        // horizontal slider
+        int midY = *height/2;
+        
+        return Rectangle<float> (*x,
+                                 midY - size/2,
+                                 *width,
+                                 size);
     }
     
     return Rectangle<float>{};
@@ -91,42 +96,60 @@ vector<Rectangle<int>> FaderLookAndFeel::lines()
 {
     vector<Rectangle<int>> lines;
     
-    for (int i = 1 ; i < 8 ;  ++i)
+    if(sliderStyle == Slider::SliderStyle::LinearVertical)
     {
-        if(sliderStyle == Slider::SliderStyle::LinearVertical)
+        for (int i = 1 ; i < 6 ;  ++i)
         {
+       
             int lineWidth;
             int lineHeight = 1;
-            float ratio = 0.6f;
+            float lineWidthRatio = 0.6f;
             
             if(i % 2 == 0)
-                lineWidth = *width * ratio;
+                lineWidth = *width * lineWidthRatio;
             else
-                lineWidth = *width * ratio * 0.7f;
+                lineWidth = *width * lineWidthRatio * 0.7f;
             
             Rectangle<int> line {
                 *width / 2 - lineWidth/2,
-                *y + *height / 8 * i,
+                *y + *height / 6 * i,
                 lineWidth,
                 lineHeight} ;
             
             lines.push_back(line);
         }
-        if (sliderStyle == Slider::SliderStyle::LinearHorizontal)
-        {
-            // horizontal slider
-        }
-        
     }
-    
+    if (sliderStyle == Slider::SliderStyle::LinearHorizontal)
+    {
+        for (int i = 1 ; i < 8 ;  ++i)
+        {
+            int lineWidth = 1;
+            int lineHeight;
+            float lineHeightRatio = 0.6f;
+            
+            if(i % 2 == 0)
+                lineHeight = *height * lineHeightRatio;
+            else
+                lineHeight = *height * lineHeightRatio * 0.7f;
+            
+            Rectangle<int> line {
+                *x + *width / 8 * i,
+                *height / 2 - lineHeight/2,
+                lineWidth,
+                lineHeight};
+            
+            lines.push_back(line);
+        }
+    }
     return lines;
 }
 
 Rectangle<float> FaderLookAndFeel::thumbRectangle()
 {
+    float scale = 0.7f;
+
     if (sliderStyle == Slider::SliderStyle::LinearVertical)
     {
-        float scale = 0.7f;
         int sliderWidth = 30.0f * scale;
         int sliderHeight = 53.3333f * scale;
         int midX = *width/2;
@@ -140,7 +163,15 @@ Rectangle<float> FaderLookAndFeel::thumbRectangle()
     
     if (sliderStyle == Slider::SliderStyle::LinearHorizontal)
     {
-        // horizontal slider
+        int sliderWidth = 53.3333f * scale;
+        int sliderHeight = 30.0f * scale;
+        int midY = *height/2;
+        
+        return Rectangle<float> (
+                                 constrainSliderPos() - sliderWidth / 2,
+                                 midY - sliderHeight/2,
+                                 sliderWidth,
+                                 sliderHeight);
     }
     
     return Rectangle<float>{};
@@ -148,24 +179,28 @@ Rectangle<float> FaderLookAndFeel::thumbRectangle()
 
 int FaderLookAndFeel::constrainSliderPos()
 {
+    
+    int min;
+    int max;
+    
     if (sliderStyle == Slider::SliderStyle::LinearVertical)
     {
         float c = 0.08f;
-        int min = *y + *height * c;
-        int max = *y + *height - *height * c;
-        
-        if(*sliderPos < min)
-            return min;
-        if(*sliderPos > max)
-            return max;
-        return *sliderPos;
+         min = *y + *height * c;
+         max = *y + *height - *height * c;
     }
     
     if (sliderStyle == Slider::SliderStyle::LinearHorizontal)
     {
-        // horizontal slider
+        float c = 0.04f;
+         min = *x + *width * c;
+         max = *x + *width - *width * c;
     }
     
+    if(*sliderPos < min)
+        return min;
+    if(*sliderPos > max)
+        return max;
     return *sliderPos;
     
 }

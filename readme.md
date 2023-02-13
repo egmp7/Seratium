@@ -7,10 +7,12 @@
                 -DeckAnimation
                 -TimeTracker
                 -WaveformDisplay
+                -currentTime
                 -Volume
                     -FaderLookAndFeel
                 -Speed
                     -FaderLookAndFeel
+                -currentTime
             -DeckGUI 2
                 -DeckAnimation
                 -TimeTracker
@@ -19,6 +21,7 @@
                     -FaderLookAndFeel
                 -Speed
                     -FaderLookAndFeel
+                -currentTime
             -Playlist
             -Crossfader
 

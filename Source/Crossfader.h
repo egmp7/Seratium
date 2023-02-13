@@ -12,6 +12,7 @@
 
 #include <JuceHeader.h>
 #include "DJAudioPlayer.h"
+#include "FaderLookAndFeel.h"
 
 using namespace juce;
 using namespace std;
@@ -54,7 +55,10 @@ private:
     void mixVolumesAlgorithm();
     
     Slider crossfaderSlider;
-    
+    FaderLookAndFeel crossfaderLookAndFeel
+        {ImageFileFormat::loadFrom(
+           File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/crossfader.png"))};
+        
     DJAudioPlayer* player1;
     DJAudioPlayer* player2;
     

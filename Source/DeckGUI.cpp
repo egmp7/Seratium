@@ -92,6 +92,7 @@ deck(_deck)
     addAndMakeVisible(waveformDisplay);
     addAndMakeVisible(deckAnimation);
     addAndMakeVisible(timeTracker);
+    addAndMakeVisible(currentTime);
 
     // Timer class
     startTimer(500);
@@ -124,17 +125,20 @@ void DeckGUI::resized()
     
     if(deck == Deck::Left)
     {
-        speed.setBounds       (x,         y * 4,       x,         y * 5);
-        volume.setBounds         (x * 10,    y * 4,       x,         y * 5);
+        speed.setBounds             (x,         y * 4,       x,         y * 5);
+        volume.setBounds            (x * 10,    y * 4,       x,         y * 5);
         playPauseButton.setBounds   (x,         y * 10,      x * 1.5,   y * 1.5);
         cueButton.setBounds         (x * 3,     y * 10,      x * 1.5,   y * 1.5);
+        currentTime.setBounds       (x * 5,     y * 10,      x * 1.5,   y * 1.5);
+
     }
     if(deck == Deck::Right)
     {
-        speed.setBounds       (x * 10,    y * 4,       x,         y * 5);
-        volume.setBounds         (x,         y * 4,       x,         y * 5);
-        playPauseButton.setBounds   (x * 5.5f,  y * 10,      x * 1.5,   y * 1.5);
+        speed.setBounds             (x * 10,    y * 4,       x,         y * 5);
+        volume.setBounds            (x,         y * 4,       x,         y * 5);
+        currentTime.setBounds       (x * 5.5f,  y * 10,      x * 1.5,   y * 1.5);
         cueButton.setBounds         (x * 7.5f,  y * 10,      x * 1.5,   y * 1.5);
+        playPauseButton.setBounds   (x * 9.5f,  y * 10,      x * 1.5,   y * 1.5);
     }
 }
 

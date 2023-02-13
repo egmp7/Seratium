@@ -37,6 +37,11 @@
         <FILE id="PfM5wB" name="Volume.h" compile="0" resource="0" file="Source/Volume.h"/>
         <FILE id="mS7pnI" name="Speed.cpp" compile="1" resource="0" file="Source/Speed.cpp"/>
         <FILE id="HC6RXM" name="Speed.h" compile="0" resource="0" file="Source/Speed.h"/>
+        <FILE id="oWIlRa" name="CurrentTime.cpp" compile="1" resource="0" file="Source/CurrentTime.cpp"/>
+        <FILE id="s6Ow5G" name="CurrentTime.h" compile="0" resource="0" file="Source/CurrentTime.h"/>
+        <FILE id="bUnxOU" name="RemainingTime.cpp" compile="1" resource="0"
+              file="Source/RemainingTime.cpp"/>
+        <FILE id="KKB7Mw" name="RemainingTime.h" compile="0" resource="0" file="Source/RemainingTime.h"/>
       </GROUP>
       <GROUP id="{ED349D5F-41F9-FDEF-3670-860312757F3A}" name="GUIs">
         <FILE id="zl7TU0" name="MainGUI.cpp" compile="1" resource="0" file="Source/MainGUI.cpp"/>

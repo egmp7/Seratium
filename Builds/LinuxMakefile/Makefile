@@ -83,6 +83,8 @@ OBJECTS_APP := \
   $(JUCE_OBJDIR)/TimeTracker_dc5b988c.o \
   $(JUCE_OBJDIR)/Volume_ccd2e9a3.o \
   $(JUCE_OBJDIR)/Speed_3c455028.o \
+  $(JUCE_OBJDIR)/CurrentTime_27d35747.o \
+  $(JUCE_OBJDIR)/RemainingTime_756d3fc4.o \
   $(JUCE_OBJDIR)/MainGUI_ad702823.o \
   $(JUCE_OBJDIR)/DeckGUI_914d8333.o \
   $(JUCE_OBJDIR)/FaderLookAndFeel_1849bb1.o \
@@ -168,6 +170,16 @@ $(JUCE_OBJDIR)/Volume_ccd2e9a3.o: ../../Source/Volume.cpp
 $(JUCE_OBJDIR)/Speed_3c455028.o: ../../Source/Speed.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling Speed.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/CurrentTime_27d35747.o: ../../Source/CurrentTime.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling CurrentTime.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/RemainingTime_756d3fc4.o: ../../Source/RemainingTime.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling RemainingTime.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/MainGUI_ad702823.o: ../../Source/MainGUI.cpp

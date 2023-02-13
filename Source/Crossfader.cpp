@@ -24,6 +24,7 @@ volumeR(1.0f)
     crossfaderSlider.setRange(0.0f, 1.0f);
     crossfaderSlider.setValue(0.5f);
     crossfaderSlider.setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
+    crossfaderSlider.setLookAndFeel(&crossfaderLookAndFeel);
 }
 
 Crossfader::~Crossfader()

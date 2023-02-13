@@ -23,7 +23,7 @@ class WaveformDisplay  : public Component,
 public:
     WaveformDisplay(AudioFormatManager & formatManagerToUse,
                     AudioThumbnailCache & cacheToUse,
-                    DJAudioPlayer* _player);
+                    DJAudioPlayer*);
     ~WaveformDisplay() override;
     
 //==============================================================================
@@ -36,22 +36,17 @@ public:
     /**Listens for changes in the thumbnail to redraw
      @param source not used*/
     void changeListenerCallback (ChangeBroadcaster *source) override;
-    
     /**Load waveform thumbnail
      @param audioURL file to be loaded*/
     void loadURL(URL audioURL);
-    
     /**Updates position of the playhead when user clicks this component
      @param event gets the distance between the click and the start of the component */
     void mouseDown (const MouseEvent &event) override;
-    
     /**set the relative position of the playhead
      @param pos current position of the player in seconds*/
     void setPlayheadPosition(double pos);
 
 private:
-    
-
     
     bool fileLoaded;
     double playheadPosition;

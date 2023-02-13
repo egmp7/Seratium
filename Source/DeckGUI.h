@@ -20,6 +20,7 @@
 #include "DeckAnimation.h"
 #include "Volume.h"
 #include "Speed.h"
+#include "CurrentTime.h"
 
 using namespace juce;
 using namespace std;
@@ -89,6 +90,7 @@ private:
     Volume volume;
     Speed speed;
     DeckAnimation deckAnimation;
+    CurrentTime currentTime;
     
     //Utilities
     FileChooser fChooser{"Select a file..."};
