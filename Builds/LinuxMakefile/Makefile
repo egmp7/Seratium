@@ -85,6 +85,8 @@ OBJECTS_APP := \
   $(JUCE_OBJDIR)/CurrentTime_27d35747.o \
   $(JUCE_OBJDIR)/RemainingTime_756d3fc4.o \
   $(JUCE_OBJDIR)/CueButton_953b4e26.o \
+  $(JUCE_OBJDIR)/LoadButton_ac60d41.o \
+  $(JUCE_OBJDIR)/TrackName_57a6acd7.o \
   $(JUCE_OBJDIR)/MainGUI_ad702823.o \
   $(JUCE_OBJDIR)/DeckGUI_914d8333.o \
   $(JUCE_OBJDIR)/FaderLookAndFeel_1849bb1.o \
@@ -180,6 +182,16 @@ $(JUCE_OBJDIR)/RemainingTime_756d3fc4.o: ../../Source/RemainingTime.cpp
 $(JUCE_OBJDIR)/CueButton_953b4e26.o: ../../Source/CueButton.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling CueButton.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/LoadButton_ac60d41.o: ../../Source/LoadButton.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling LoadButton.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/TrackName_57a6acd7.o: ../../Source/TrackName.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling TrackName.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/MainGUI_ad702823.o: ../../Source/MainGUI.cpp

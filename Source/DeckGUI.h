@@ -22,6 +22,8 @@
 #include "CurrentTime.h"
 #include "RemainingTime.h"
 #include "CueButton.h"
+#include "LoadButton.h"
+#include "TrackName.h"
 
 using namespace juce;
 using namespace std;
@@ -68,9 +70,6 @@ public:
     /**Loads audio files to the application
      @param &dragSourceDetails contains file names*/
     void itemDropped (const SourceDetails &dragSourceDetails) override;
-    /**Calls the waveform load function
-     @param file loading file*/
-    void loadWaveform(URL file);
     /**Updates time tracke with a setterr**/
     void timerCallback() override;
 
@@ -82,14 +81,15 @@ private:
         
     // GUI Components
     ImageButton playPauseButton{"Play/Pause"};
-    ImageButton loadButton{"LOAD"};
+    LoadButton loadButton {player, &waveformDisplay, &trackName};
     WaveformDisplay waveformDisplay;
     Volume volume;
     Speed speed;
     DeckAnimation deckAnimation;
     CurrentTime currentTime;
     RemainingTime remainingTime;
-    CueButton cueButton{player};
+    CueButton cueButton {player};
+    TrackName trackName;
     
     //Utilities
     FileChooser fChooser{"Select a file..."};

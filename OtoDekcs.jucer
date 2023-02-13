@@ -42,6 +42,10 @@
         <FILE id="KKB7Mw" name="RemainingTime.h" compile="0" resource="0" file="Source/RemainingTime.h"/>
         <FILE id="X2V74c" name="CueButton.cpp" compile="1" resource="0" file="Source/CueButton.cpp"/>
         <FILE id="sy42BX" name="CueButton.h" compile="0" resource="0" file="Source/CueButton.h"/>
+        <FILE id="vH6GW1" name="LoadButton.cpp" compile="1" resource="0" file="Source/LoadButton.cpp"/>
+        <FILE id="MiTkcB" name="LoadButton.h" compile="0" resource="0" file="Source/LoadButton.h"/>
+        <FILE id="zkQxeX" name="TrackName.cpp" compile="1" resource="0" file="Source/TrackName.cpp"/>
+        <FILE id="BCNwjU" name="TrackName.h" compile="0" resource="0" file="Source/TrackName.h"/>
       </GROUP>
       <GROUP id="{ED349D5F-41F9-FDEF-3670-860312757F3A}" name="GUIs">
         <FILE id="zl7TU0" name="MainGUI.cpp" compile="1" resource="0" file="Source/MainGUI.cpp"/>

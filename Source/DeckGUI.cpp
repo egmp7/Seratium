@@ -45,27 +45,12 @@ deck(_deck)
           1.0,
           Colours::transparentWhite);
 
-    // load button
-    addAndMakeVisible(loadButton);
-    loadButton.addListener(this);
-    loadButton.setImages(
-          true,
-          true,
-          true,
-          ImageFileFormat::loadFrom(
-                File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/load.png")),
-          0.8f,
-          Colours::transparentWhite,
-          Image{},
-          1.0,
-          Colours::transparentWhite,
-          Image{},
-          1.0,
-          Colours::transparentWhite);
 
     // components
+    addAndMakeVisible(trackName);
     addAndMakeVisible(volume);
     addAndMakeVisible(cueButton);
+    addAndMakeVisible(loadButton);
     addAndMakeVisible(speed);
     addAndMakeVisible(waveformDisplay);
     addAndMakeVisible(deckAnimation);
@@ -106,7 +91,7 @@ void DeckGUI::resized()
     
     // GUI Components               x           y           width       height
     loadButton.setBounds            (x,         0,          x,          y);
-    fileNameRectangle.setBounds     (x * 2,     0,          x * 7,      y);
+    trackName.setBounds             (x * 2,     0,          x * 7,      y);
     remainingTime.setBounds         (x * 9,     0,          x * 2,      y);
     waveformDisplay.setBounds       (x,         y,          x * 10,     y * 2);
     deckAnimation.setBounds         (x * 3,     y * 3,      x * 6,      y * 6);
@@ -147,29 +132,6 @@ void DeckGUI::buttonClicked(Button* button)
         }
         cueButton.resetCueCounter();
     }
-    // load button logic
-    if (button == &loadButton)  // open the file chooser
-    {
-        // get flag integer
-        int fileChooserFlags = FileBrowserComponent::canSelectFiles;
-        
-        // launch file browser window async
-        fChooser.launchAsync(fileChooserFlags, [this](const FileChooser& chooser)
-        {
-           
-            // get chosen file
-            File file = chooser.getResult();
-            if(file.exists())
-            {
-                // load audio file
-                player->loadURL(URL{file});
-                // load waveform display
-                loadWaveform(URL{file});
-                // store fileName
-                fileName = file.getFileName();
-            }
-        });
-    }
 }
 
 bool DeckGUI::isInterestedInFileDrag (const juce::StringArray &files)
@@ -185,8 +147,8 @@ void DeckGUI::filesDropped (const juce::StringArray &files, int x, int y)
         File file = files[0];
         
         player->loadURL(URL{file});
-        loadWaveform(URL{file});
-        fileName = file.getFileName();
+        waveformDisplay.loadURL(URL{file});
+        trackName.setFileName(file.getFileName());
     }
 }
 
@@ -214,12 +176,7 @@ void  DeckGUI::itemDropped (const SourceDetails &dragSourceDetails)
     File file = String(dragSourceDetails.description);
     
     player->loadURL(URL{file});
-    loadWaveform(URL{file});
-    fileName = file.getFileName();
+    waveformDisplay.loadURL(URL{file});
+    trackName.setFileName(file.getFileName());
 
-}
-
-void DeckGUI::loadWaveform(URL file)
-{
-    waveformDisplay.loadURL(file);
 }

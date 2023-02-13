@@ -154,6 +154,8 @@
     <ClCompile Include="..\..\Source\CurrentTime.cpp"/>
     <ClCompile Include="..\..\Source\RemainingTime.cpp"/>
     <ClCompile Include="..\..\Source\CueButton.cpp"/>
+    <ClCompile Include="..\..\Source\LoadButton.cpp"/>
+    <ClCompile Include="..\..\Source\TrackName.cpp"/>
     <ClCompile Include="..\..\Source\MainGUI.cpp"/>
     <ClCompile Include="..\..\Source\DeckGUI.cpp"/>
     <ClCompile Include="..\..\Source\FaderLookAndFeel.cpp"/>
@@ -2330,6 +2332,8 @@
     <ClInclude Include="..\..\Source\CurrentTime.h"/>
     <ClInclude Include="..\..\Source\RemainingTime.h"/>
     <ClInclude Include="..\..\Source\CueButton.h"/>
+    <ClInclude Include="..\..\Source\LoadButton.h"/>
+    <ClInclude Include="..\..\Source\TrackName.h"/>
     <ClInclude Include="..\..\Source\MainGUI.h"/>
     <ClInclude Include="..\..\Source\DeckGUI.h"/>
     <ClInclude Include="..\..\Source\FaderLookAndFeel.h"/>
