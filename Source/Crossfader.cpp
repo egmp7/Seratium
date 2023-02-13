@@ -24,8 +24,6 @@ faderB(1.0f)
     crossfaderSlider.setRange(0.0f, 1.0f);
     crossfaderSlider.setValue(0.5f);
     crossfaderSlider.setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
-    crossfaderSlider.setLookAndFeel(&crossfaderLookAndFeel);
-    
 }
 
 Crossfader::~Crossfader()
@@ -34,7 +32,6 @@ Crossfader::~Crossfader()
 
 void Crossfader::paint (Graphics& g)
 {
-
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
     g.setColour (Colours::grey);
     g.drawRect (getLocalBounds(), 1);
@@ -47,18 +44,19 @@ void Crossfader::resized()
 
 void Crossfader::sliderValueChanged (Slider *slider)
 {
+    // MAYBE DELETE THIS
     if (slider == &crossfaderSlider)
         mainGainAlgorithm();
 }
 
 void Crossfader::setFaderGain(float gain, String deckID)
 {
-    if(deckID == "deckGUI1")
-        faderA = gain;
-    else
-        faderB = gain;
-    
-    mainGainAlgorithm();
+//    if(deckID == "deckGUI1")
+//        faderA = gain;
+//    else
+//        faderB = gain;
+//
+//    mainGainAlgorithm();
 }
 
 void Crossfader::mainGainAlgorithm()
@@ -76,10 +74,4 @@ void Crossfader::mainGainAlgorithm()
     }
     player1->setGain(mainGainA);
     player2->setGain(mainGainB);
-}
-
-float Crossfader::thumPosition()
-{
-    return crossfaderSlider.getPositionOfValue(crossfaderSlider.getValue());
-    
 }

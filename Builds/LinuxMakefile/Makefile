@@ -74,21 +74,18 @@ endif
 OBJECTS_APP := \
   $(JUCE_OBJDIR)/CSV_1cb31167.o \
   $(JUCE_OBJDIR)/Format_3caa4400.o \
-  $(JUCE_OBJDIR)/RectanglesUtility_e6f41549.o \
-  $(JUCE_OBJDIR)/Fader_6a7919d7.o \
-  $(JUCE_OBJDIR)/SliderModel_2020ed29.o \
   $(JUCE_OBJDIR)/TrackEntry_39b987f0.o \
   $(JUCE_OBJDIR)/DJAudioPlayer_f05158f2.o \
-  $(JUCE_OBJDIR)/Crossfader_7ba93bf.o \
-  $(JUCE_OBJDIR)/DeckAnimation_a9ebe6bc.o \
   $(JUCE_OBJDIR)/Playlist_ab18835b.o \
-  $(JUCE_OBJDIR)/Speed_3c455028.o \
+  $(JUCE_OBJDIR)/Crossfader_7ba93bf.o \
+  $(JUCE_OBJDIR)/WaveformDisplay_c81a80a6.o \
+  $(JUCE_OBJDIR)/DeckAnimation_a9ebe6bc.o \
   $(JUCE_OBJDIR)/TimeTracker_dc5b988c.o \
   $(JUCE_OBJDIR)/Volume_ccd2e9a3.o \
-  $(JUCE_OBJDIR)/WaveformDisplay_c81a80a6.o \
-  $(JUCE_OBJDIR)/DeckGUI_914d8333.o \
-  $(JUCE_OBJDIR)/FadersLookAndFeel_62446b62.o \
+  $(JUCE_OBJDIR)/Speed_3c455028.o \
   $(JUCE_OBJDIR)/MainGUI_ad702823.o \
+  $(JUCE_OBJDIR)/DeckGUI_914d8333.o \
+  $(JUCE_OBJDIR)/FaderLookAndFeel_1849bb1.o \
   $(JUCE_OBJDIR)/Main_90ebc5c2.o \
   $(JUCE_OBJDIR)/MainComponent_a6ffb4a5.o \
   $(JUCE_OBJDIR)/include_juce_audio_basics_8a4e984a.o \
@@ -128,21 +125,6 @@ $(JUCE_OBJDIR)/Format_3caa4400.o: ../../Source/Format.cpp
 	@echo "Compiling Format.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/RectanglesUtility_e6f41549.o: ../../Source/RectanglesUtility.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling RectanglesUtility.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/Fader_6a7919d7.o: ../../Source/Fader.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling Fader.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/SliderModel_2020ed29.o: ../../Source/SliderModel.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling SliderModel.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
-
 $(JUCE_OBJDIR)/TrackEntry_39b987f0.o: ../../Source/TrackEntry.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling TrackEntry.cpp"
@@ -153,24 +135,24 @@ $(JUCE_OBJDIR)/DJAudioPlayer_f05158f2.o: ../../Source/DJAudioPlayer.cpp
 	@echo "Compiling DJAudioPlayer.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/Crossfader_7ba93bf.o: ../../Source/Crossfader.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling Crossfader.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/DeckAnimation_a9ebe6bc.o: ../../Source/DeckAnimation.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling DeckAnimation.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
-
 $(JUCE_OBJDIR)/Playlist_ab18835b.o: ../../Source/Playlist.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling Playlist.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/Speed_3c455028.o: ../../Source/Speed.cpp
+$(JUCE_OBJDIR)/Crossfader_7ba93bf.o: ../../Source/Crossfader.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling Speed.cpp"
+	@echo "Compiling Crossfader.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/WaveformDisplay_c81a80a6.o: ../../Source/WaveformDisplay.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling WaveformDisplay.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/DeckAnimation_a9ebe6bc.o: ../../Source/DeckAnimation.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling DeckAnimation.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/TimeTracker_dc5b988c.o: ../../Source/TimeTracker.cpp
@@ -183,9 +165,14 @@ $(JUCE_OBJDIR)/Volume_ccd2e9a3.o: ../../Source/Volume.cpp
 	@echo "Compiling Volume.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/WaveformDisplay_c81a80a6.o: ../../Source/WaveformDisplay.cpp
+$(JUCE_OBJDIR)/Speed_3c455028.o: ../../Source/Speed.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling WaveformDisplay.cpp"
+	@echo "Compiling Speed.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/MainGUI_ad702823.o: ../../Source/MainGUI.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling MainGUI.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/DeckGUI_914d8333.o: ../../Source/DeckGUI.cpp
@@ -193,14 +180,9 @@ $(JUCE_OBJDIR)/DeckGUI_914d8333.o: ../../Source/DeckGUI.cpp
 	@echo "Compiling DeckGUI.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/FadersLookAndFeel_62446b62.o: ../../Source/FadersLookAndFeel.cpp
+$(JUCE_OBJDIR)/FaderLookAndFeel_1849bb1.o: ../../Source/FaderLookAndFeel.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling FadersLookAndFeel.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/MainGUI_ad702823.o: ../../Source/MainGUI.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling MainGUI.cpp"
+	@echo "Compiling FaderLookAndFeel.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/Main_90ebc5c2.o: ../../Source/Main.cpp

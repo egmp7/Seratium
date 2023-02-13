@@ -20,7 +20,9 @@ using namespace juce;
 */
 class TimeTracker  : public Component
 {
+    
 public:
+    
     TimeTracker();
     ~TimeTracker() override;
 

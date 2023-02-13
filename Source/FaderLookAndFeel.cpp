@@ -8,50 +8,16 @@
   ==============================================================================
 */
 
-#include "Fader.h"
+#include "FaderLookAndFeel.h"
 
-Fader::Fader(
-             FaderOrientation _orientation,
-             Image _image)
-:
-
-orientation(_orientation),
-image(_image)
-{
-    
-}
-
-Rectangle<float> Fader::getPosition()
-{
-    return position;
-}
-
-void Fader::setPosition(float sliderValue)
-{
-    
-}
-
-void Fader::setBounds(Rectangle<int> _bounds)
-{
-    bounds = _bounds;
-}
-
-Rectangle<int> Fader::getBounds()
-{
-    return bounds;
-}
-
-
-
-
-FLookAndFeel::FLookAndFeel(Image _thumbImage)
+FaderLookAndFeel::FaderLookAndFeel(Image _thumbImage)
 :
 thumbImage(_thumbImage)
 {
     
 }
 
-void FLookAndFeel::drawLinearSlider(Graphics &g,
+void FaderLookAndFeel::drawLinearSlider(Graphics &g,
                                                    int _x,
                                                    int _y,
                                                    int _width,
@@ -83,7 +49,7 @@ void FLookAndFeel::drawLinearSlider(Graphics &g,
             
 }
 
-Rectangle<float> FLookAndFeel::backgroundRectangle ()
+Rectangle<float> FaderLookAndFeel::backgroundRectangle ()
 {
     if (sliderStyle == Slider::SliderStyle::LinearVertical)
     {
@@ -104,7 +70,7 @@ Rectangle<float> FLookAndFeel::backgroundRectangle ()
     return Rectangle<float>{};
 }
 
-Rectangle<float> FLookAndFeel::trackRectangle ()
+Rectangle<float> FaderLookAndFeel::trackRectangle ()
 {
     if (sliderStyle == Slider::SliderStyle::LinearVertical)
     {
@@ -121,7 +87,7 @@ Rectangle<float> FLookAndFeel::trackRectangle ()
     return Rectangle<float>{};
 }
 
-vector<Rectangle<int>> FLookAndFeel::lines()
+vector<Rectangle<int>> FaderLookAndFeel::lines()
 {
     vector<Rectangle<int>> lines;
     
@@ -156,7 +122,7 @@ vector<Rectangle<int>> FLookAndFeel::lines()
     return lines;
 }
 
-Rectangle<float> FLookAndFeel::thumbRectangle()
+Rectangle<float> FaderLookAndFeel::thumbRectangle()
 {
     if (sliderStyle == Slider::SliderStyle::LinearVertical)
     {
@@ -180,7 +146,7 @@ Rectangle<float> FLookAndFeel::thumbRectangle()
     return Rectangle<float>{};
 }
 
-int FLookAndFeel::constrainSliderPos()
+int FaderLookAndFeel::constrainSliderPos()
 {
     if (sliderStyle == Slider::SliderStyle::LinearVertical)
     {

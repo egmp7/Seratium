@@ -11,9 +11,6 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include <map>
-//Models
-#include "SliderModel.h"
 // controllers
 #include "Crossfader.h"
 #include "DJAudioPlayer.h"
@@ -23,8 +20,6 @@
 #include "DeckAnimation.h"
 #include "Volume.h"
 #include "Speed.h"
-// lookAndFeel
-#include "FadersLookAndFeel.h"
 
 using namespace juce;
 using namespace std;
@@ -33,7 +28,6 @@ using namespace std;
 
 class DeckGUI  : public Component,
                  public Button::Listener,
-                 public Slider::Listener,
                  public FileDragAndDropTarget,
                  public Timer,
                  public DragAndDropTarget
@@ -46,7 +40,6 @@ public:
             bool _mirror);
     ~DeckGUI() override;
 
-    
     void paint (juce::Graphics&) override;
     void resized() override;
     
@@ -55,9 +48,6 @@ public:
     /**Implementation for  Button when clicked
      @param button button clicked */
     void buttonClicked(Button *) override;
-    /**Implementation for Slider when user drags
-     @param slider slider moved*/
-    void sliderValueChanged (Slider *slider) override;
     /**Checks drag and drop  system files when entering the component rectangle
      @param &files an array of files  selected when dragging
      @returns true when item is inside the component*/
@@ -81,14 +71,6 @@ public:
     void updateTimeTracker();
     /**Callback function to run setter **/
     void timerCallback() override;
-    /**Get the slider meta data to draw custom volume thumbnails**/
-    SliderModel getVolSliderModel();
-    /**Get the slider meta data to draw custom speed thumbnails**/
-    SliderModel getSpeedSliderModel();
-    
-    /**Get the slider value of the volume and speed components
-     @returns volume and speed float values**/
-    map<string,float> getSliderValues();
 
 private:
     
@@ -100,19 +82,13 @@ private:
     ImageButton playPauseButton{"Play/Pause"};
     ImageButton cueButton{"CUE"};
     ImageButton loadButton{"LOAD"};
-    
     Volume volume;
     Speed speed;
-    
-    Slider volSlider;
-    Slider speedSlider;
-    
     WaveformDisplay waveformDisplay;
     TimeTracker timeTracker;
     DeckAnimation deckAnimation {player};
     
     //Utilities
-    FadersLookAndFeel fadersLookAndFeel{FaderType::vertical};
     FileChooser fChooser{"Select a file..."};
     bool mirror;
     float cue;

@@ -18,8 +18,7 @@ Speed::Speed()
     speedSlider.setSliderStyle(Slider::SliderStyle::LinearVertical);
     speedSlider.setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
     speedSlider.setValue(1.0f);
-    speedSlider.setRange(0.0f, 1.0f);
-    //speedSlider.setLookAndFeel(&speedLookAndFeel);
+    speedSlider.setRange(0.5f, 1.5f);
 }
 
 Speed::~Speed()
@@ -28,19 +27,9 @@ Speed::~Speed()
 
 void Speed::paint (juce::Graphics& g)
 {
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
-
-       You should replace everything in this method with your own
-       drawing code..
-    */
-
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
-
+    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
     g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
-   
+    g.drawRect (getLocalBounds(), 1);
 }
 
 void Speed::resized()
@@ -50,10 +39,5 @@ void Speed::resized()
 
 void Speed::sliderValueChanged(Slider* slider)
 {
-    speedSlider.setValue(slider->getValue());
-}
-
-float Speed::getValue()
-{
-    return speedSlider.getValue();
+    //
 }

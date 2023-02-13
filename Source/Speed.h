@@ -11,13 +11,14 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "Fader.h"
+#include "FaderLookAndFeel.h"
 
 using namespace juce;
 using namespace std;
 
 //==============================================================================
 /*
+ // NEEDS CONNECTION TO PLAYER
 */
 class Speed
 :
@@ -27,6 +28,7 @@ public Slider::Listener
 
 {
 public:
+    // add player 
     Speed();
     ~Speed() override;
 
@@ -36,14 +38,10 @@ public:
     /**Sets the value of the speedSlider
      @param slider pointer from Slider::Listener**/
     void sliderValueChanged(Slider* slider) override;
-    /**Gets the value of the speedSlider
-     @returns float between 0.0f and 1.0f**/
-    float getValue();
 
 private:
     
     Slider speedSlider;
-    //FLookAndFeel speedLookAndFeel{FaderOrientation::v};
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Speed)
 };

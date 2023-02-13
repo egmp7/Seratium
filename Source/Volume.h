@@ -11,7 +11,9 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "Fader.h"
+
+#include "Crossfader.h"
+#include "FaderLookAndFeel.h"
 
 using namespace juce;
 using namespace std;
@@ -19,6 +21,10 @@ using namespace std;
 
 //==============================================================================
 /*
+ Volume components works along with the crossfader,
+ its in charge of updating the Crossfader fader value between 0.0f and 1.0f
+ 
+ // NEEDS CONNECTION TO CROSSFADER
 */
 class Volume  :
 
@@ -26,24 +32,27 @@ public Component,
 public Slider::Listener
 
 {
+    
 public:
+    
     Volume();
     ~Volume() override;
 
-    void paint (juce::Graphics&) override;
+    void paint (Graphics&) override;
     void resized() override;
+    
     /**Sets the value of the volumeSlider
      @param slider pointer from Slider::Listener**/
     void sliderValueChanged(Slider* slider) override;
-    /**Gets the value of the volumeSlider
-     @returns float between 0.0f and 1.0f**/
-    float getValue();
 
 private:
     
     Slider volumeSlider;
-    Fader volumeCustomFader;
-    FLookAndFeel volumeLookAndFeel{ImageFileFormat::loadFrom(File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/volFader.png"))};
+    FaderLookAndFeel volumeLookAndFeel
+        {ImageFileFormat::loadFrom(
+           File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/volFader.png"))};
+    
+    Crossfader* crossfader;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Volume)
 };

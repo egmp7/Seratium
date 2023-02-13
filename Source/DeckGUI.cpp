@@ -78,29 +78,10 @@ mirror(_mirror)
           1.0,
           Colours::transparentWhite);
 
-    // vol slider
-    addAndMakeVisible(volSlider);
-    volSlider.addListener(this);
-    volSlider.setRange(0.0, 1.0);
-    volSlider.setSliderStyle(Slider::SliderStyle::LinearVertical);
-    volSlider.setTextBoxStyle(Slider::NoTextBox, false, 100, 20);
-    volSlider.setValue(1);
-    volSlider.setLookAndFeel(&fadersLookAndFeel);
-    
+
+    // components
     addAndMakeVisible(volume);
-
-    // speed slider
-    addAndMakeVisible(speedSlider);
-    speedSlider.addListener(this);
-    speedSlider.setRange(0.5, 1.5);
-    speedSlider.setSliderStyle(Slider::SliderStyle::LinearVertical);
-    speedSlider.setTextBoxStyle(Slider::NoTextBox, false, 100, 20);
-    speedSlider.setValue(1);
-    speedSlider.setLookAndFeel(&fadersLookAndFeel);
-    
     addAndMakeVisible(speed);
-
-    // other components
     addAndMakeVisible(waveformDisplay);
     addAndMakeVisible(deckAnimation);
     addAndMakeVisible(timeTracker);
@@ -136,18 +117,14 @@ void DeckGUI::resized()
     
     if(!mirror)
     {
-        speedSlider.setBounds       (x,         y * 4,       x,         y * 5);
         speed.setBounds       (x,         y * 4,       x,         y * 5);
-        volSlider.setBounds         (x * 10,    y * 4,       x,         y * 5);
         volume.setBounds         (x * 10,    y * 4,       x,         y * 5);
         playPauseButton.setBounds   (x,         y * 10,      x * 1.5,   y * 1.5);
         cueButton.setBounds         (x * 3,     y * 10,      x * 1.5,   y * 1.5);
     }
     else
     {
-        speedSlider.setBounds       (x * 10,    y * 4,       x,         y * 5);
         speed.setBounds       (x * 10,    y * 4,       x,         y * 5);
-        volSlider.setBounds         (x,         y * 4,       x,         y * 5);
         volume.setBounds         (x,         y * 4,       x,         y * 5);
         playPauseButton.setBounds   (x * 5.5f,  y * 10,      x * 1.5,   y * 1.5);
         cueButton.setBounds         (x * 7.5f,  y * 10,      x * 1.5,   y * 1.5);
@@ -217,18 +194,6 @@ void DeckGUI::buttonClicked(Button* button)
     }
 }
 
-void DeckGUI::sliderValueChanged(juce::Slider *slider)
-{
-    if (slider == &volSlider)
-    {
-        crossfader->setFaderGain(slider->getValue(), getComponentID());
-    }
-    if (slider == &speedSlider)
-    {
-        player->setSpeed(slider->getValue());
-    }
-}
-
 bool DeckGUI::isInterestedInFileDrag (const juce::StringArray &files)
 {
     std::cout<< "DeckGUI::isInterestedInFileDrag" << std::endl;
@@ -280,38 +245,5 @@ void DeckGUI::loadWaveform(URL file)
 void DeckGUI::updateTimeTracker()
 {
     timeTracker.setCurrentTimeToZero();
-}
-
-SliderModel DeckGUI::getVolSliderModel()
-{
-    SliderModel volSliderModel{
-        volSlider.getX(),
-        volSlider.getY(),
-        volSlider.getWidth(),
-        volSlider.getHeight(),
-        (float)volSlider.getValue()
-    };
-    return volSliderModel;
-}
-
-SliderModel DeckGUI::getSpeedSliderModel()
-{
-    SliderModel speedSliderModel{
-        speedSlider.getX(),
-        speedSlider.getY(),
-        speedSlider.getWidth(),
-        speedSlider.getHeight(),
-        (float)speedSlider.getValue() - 0.5f
-    };
-    return speedSliderModel;
-}
-
-map<string,float> DeckGUI::getSliderValues()
-{
-    map<string,float> sliderValues;
-    
-    sliderValues["volume"] = volume.getValue();
-    
-    return sliderValues;
 }
 

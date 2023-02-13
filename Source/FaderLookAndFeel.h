@@ -15,40 +15,10 @@
 using namespace juce;
 using namespace std;
 
-
-enum class FaderOrientation {h,v};
-
-class Fader
+class FaderLookAndFeel : public LookAndFeel_V4
 {
 public:
-    Fader(FaderOrientation _orientation,
-          Image _image);
-    
-    FaderOrientation orientation;
-    Image image;
-    
-    float value;
-    
-    
-    void setBounds(Rectangle<int> _bounds);
-    Rectangle<int> getBounds();
-
-    
-    Rectangle<float> getPosition();
-    void setPosition(float sliderValue);
-
-private:
-    Rectangle<float> faderRectangle(float sliderPos);
-    Rectangle<float> position;
-    Rectangle<int> bounds;
-
-    
-};
-
-class FLookAndFeel : public LookAndFeel_V4
-{
-public:
-    FLookAndFeel(Image _thumbImage);
+    FaderLookAndFeel(Image _thumbImage);
     /**Draw custom slider
     @param x left edge of component
     @param y left edge of component

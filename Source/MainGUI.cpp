@@ -8,7 +8,6 @@
   ==============================================================================
 */
 
-#include <JuceHeader.h>
 #include "MainGUI.h"
 
 //==============================================================================
@@ -30,14 +29,6 @@ playlist(_formatManagerToUse)
     
     addAndMakeVisible(crossfader);
     addAndMakeVisible(playlist);
-    
-    crossfaderPNG = ImageFileFormat::loadFrom(File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/crossfader.png"));
-    volPNG =
-        ImageFileFormat::loadFrom(File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/volFader.png"));
-    speedPNG =
-        ImageFileFormat::loadFrom(File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/speedFader.png"));
-    
-    setFramesPerSecond (60);
 }
 
 MainGUI::~MainGUI()
@@ -48,13 +39,10 @@ MainGUI::~MainGUI()
 void MainGUI::paint (juce::Graphics& g)
 {
 
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
-
+    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
     g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-    
-    //map <string,float> test = deckGUI1.getSliderValues();
-    
+    g.drawRect (getLocalBounds(), 1);
+        
 }
 
 void MainGUI::resized()
@@ -81,63 +69,4 @@ void MainGUI::resized()
                        y * 12,
                        x * 24,
                        y * 4);
-}
-
-void MainGUI::paintOverChildren(Graphics & g)
-{
-    g.drawImage(crossfaderPNG,crossfaderThumUpdate,RectanglePlacement());
-    //g.drawImage(volPNG,volFaderThumUpdate1,RectanglePlacement());
-    //g.drawImage(volPNG,volFaderThumUpdate2,RectanglePlacement());
-    g.drawImage(speedPNG,speedFaderThumUpdate1,RectanglePlacement());
-    g.drawImage(speedPNG,speedFaderThumUpdate2,RectanglePlacement());
-
-
-
-
-}
-
-void MainGUI::update()
-{
-    crossfaderThumUpdate = RectanglesUtility::catchHorizontalThumRectangle(
-        crossfader.getX(),
-        crossfader.getY(),
-        crossfader.getWidth(),
-        crossfader.getHeight(),
-        crossfader.thumPosition() + crossfader.getX());
-    
-    SliderModel volumeSliderModel1 = deckGUI1.getVolSliderModel();
-    
-    volFaderThumUpdate1 = RectanglesUtility::catchVerticalThumRectangle(
-       volumeSliderModel1.x,
-       volumeSliderModel1.y,
-       volumeSliderModel1.width,
-       volumeSliderModel1.height,
-       volumeSliderModel1.value);
-    
-    SliderModel volumeSliderModel2 = deckGUI2.getVolSliderModel();
-    
-    volFaderThumUpdate2 = RectanglesUtility::catchVerticalThumRectangle(
-       volumeSliderModel2.x + getWidth()/2,
-       volumeSliderModel2.y,
-       volumeSliderModel2.width,
-       volumeSliderModel2.height,
-       volumeSliderModel2.value);
-    
-    SliderModel speedSliderModel1 = deckGUI1.getSpeedSliderModel();
-    
-    speedFaderThumUpdate1 = RectanglesUtility::catchVerticalThumRectangle(
-       speedSliderModel1.x,
-       speedSliderModel1.y,
-       speedSliderModel1.width,
-       speedSliderModel1.height,
-       speedSliderModel1.value);
-    
-    SliderModel speedSliderModel2 = deckGUI2.getSpeedSliderModel();
-    
-    speedFaderThumUpdate2 = RectanglesUtility::catchVerticalThumRectangle(
-       speedSliderModel2.x + getWidth()/2,
-       speedSliderModel2.y,
-       speedSliderModel2.width,
-       speedSliderModel2.height,
-       speedSliderModel2.value);
 }

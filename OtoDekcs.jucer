@@ -9,16 +9,8 @@
         <FILE id="GTia0F" name="CSV.h" compile="0" resource="0" file="Source/CSV.h"/>
         <FILE id="TbVM3V" name="Format.cpp" compile="1" resource="0" file="Source/Format.cpp"/>
         <FILE id="A1Izje" name="Format.h" compile="0" resource="0" file="Source/Format.h"/>
-        <FILE id="w2a7zu" name="RectanglesUtility.cpp" compile="1" resource="0"
-              file="Source/RectanglesUtility.cpp"/>
-        <FILE id="EleuwS" name="RectanglesUtility.h" compile="0" resource="0"
-              file="Source/RectanglesUtility.h"/>
       </GROUP>
       <GROUP id="{C2496291-4ECA-E06E-4C3B-76FE0611C39F}" name="Models">
-        <FILE id="icWzoI" name="Fader.cpp" compile="1" resource="0" file="Source/Fader.cpp"/>
-        <FILE id="BERzgS" name="Fader.h" compile="0" resource="0" file="Source/Fader.h"/>
-        <FILE id="Qh3H7C" name="SliderModel.cpp" compile="1" resource="0" file="Source/SliderModel.cpp"/>
-        <FILE id="LkZ9nC" name="SliderModel.h" compile="0" resource="0" file="Source/SliderModel.h"/>
         <FILE id="tGdiz2" name="TrackEntry.cpp" compile="1" resource="0" file="Source/TrackEntry.cpp"/>
         <FILE id="BcQFJq" name="TrackEntry.h" compile="0" resource="0" file="Source/TrackEntry.h"/>
       </GROUP>
@@ -28,33 +20,33 @@
         <FILE id="SVZjG5" name="DJAudioPlayer.h" compile="0" resource="0" file="Source/DJAudioPlayer.h"/>
       </GROUP>
       <GROUP id="{2F733215-4164-B069-8359-AEF4D3CD1DDA}" name="Components">
-        <FILE id="NFX0Uf" name="Crossfader.cpp" compile="1" resource="0" file="Source/Crossfader.cpp"/>
-        <FILE id="qTH5Q0" name="Crossfader.h" compile="0" resource="0" file="Source/Crossfader.h"/>
-        <FILE id="o7Fdhm" name="DeckAnimation.cpp" compile="1" resource="0"
-              file="Source/DeckAnimation.cpp"/>
-        <FILE id="E2LzWQ" name="DeckAnimation.h" compile="0" resource="0" file="Source/DeckAnimation.h"/>
         <FILE id="B2GjRw" name="Playlist.cpp" compile="1" resource="0" file="Source/Playlist.cpp"/>
         <FILE id="SPbX4W" name="Playlist.h" compile="0" resource="0" file="Source/Playlist.h"/>
-        <FILE id="mS7pnI" name="Speed.cpp" compile="1" resource="0" file="Source/Speed.cpp"/>
-        <FILE id="HC6RXM" name="Speed.h" compile="0" resource="0" file="Source/Speed.h"/>
-        <FILE id="h7QKos" name="TimeTracker.cpp" compile="1" resource="0" file="Source/TimeTracker.cpp"/>
-        <FILE id="IN7Z0R" name="TimeTracker.h" compile="0" resource="0" file="Source/TimeTracker.h"/>
-        <FILE id="N89XIO" name="Volume.cpp" compile="1" resource="0" file="Source/Volume.cpp"/>
-        <FILE id="PfM5wB" name="Volume.h" compile="0" resource="0" file="Source/Volume.h"/>
+        <FILE id="NFX0Uf" name="Crossfader.cpp" compile="1" resource="0" file="Source/Crossfader.cpp"/>
+        <FILE id="qTH5Q0" name="Crossfader.h" compile="0" resource="0" file="Source/Crossfader.h"/>
         <FILE id="mTiA6q" name="WaveformDisplay.cpp" compile="1" resource="0"
               file="Source/WaveformDisplay.cpp"/>
         <FILE id="oJmZ3x" name="WaveformDisplay.h" compile="0" resource="0"
               file="Source/WaveformDisplay.h"/>
+        <FILE id="o7Fdhm" name="DeckAnimation.cpp" compile="1" resource="0"
+              file="Source/DeckAnimation.cpp"/>
+        <FILE id="E2LzWQ" name="DeckAnimation.h" compile="0" resource="0" file="Source/DeckAnimation.h"/>
+        <FILE id="h7QKos" name="TimeTracker.cpp" compile="1" resource="0" file="Source/TimeTracker.cpp"/>
+        <FILE id="IN7Z0R" name="TimeTracker.h" compile="0" resource="0" file="Source/TimeTracker.h"/>
+        <FILE id="N89XIO" name="Volume.cpp" compile="1" resource="0" file="Source/Volume.cpp"/>
+        <FILE id="PfM5wB" name="Volume.h" compile="0" resource="0" file="Source/Volume.h"/>
+        <FILE id="mS7pnI" name="Speed.cpp" compile="1" resource="0" file="Source/Speed.cpp"/>
+        <FILE id="HC6RXM" name="Speed.h" compile="0" resource="0" file="Source/Speed.h"/>
       </GROUP>
       <GROUP id="{ED349D5F-41F9-FDEF-3670-860312757F3A}" name="GUIs">
-        <FILE id="dXl0KJ" name="DeckGUI.cpp" compile="1" resource="0" file="Source/DeckGUI.cpp"/>
-        <FILE id="cIQalg" name="DeckGUI.h" compile="0" resource="0" file="Source/DeckGUI.h"/>
-        <FILE id="APIT2v" name="FadersLookAndFeel.cpp" compile="1" resource="0"
-              file="Source/FadersLookAndFeel.cpp"/>
-        <FILE id="scDokb" name="FadersLookAndFeel.h" compile="0" resource="0"
-              file="Source/FadersLookAndFeel.h"/>
         <FILE id="zl7TU0" name="MainGUI.cpp" compile="1" resource="0" file="Source/MainGUI.cpp"/>
         <FILE id="YWSQ5P" name="MainGUI.h" compile="0" resource="0" file="Source/MainGUI.h"/>
+        <FILE id="dXl0KJ" name="DeckGUI.cpp" compile="1" resource="0" file="Source/DeckGUI.cpp"/>
+        <FILE id="cIQalg" name="DeckGUI.h" compile="0" resource="0" file="Source/DeckGUI.h"/>
+        <FILE id="icWzoI" name="FaderLookAndFeel.cpp" compile="1" resource="0"
+              file="Source/FaderLookAndFeel.cpp"/>
+        <FILE id="BERzgS" name="FaderLookAndFeel.h" compile="0" resource="0"
+              file="Source/FaderLookAndFeel.h"/>
       </GROUP>
       <FILE id="oKdVlp" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="kpgfPk" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
