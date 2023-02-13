@@ -92,6 +92,8 @@ private:
     
     //Utilities
     FileChooser fChooser{"Select a file..."};
+    Rectangle<int> fileNameRectangle;
+    String fileName;
     Deck deck;
     float cue;
     int cueCounter;

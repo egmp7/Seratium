@@ -109,6 +109,9 @@ void DeckGUI::paint (juce::Graphics& g)
     
     g.setColour (juce::Colours::grey);
     g.drawRect (getLocalBounds(), 1);
+    g.fillRect (fileNameRectangle);
+    g.setColour (juce::Colours::white);
+    g.drawText(fileName, fileNameRectangle, Justification::centredLeft);
     
 }
 
@@ -119,8 +122,9 @@ void DeckGUI::resized()
     
     // GUI Components               x           y           width       height
     loadButton.setBounds            (x,         0,          x,          y);
-    waveformDisplay.setBounds       (x,         y,          x * 10,     y * 2);
+    fileNameRectangle.setBounds     (x * 2,     0,          x * 7,      y);
     remainingTime.setBounds         (x * 9,     0,          x * 2,      y);
+    waveformDisplay.setBounds       (x,         y,          x * 10,     y * 2);
     deckAnimation.setBounds         (x * 3,     y * 3,      x * 6,      y * 6);
     
     if(deck == Deck::Left)
@@ -192,12 +196,18 @@ void DeckGUI::buttonClicked(Button* button)
         // launch file browser window async
         fChooser.launchAsync(fileChooserFlags, [this](const FileChooser& chooser)
         {
+           
             // get chosen file
             File file = chooser.getResult();
-            // load audio file
-            player->loadURL(URL{file});
-            // load waveform display
-            loadWaveform(URL{file});
+            if(file.exists())
+            {
+                // load audio file
+                player->loadURL(URL{file});
+                // load waveform display
+                loadWaveform(URL{file});
+                // store fileName
+                fileName = file.getFileName();
+            }
         });
     }
 }
@@ -216,6 +226,7 @@ void DeckGUI::filesDropped (const juce::StringArray &files, int x, int y)
         
         player->loadURL(URL{file});
         loadWaveform(URL{file});
+        fileName = file.getFileName();
     }
 }
 
@@ -244,6 +255,8 @@ void  DeckGUI::itemDropped (const SourceDetails &dragSourceDetails)
     
     player->loadURL(URL{file});
     loadWaveform(URL{file});
+    fileName = file.getFileName();
+
 }
 
 void DeckGUI::loadWaveform(URL file)

@@ -25,7 +25,9 @@ DeckAnimation::~DeckAnimation()
 
 void DeckAnimation::update ()
 {
-    setPosition(player->getPosition());
+    float pos = player->getPosition();
+    if(position != pos && !isnan(pos))
+        position = pos;
 }
 
 void DeckAnimation::paint (Graphics& g)
@@ -74,12 +76,6 @@ void DeckAnimation::paint (Graphics& g)
 
     g.strokePath (path, PathStrokeType (3.0f));
     
-}
-
-void DeckAnimation::setPosition(float pos)
-{
-    if(position != pos && !isnan(pos))
-        position = pos;
 }
 
 float DeckAnimation::animateX (float radius, int offset)

@@ -19,18 +19,15 @@ class DeckAnimation : public AnimatedAppComponent
                       
 {
 public:
-    DeckAnimation(DJAudioPlayer* _player);
+    DeckAnimation(DJAudioPlayer*);
     ~DeckAnimation() override;
     
     void paint (Graphics& g) override;
-    /**Calback function to animate */
+    /**Checks the position of the player to animate the dj plate */
     void update () override;
-    /**Stores locally the DJAudioPlayer position
-     @param pos position of the DJAudioPlayer*/
-    void setPosition(float pos);
     
 private:
-    
+
     /**Algorithm to produce an ellipse in the x coordenate
      @param radius size of the ellipse
      @param offset add extra points to the ellipse, this is required for the Path class*/
@@ -42,8 +39,5 @@ private:
     
     DJAudioPlayer* player;
     float position;
-    
-    
-    
     
 };
