@@ -57,14 +57,6 @@ DeckGUI::~DeckGUI()
 
 void DeckGUI::paint (juce::Graphics& g)
 {
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
-    
-    g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);
-    g.fillRect (fileNameRectangle);
-    g.setColour (juce::Colours::white);
-    g.drawText(fileName, fileNameRectangle, Justification::centredLeft);
-    
 }
 
 void DeckGUI::resized()
@@ -76,9 +68,9 @@ void DeckGUI::resized()
     
     // GUI Components               x           y           width       height
     loadButton.setBounds            (x,         py,         x,          y);
-    trackName.setBounds             (x * 2,     py,         x * 7,      y);
-    remainingTime.setBounds         (x * 9,     py,         x * 2,      y);
-    waveformDisplay.setBounds       (x,         y + py,     x * 10,     y * 2);
+    trackName.setBounds             (2*x +px,   py,         7*x -px,    y);
+    remainingTime.setBounds         (9*x + px,  py,         2*x -px,    y);
+    waveformDisplay.setBounds       (x,         y + py*2,   x * 10,     y * 2);
     deckAnimation.setBounds         (3*x + 2*px,3*y + 3*py, x * 5,      y * 5);
     
     if(deck == Deck::Left)

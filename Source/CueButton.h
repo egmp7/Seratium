@@ -37,6 +37,8 @@ public:
     void buttonClicked(Button *) override;
     /**resets the cueCounter to 0**/
     void resetCueCounter();
+    /**gets the position of the cue in seconds**/
+    int getCuePosition();
 
 private:
     

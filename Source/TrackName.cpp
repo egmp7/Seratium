@@ -25,22 +25,17 @@ TrackName::~TrackName()
 
 void TrackName::paint (juce::Graphics& g)
 {
+    g.setColour (Colour(60,21,108));
+    g.drawRoundedRectangle(0,0,getWidth(),getHeight(), 5.0f,3.0f);
 
-
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
-
-    g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);
-
-    g.setColour (juce::Colours::white);
-    g.setFont (14.0f);
-    g.drawText (fileName, getLocalBounds(),
+    g.setColour (Colours::orange);
+    g.setFont (16.0f);
+    g.drawText (" "+fileName, getLocalBounds(),
                 juce::Justification::centredLeft, true);
 }
 
 void TrackName::resized()
 {
-
 }
 
 void TrackName::setFileName(String _fileName)

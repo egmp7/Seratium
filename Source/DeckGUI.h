@@ -92,9 +92,6 @@ private:
     TrackName trackName;
     
     //Utilities
-    FileChooser fChooser{"Select a file..."};
-    Rectangle<int> fileNameRectangle;
-    String fileName;
     Deck deck;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeckGUI)

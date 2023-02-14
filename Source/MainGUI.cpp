@@ -34,10 +34,7 @@ MainGUI::~MainGUI()
 
 void MainGUI::paint (juce::Graphics& g)
 {
-
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
-    g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);        
+    g.fillAll(Colour(36, 17, 51));
 }
 
 void MainGUI::paintOverChildren(Graphics & g)
@@ -49,7 +46,6 @@ void MainGUI::paintOverChildren(Graphics & g)
 void MainGUI::resized()
 {
     double x = getWidth() / 24;
-    double px = x/4;
     double y = getHeight() / 16;
     double py = y/4;
     

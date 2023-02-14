@@ -31,9 +31,8 @@ Volume::~Volume()
 
 void Volume::paint (juce::Graphics& g)
 {
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
-    g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);
+    g.setColour (Colour(60,21,108));
+    g.fillRoundedRectangle(0,0,getWidth(),getHeight(), 10.0f);
 }
 
 void Volume::resized()

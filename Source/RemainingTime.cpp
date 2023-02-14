@@ -23,20 +23,16 @@ RemainingTime::~RemainingTime()
 
 void RemainingTime::paint (Graphics& g)
 {
-
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
-
-    g.setColour (Colours::grey);
-    g.drawRect (getLocalBounds(), 1);
+    g.setColour (Colour(60,21,108));
+    g.fillRoundedRectangle(0,0,getWidth(),getHeight(), 20.0f);
 
     if (remainingTime == 0)
         g.setColour (Colours::darkgrey);
     else
-        g.setColour(Colours::red);
+        g.setColour (Colours::orange);
     g.setFont (14.0f);
     g.drawText (Format::floatToTime(remainingTime), getLocalBounds(),
                 Justification::centred, true);
-    
 }
 
 void RemainingTime::resized()

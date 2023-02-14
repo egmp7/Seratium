@@ -27,6 +27,9 @@ player(_formatManagerToUse)
     //search component
     addAndMakeVisible(searchComponent);
     searchComponent.addListener(this);
+    searchComponent.setColour(TextEditor::ColourIds::backgroundColourId, Colour(60,21,108));
+    searchComponent.setColour(TextEditor::ColourIds::outlineColourId , Colour(60,21,108));
+
     
     addAndMakeVisible(labelSearch);
     labelSearch.attachToComponent(&searchComponent, true);
@@ -42,10 +45,7 @@ Playlist::~Playlist()
 
 void Playlist::paint (Graphics& g)
 {
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
-    g.setColour (Colours::grey);
-    g.drawRect (getLocalBounds(), 1);
-    
+    g.setColour (Colours::orange);
     g.drawText(" Playlist", title, Justification::centredLeft);
 }
 
@@ -81,9 +81,9 @@ void Playlist::paintRowBackground (Graphics & g,
     else
     {
         if(rowNumber % 2 == 0)
-            g.fillAll(Colours::darkgrey);
+            g.fillAll(Colour(213,193,255));
         else
-            g.fillAll(Colours::grey);
+            g.fillAll(Colour(213,210,255));;
     }
 }
 

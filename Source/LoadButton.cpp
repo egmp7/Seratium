@@ -45,9 +45,6 @@ LoadButton::~LoadButton()
 
 void LoadButton::paint (juce::Graphics& g)
 {
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
-    g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);
 }
 
 void LoadButton::resized()

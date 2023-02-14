@@ -40,17 +40,20 @@ void FaderLookAndFeel::drawLinearSlider(Graphics &g,
     slider = &_slider;
     
     // draw custom slider
+    // lines
     g.setColour(Colours::white);
     for (Rectangle<int> line : lines())
         g.drawRect(line);
-    g.setColour(Colours::darkgrey);
+    // background
+    g.setColour(Colour(22, 17, 35));
     g.fillRoundedRectangle(backgroundRectangle(), 2.0f);
-    g.setColour(Colours::grey);
+    // track
+    g.setColour(Colour(137,70,205));
     if(FaderStyle::FullGrow == faderStyle)
         g.fillRoundedRectangle(trackRectangle(), 2.0f);
     if(FaderStyle::MidGrow == faderStyle)
         g.fillRect(trackRectangle());
-    g.setColour(Colours::green);
+    // thumb
     g.drawImage(thumbImage, thumbRectangle(),RectanglePlacement());
             
 }

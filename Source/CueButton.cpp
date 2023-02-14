@@ -41,7 +41,6 @@ CueButton::~CueButton()
 
 void CueButton::paint (juce::Graphics& g)
 {
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
 }
 
 void CueButton::resized()
@@ -74,4 +73,9 @@ void CueButton::buttonClicked(Button *)
 void CueButton::resetCueCounter()
 {
     cueCounter = 0;
+}
+
+int CueButton::getCuePosition()
+{
+    return cuePosition;
 }

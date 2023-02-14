@@ -23,15 +23,13 @@ CurrentTime::~CurrentTime()
 void CurrentTime::paint (Graphics& g)
 {
 
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
+    g.setColour (Colour(60,21,108));
+    g.fillRoundedRectangle(0,0,getWidth(),getHeight(), 20.0f);
 
-    g.setColour (Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
-    g.setColour (Colours::white);
+    g.setColour (Colour(41,225,35));
     g.setFont (14.0f);
     g.drawText (Format::floatToTime(time), getLocalBounds(),
-                Justification::centred, true);   // draw some placeholder text
+                Justification::centred, true);
 }
 
 void CurrentTime::resized()

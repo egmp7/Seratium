@@ -35,10 +35,8 @@ WaveformDisplay::~WaveformDisplay()
 
 void WaveformDisplay::paint (Graphics& g)
 {
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
-    g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
+    g.setColour (Colour(60,20,108));
+    g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 4.0f, 2.0f);
     g.setColour (juce::Colours::orange);
     if (fileLoaded) // file loaded
     {

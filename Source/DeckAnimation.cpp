@@ -34,7 +34,7 @@ void DeckAnimation::paint (Graphics& g)
 {
     float responsiveSize = (float) getLocalBounds().getWidth()*0.009f;
      
-    g.fillAll   (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
+    g.fillAll(Colour(36, 17, 51));
     
     // bigger circle
     int d1 = 100 * responsiveSize;
