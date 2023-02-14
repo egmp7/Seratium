@@ -47,11 +47,15 @@ public:
     /**set the relative position of the playhead
      @param pos current position of the player in seconds*/
     void setPlayheadPosition(double pos);
+    /**set the relative position of the playhead
+     @param pos current position of the player in seconds*/
+    void setCuePosition(double pos);
 
 private:
     
     bool fileLoaded;
     double playheadPosition;
+    double cuePosition;
     AudioThumbnail audioThumb;
     DJAudioPlayer* player;
     CueButton* cueButton;

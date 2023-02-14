@@ -134,6 +134,8 @@ void DeckGUI::timerCallback()
 {
     // Set position of the waveform line component
     waveformDisplay.setPlayheadPosition(player->getPositionRelative());
+    // Set relative position of the waveform cue
+    waveformDisplay.setCuePosition(cueButton.getCuePosition() / player->getTrackLength());
     // Set current time of player in seconds
     currentTime.setTime(player->getPosition());
     // Set current time in remaining time

@@ -49,7 +49,10 @@ void WaveformDisplay::paint (Graphics& g)
                                1.0f);                       // boost size
         // draw playhead
         g.setColour(juce::Colours::lightgreen);
-        g.drawRect(playheadPosition * getWidth(), 0, 1, getHeight());;
+        g.drawRect(playheadPosition * getWidth(), 0, 1, getHeight());
+        // draw cue
+        g.setColour(juce::Colours::orange);
+        g.drawRect(cuePosition * getWidth(), 0, 1, getHeight());
     }
     else    // file not loaded
     {
@@ -94,6 +97,16 @@ void WaveformDisplay::setPlayheadPosition(double pos)
     if (pos != playheadPosition && !isnan(pos))
     {
         playheadPosition = pos;
+        repaint();
+    }
+    
+}
+
+void WaveformDisplay::setCuePosition(double pos)
+{
+    if (pos != cuePosition && !isnan(pos))
+    {
+        cuePosition = pos;
         repaint();
     }
 }

@@ -27,7 +27,7 @@ void CurrentTime::paint (Graphics& g)
     g.fillRoundedRectangle(0,0,getWidth(),getHeight(), 20.0f);
 
     g.setColour (Colour(41,225,35));
-    g.setFont (14.0f);
+    g.setFont (16.0f);
     g.drawText (Format::floatToTime(time), getLocalBounds(),
                 Justification::centred, true);
 }

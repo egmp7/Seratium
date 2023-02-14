@@ -24,6 +24,8 @@ player(_formatManagerToUse)
     tableComponent.getHeader().addColumn("Path",            4,  400);
     tableComponent.getHeader().addColumn("Extension",       5,  80);
     tableComponent.setModel(this);
+    tableComponent.setColour(TableListBox::ColourIds::backgroundColourId, Colour(60,21,108));
+    
     //search component
     addAndMakeVisible(searchComponent);
     searchComponent.addListener(this);
@@ -46,7 +48,7 @@ Playlist::~Playlist()
 void Playlist::paint (Graphics& g)
 {
     g.setColour (Colours::orange);
-    g.drawText(" Playlist", title, Justification::centredLeft);
+    g.drawText(" Playlist", title, Justification::centred);
 }
 
 void Playlist::resized()

@@ -39,8 +39,16 @@ void MainGUI::paint (juce::Graphics& g)
 
 void MainGUI::paintOverChildren(Graphics & g)
 {
-    g.setColour (juce::Colours::red);
-    g.fillRect(logo);
+    
+
+    g.setColour (Colour(60,21,108));
+    g.fillRect(deckDivision);
+    g.fillRoundedRectangle(logo,10.0f);
+    g.drawImage(ImageFileFormat::loadFrom(
+                File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/logo.png")),
+                logo,
+                RectanglePlacement());
+    
 }
 
 void MainGUI::resized()
@@ -69,4 +77,9 @@ void MainGUI::resized()
                        x * 24,
                        y * 5);
     logo.setBounds(11*x, 5*y+py, 2*x, 2*y);
+    
+    deckDivision.setBounds(12*x -3,
+                           0,
+                           6,
+                           9*y + 2*py);
 }

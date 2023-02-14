@@ -43,7 +43,7 @@ void DeckAnimation::paint (Graphics& g)
     
     // small circle
     int d2 = 40 * responsiveSize ;
-    g.setColour(Colours::lightblue);
+    g.setColour(Colour(213,210,255));
     g.fillEllipse(getWidth()/2 - d2/2, getHeight()/2 -d2/2, d2, d2);
     
     // deck line animation
@@ -53,7 +53,7 @@ void DeckAnimation::paint (Graphics& g)
     Point<float> startPoint (animateX(pointRadius1 , 0), animateY(pointRadius1 , 0));
     Point<float> endPoint   (animateX(pointRadius2 , 0), animateY(pointRadius2 , 0));
     
-    g.setColour (Colours::aqua);
+    g.setColour (Colour(137,70,205));
     g.drawLine(Line<float>(startPoint, endPoint),3.0f);
      
     // ring deck animation

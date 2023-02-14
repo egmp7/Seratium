@@ -53,6 +53,7 @@ void CueButton::buttonClicked(Button *)
     if (cueCounter == 1) // set player to start position
     {
         player->setPosition(0.0f);
+        cuePosition =0.0f;
         resetCueCounter();
     }
     else
@@ -75,7 +76,7 @@ void CueButton::resetCueCounter()
     cueCounter = 0;
 }
 
-int CueButton::getCuePosition()
+double CueButton::getCuePosition()
 {
     return cuePosition;
 }

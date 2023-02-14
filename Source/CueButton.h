@@ -38,13 +38,13 @@ public:
     /**resets the cueCounter to 0**/
     void resetCueCounter();
     /**gets the position of the cue in seconds**/
-    int getCuePosition();
+    double getCuePosition();
 
 private:
     
     DJAudioPlayer* player;
     int cueCounter;
-    int cuePosition;
+    double cuePosition;
     ImageButton cue{"CUE"};
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CueButton)

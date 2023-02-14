@@ -30,7 +30,7 @@ void RemainingTime::paint (Graphics& g)
         g.setColour (Colours::darkgrey);
     else
         g.setColour (Colours::orange);
-    g.setFont (14.0f);
+    g.setFont (16.0f);
     g.drawText (Format::floatToTime(remainingTime), getLocalBounds(),
                 Justification::centred, true);
 }

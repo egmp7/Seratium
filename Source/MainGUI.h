@@ -43,6 +43,7 @@ private:
     Crossfader crossfader;
     Playlist playlist;
     Rectangle<float> logo;
+    Rectangle<int> deckDivision;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainGUI)
 };
