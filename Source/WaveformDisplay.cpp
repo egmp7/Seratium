@@ -51,7 +51,7 @@ void WaveformDisplay::paint (Graphics& g)
         g.setColour(juce::Colours::lightgreen);
         g.drawRect(playheadPosition * getWidth(), 0, 1, getHeight());
         // draw cue
-        g.setColour(juce::Colours::orange);
+        g.setColour(juce::Colours::blue);
         g.drawRect(cuePosition * getWidth(), 0, 1, getHeight());
     }
     else    // file not loaded

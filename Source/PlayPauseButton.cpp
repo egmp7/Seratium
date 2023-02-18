@@ -25,7 +25,7 @@ cueButton(_cueButton)
           true,
           true,
           ImageFileFormat::loadFrom(
-                File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/playPause.png")),
+                File("/Users/erickgonzalez/Documents/Programs/Seratium/Assets/playPause.png")),
           0.8f,
           Colours::transparentWhite,
           Image{},

@@ -20,6 +20,7 @@ MainComponent::MainComponent()
     addAndMakeVisible(mainGUI);
     
     formatManager.registerBasicFormats();
+    File("/Users/erickgonzalez/Documents/Programs/Seratium").setAsCurrentWorkingDirectory();
 }
 
 MainComponent::~MainComponent()

@@ -6,13 +6,13 @@
     <key>CFBundleExecutable</key>
     <string>${EXECUTABLE_NAME}</string>
     <key>CFBundleIconFile</key>
-    <string></string>
+    <string>Icon.icns</string>
     <key>CFBundleIdentifier</key>
-    <string>com.yourcompany.OtoDekcs</string>
+    <string>com.yourcompany.Seratium</string>
     <key>CFBundleName</key>
-    <string>OtoDekcs</string>
+    <string>Seratium</string>
     <key>CFBundleDisplayName</key>
-    <string>OtoDekcs</string>
+    <string>Seratium</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleSignature</key>

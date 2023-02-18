@@ -24,7 +24,6 @@ using namespace std;
  Volume components works along with the crossfader,
  its in charge of updating the Crossfader fader value between 0.0f and 1.0f
  
- // NEEDS CONNECTION TO CROSSFADER
 */
 class Volume  :
 
@@ -49,8 +48,7 @@ private:
     
     Slider volumeSlider;
     FaderLookAndFeel volumeLookAndFeel
-        {ImageFileFormat::loadFrom(
-           File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/volFader.png")),
+        {ImageFileFormat::loadFrom(File("/Users/erickgonzalez/Documents/Programs/Seratium/Assets/volFader.png")),
         FaderStyle::FullGrow
         };
     

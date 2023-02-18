@@ -23,7 +23,7 @@ player(_player)
           true,
           true,
           ImageFileFormat::loadFrom(
-                File("/Users/erickgonzalez/Documents/Programs/OtoDekcs/Assets/cue.png")),
+                File("/Users/erickgonzalez/Documents/Programs/Seratium/Assets/cue.png")),
           0.8f,
           Colours::transparentWhite,
           Image{},
