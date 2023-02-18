@@ -7,7 +7,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Seratium</string>
 	<key>CFBundleExecutable</key>
-	<string>OtoDekcs</string>
+	<string>Seratium</string>
 	<key>CFBundleIconFile</key>
 	<string>Icon.icns</string>
 	<key>CFBundleIdentifier</key>

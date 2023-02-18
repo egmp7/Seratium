@@ -45,7 +45,7 @@ private:
     Slider speedSlider;
     FaderLookAndFeel speedLookAndFeel
         {ImageFileFormat::loadFrom(
-           File("/Users/erickgonzalez/Documents/Programs/Seratium/Assets/speedFader.png")),
+           File("/Users/erickgonzalez/Programs/Seratium/Assets/speedFader.png")),
         FaderStyle::MidGrow
         };
     DJAudioPlayer* player;

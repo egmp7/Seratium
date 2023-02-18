@@ -15,7 +15,7 @@ vector<TrackEntry>* CSV::playlist;
 void CSV::save()
 {
     fstream file;
-    file.open("/Users/erickgonzalez/Documents/Programs/Seratium/Source/playlist.csv", ios::out);
+    file.open("/Users/erickgonzalez/Programs/Seratium/Source/playlist.csv", ios::out);
     
     if (file.is_open())
     {
@@ -41,7 +41,7 @@ vector<TrackEntry> CSV::read()
     string line;
     
     fstream file;
-    file.open("/Users/erickgonzalez/Documents/Programs/Seratium/Source/playlist.csv", ios::in);
+    file.open("/Users/erickgonzalez/Programs/Seratium/Source/playlist.csv", ios::in);
     
     if(file.is_open())
     {

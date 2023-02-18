@@ -68,7 +68,19 @@
       <FILE id="hcti7m" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
     </GROUP>
-    <FILE id="pUEtEA" name="logo1.png" compile="0" resource="1" file="Assets/logo1.png"/>
+    <GROUP id="{685BFA21-ECA0-E966-46F9-D9EA56105098}" name="Assets">
+      <FILE id="YNx9p9" name="assets.svg" compile="0" resource="1" file="Assets/assets.svg"
+            xcodeResource="0"/>
+      <FILE id="hk12Uo" name="crossfader.png" compile="0" resource="1" file="Assets/crossfader.png"/>
+      <FILE id="z2vOXl" name="cue.png" compile="0" resource="1" file="Assets/cue.png"/>
+      <FILE id="dJiRC7" name="load.png" compile="0" resource="1" file="Assets/load.png"/>
+      <FILE id="InmLLx" name="logo.png" compile="0" resource="1" file="Assets/logo.png"/>
+      <FILE id="pUEtEA" name="logo1.png" compile="0" resource="1" file="Assets/logo1.png"/>
+      <FILE id="oivafZ" name="playPause.png" compile="0" resource="1" file="Assets/playPause.png"/>
+      <FILE id="kjeER1" name="speedFader.png" compile="0" resource="1" file="Assets/speedFader.png"/>
+      <FILE id="t44qxz" name="volFader.png" compile="0" resource="1" file="Assets/volFader.png"/>
+      <FILE id="wBSyYX" name="playlist.csv" compile="0" resource="1" file="Source/playlist.csv"/>
+    </GROUP>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_USE_MP3AUDIOFORMAT="1"/>
   <EXPORTFORMATS>
@@ -112,8 +124,8 @@
     </VS2022>
     <XCODE_MAC targetFolder="Builds/MacOSX" bigIcon="pUEtEA" smallIcon="pUEtEA">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" targetName="OtoDekcs"/>
-        <CONFIGURATION isDebug="0" name="Release" targetName="OtoDekcs"/>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="Seratium"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="Seratium"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="../../../../../JUCE/modules"/>
