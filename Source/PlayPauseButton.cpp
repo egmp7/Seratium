@@ -25,7 +25,7 @@ cueButton(_cueButton)
           true,
           true,
           ImageFileFormat::loadFrom(
-                File("/Users/erickgonzalez/Programs/Seratium/Assets/playPause.png")),
+                BinaryData::playPause_png,BinaryData::playPause_pngSize),
           0.8f,
           Colours::transparentWhite,
           Image{},

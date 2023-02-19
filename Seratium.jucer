@@ -71,8 +71,10 @@
     <GROUP id="{685BFA21-ECA0-E966-46F9-D9EA56105098}" name="Assets">
       <FILE id="YNx9p9" name="assets.svg" compile="0" resource="1" file="Assets/assets.svg"
             xcodeResource="0"/>
-      <FILE id="hk12Uo" name="crossfader.png" compile="0" resource="1" file="Assets/crossfader.png"/>
-      <FILE id="z2vOXl" name="cue.png" compile="0" resource="1" file="Assets/cue.png"/>
+      <FILE id="hk12Uo" name="crossfader.png" compile="0" resource="1" file="Assets/crossfader.png"
+            xcodeResource="0"/>
+      <FILE id="z2vOXl" name="cue.png" compile="0" resource="1" file="Assets/cue.png"
+            xcodeResource="0"/>
       <FILE id="dJiRC7" name="load.png" compile="0" resource="1" file="Assets/load.png"/>
       <FILE id="InmLLx" name="logo.png" compile="0" resource="1" file="Assets/logo.png"/>
       <FILE id="pUEtEA" name="logo1.png" compile="0" resource="1" file="Assets/logo1.png"/>

@@ -27,7 +27,7 @@ trackName(_trackName)
           true,
           true,
           ImageFileFormat::loadFrom(
-                File("/Users/erickgonzalez/Programs/Seratium/Assets/load.png")),
+                BinaryData::load_png,BinaryData::load_pngSize),
           0.8f,
           Colours::transparentWhite,
           Image{},

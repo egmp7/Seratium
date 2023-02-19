@@ -57,7 +57,7 @@ private:
     Slider crossfaderSlider;
     FaderLookAndFeel crossfaderLookAndFeel
         {ImageFileFormat::loadFrom(
-           File("/Users/erickgonzalez/Programs/Seratium/Assets/crossfader.png")),
+           BinaryData::crossfader_png,BinaryData::crossfader_pngSize),
         FaderStyle::MidGrow
         };
         

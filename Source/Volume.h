@@ -48,7 +48,8 @@ private:
     
     Slider volumeSlider;
     FaderLookAndFeel volumeLookAndFeel
-        {ImageFileFormat::loadFrom(File("/Users/erickgonzalez/Programs/Seratium/Assets/volFader.png")),
+        {ImageFileFormat::loadFrom(
+                                   BinaryData::volFader_png,BinaryData::volFader_pngSize),
         FaderStyle::FullGrow
         };
     

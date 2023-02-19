@@ -45,7 +45,7 @@ void MainGUI::paintOverChildren(Graphics & g)
     g.fillRect(deckDivision);
     g.fillRoundedRectangle(logo,10.0f);
     g.drawImage(ImageFileFormat::loadFrom(
-                File("/Users/erickgonzalez/Programs/Seratium/Assets/logo.png")),
+                BinaryData::logo_png, BinaryData::logo_pngSize),
                 logo,
                 RectanglePlacement());
     

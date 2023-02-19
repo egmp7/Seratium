@@ -23,7 +23,7 @@ player(_player)
           true,
           true,
           ImageFileFormat::loadFrom(
-                File("/Users/erickgonzalez/Programs/Seratium/Assets/cue.png")),
+                BinaryData::cue_png,BinaryData::cue_pngSize),
           0.8f,
           Colours::transparentWhite,
           Image{},
