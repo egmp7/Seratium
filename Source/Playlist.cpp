@@ -37,6 +37,7 @@ player(_formatManagerToUse)
     labelSearch.attachToComponent(&searchComponent, true);
     
     // load playlist
+    CSV::createPlaylistPath();
     playlist = CSV::read();
     playlistView = playlist;
 }

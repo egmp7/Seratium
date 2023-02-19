@@ -3235,7 +3235,6 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Assets\assets.svg"/>
     <None Include="..\..\Assets\crossfader.png"/>
     <None Include="..\..\Assets\cue.png"/>
     <None Include="..\..\Assets\load.png"/>
@@ -3244,7 +3243,6 @@
     <None Include="..\..\Assets\playPause.png"/>
     <None Include="..\..\Assets\speedFader.png"/>
     <None Include="..\..\Assets\volFader.png"/>
-    <None Include="..\..\Source\playlist.csv"/>
     <None Include="C:\JUCE\modules\juce_audio_devices\native\oboe\CMakeLists.txt"/>
     <None Include="C:\JUCE\modules\juce_audio_devices\native\oboe\README.md"/>
     <None Include="C:\JUCE\modules\juce_audio_formats\codecs\flac\Flac Licence.txt"/>

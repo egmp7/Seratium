@@ -8,9 +8,6 @@
 
 namespace BinaryData
 {
-    extern const char*   assets_svg;
-    const int            assets_svgSize = 42003;
-
     extern const char*   crossfader_png;
     const int            crossfader_pngSize = 4840;
 
@@ -35,11 +32,8 @@ namespace BinaryData
     extern const char*   volFader_png;
     const int            volFader_pngSize = 5417;
 
-    extern const char*   playlist_csv;
-    const int            playlist_csvSize = 7988;
-
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 10;
+    const int namedResourceListSize = 8;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

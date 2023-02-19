@@ -5696,9 +5696,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Assets\assets.svg">
-      <Filter>Seratium\Assets</Filter>
-    </None>
     <None Include="..\..\Assets\crossfader.png">
       <Filter>Seratium\Assets</Filter>
     </None>
@@ -5721,9 +5718,6 @@
       <Filter>Seratium\Assets</Filter>
     </None>
     <None Include="..\..\Assets\volFader.png">
-      <Filter>Seratium\Assets</Filter>
-    </None>
-    <None Include="..\..\Source\playlist.csv">
       <Filter>Seratium\Assets</Filter>
     </None>
     <None Include="C:\JUCE\modules\juce_audio_devices\native\oboe\CMakeLists.txt">

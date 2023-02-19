@@ -14,6 +14,7 @@
 #include <iostream>
 #include <fstream>
 #include "TrackEntry.h"
+#include <filesystem>
 
 using namespace std;
 
@@ -28,6 +29,8 @@ public:
     static vector<TrackEntry> read();
     /**Static memory to reference playlist vector**/
     static vector<TrackEntry>* playlist;
+    /**Creates a Seratium directory in the Music Folder to store the playlist**/
+    static void createPlaylistPath();
 
 private:
     
@@ -44,5 +47,7 @@ private:
      @param tokens columns of data
      @returns al track entrie that the playlist can read from*/
     static TrackEntry stringsToTrackEntry(vector<string> tokens);
+    /**Static memory to store playlist path in resource folder**/
+    static string playlistPath;
 
 };

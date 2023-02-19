@@ -11,11 +11,16 @@
 #include "CSV.h"
 
 vector<TrackEntry>* CSV::playlist;
+string CSV::playlistPath =String(
+             File::getSpecialLocation(File::userMusicDirectory)
+                  .getFullPathName())
+                  .toStdString()
+                  + "/Seratium/playlist.csv";
 
 void CSV::save()
 {
     fstream file;
-    file.open("/Users/erickgonzalez/Programs/Seratium/Source/playlist.csv", ios::out);
+    file.open(CSV::playlistPath, ios::out);
     
     if (file.is_open())
     {
@@ -41,8 +46,8 @@ vector<TrackEntry> CSV::read()
     string line;
     
     fstream file;
-    file.open("/Users/erickgonzalez/Programs/Seratium/Source/playlist.csv", ios::in);
-    
+    file.open(CSV::playlistPath, ios::in);
+        
     if(file.is_open())
     {
         while(getline(file, line))
@@ -57,6 +62,17 @@ vector<TrackEntry> CSV::read()
     file.close();
     
     return entries;
+}
+
+void CSV::createPlaylistPath()
+{
+    File file(File::getSpecialLocation(File::userMusicDirectory).getChildFile("Seratium"));
+    
+    if ( !file.exists())
+        file.createDirectory();
+
+    else
+        cout << "CSV::createPlaylistPath File exists" <<endl;
 }
 
 TrackEntry CSV::stringsToTrackEntry(vector<string> tokens)

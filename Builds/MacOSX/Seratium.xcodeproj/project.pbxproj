@@ -87,7 +87,6 @@
 		44CD93F87C8E1BBFF3FD7B87 /* LoadButton.cpp */ /* LoadButton.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LoadButton.cpp; path = ../../Source/LoadButton.cpp; sourceTree = SOURCE_ROOT; };
 		465BF7041389F19E3D97F1F7 /* CoreMIDI.framework */ /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		46F4BB722357F82FDC7FEA5A /* playPause.png */ /* playPause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playPause.png; path = ../../Assets/playPause.png; sourceTree = SOURCE_ROOT; };
-		4B15F901270939E45A800FDB /* assets.svg */ /* assets.svg */ = {isa = PBXFileReference; lastKnownFileType = file.svg; name = assets.svg; path = ../../Assets/assets.svg; sourceTree = SOURCE_ROOT; };
 		4D3D848B7776619E31850E97 /* MainComponent.cpp */ /* MainComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainComponent.cpp; path = ../../Source/MainComponent.cpp; sourceTree = SOURCE_ROOT; };
 		56888AE98A74633ABA063333 /* WaveformDisplay.cpp */ /* WaveformDisplay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = WaveformDisplay.cpp; path = ../../Source/WaveformDisplay.cpp; sourceTree = SOURCE_ROOT; };
 		5A7A3C498C4D0CE7A6B10CD5 /* speedFader.png */ /* speedFader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = speedFader.png; path = ../../Assets/speedFader.png; sourceTree = SOURCE_ROOT; };
@@ -125,7 +124,6 @@
 		BC182665A02065C6D415E1AA /* WaveformDisplay.h */ /* WaveformDisplay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaveformDisplay.h; path = ../../Source/WaveformDisplay.h; sourceTree = SOURCE_ROOT; };
 		BC70CEB2C8D41C2DF4841F89 /* juce_events */ /* juce_events */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_events; path = "~/JUCE/modules/juce_events"; sourceTree = "<absolute>"; };
 		C153A9CD8D988F27ACC83DBB /* include_juce_graphics.mm */ /* include_juce_graphics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_graphics.mm; path = ../../JuceLibraryCode/include_juce_graphics.mm; sourceTree = SOURCE_ROOT; };
-		C366746D4561C7F67EB851F0 /* playlist.csv */ /* playlist.csv */ = {isa = PBXFileReference; lastKnownFileType = file.csv; name = playlist.csv; path = ../../Source/playlist.csv; sourceTree = SOURCE_ROOT; };
 		C42D5D7EC9E3CF8323590F63 /* include_juce_audio_processors_lv2_libs.cpp */ /* include_juce_audio_processors_lv2_libs.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_audio_processors_lv2_libs.cpp; path = ../../JuceLibraryCode/include_juce_audio_processors_lv2_libs.cpp; sourceTree = SOURCE_ROOT; };
 		C5995BB3FBA03F962EA5F19A /* include_juce_audio_processors_ara.cpp */ /* include_juce_audio_processors_ara.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_audio_processors_ara.cpp; path = ../../JuceLibraryCode/include_juce_audio_processors_ara.cpp; sourceTree = SOURCE_ROOT; };
 		C9A7AD40A43BFE7B9B72D03C /* CueButton.h */ /* CueButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CueButton.h; path = ../../Source/CueButton.h; sourceTree = SOURCE_ROOT; };
@@ -326,7 +324,6 @@
 		BA6876C3F18C8383255DED32 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				4B15F901270939E45A800FDB,
 				3ED69852A8FF2132D1C28049,
 				CC087D2E2A83E59B983355C6,
 				14A59DE21AFD72D83E6B72D4,
@@ -335,7 +332,6 @@
 				46F4BB722357F82FDC7FEA5A,
 				5A7A3C498C4D0CE7A6B10CD5,
 				CDA41726C3FE99501EC12F31,
-				C366746D4561C7F67EB851F0,
 			);
 			name = Assets;
 			sourceTree = "<group>";

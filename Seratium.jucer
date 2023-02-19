@@ -69,8 +69,6 @@
             file="Source/MainComponent.cpp"/>
     </GROUP>
     <GROUP id="{685BFA21-ECA0-E966-46F9-D9EA56105098}" name="Assets">
-      <FILE id="YNx9p9" name="assets.svg" compile="0" resource="1" file="Assets/assets.svg"
-            xcodeResource="0"/>
       <FILE id="hk12Uo" name="crossfader.png" compile="0" resource="1" file="Assets/crossfader.png"
             xcodeResource="0"/>
       <FILE id="z2vOXl" name="cue.png" compile="0" resource="1" file="Assets/cue.png"
@@ -81,7 +79,6 @@
       <FILE id="oivafZ" name="playPause.png" compile="0" resource="1" file="Assets/playPause.png"/>
       <FILE id="kjeER1" name="speedFader.png" compile="0" resource="1" file="Assets/speedFader.png"/>
       <FILE id="t44qxz" name="volFader.png" compile="0" resource="1" file="Assets/volFader.png"/>
-      <FILE id="wBSyYX" name="playlist.csv" compile="0" resource="1" file="Source/playlist.csv"/>
     </GROUP>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_USE_MP3AUDIOFORMAT="1"/>
