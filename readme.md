@@ -52,7 +52,7 @@ There are three options to load a file:
 2. Drag and drop a file from a main window
 3. Drag and drop a file from the playlist
 
-Each option invokes the controller DJAudioPlayer load method that receives a URL argument. This method creates the reader source for the AudioTransportSource class which allows controlling the audio. 
+Each option invokes the controller DJAudioPlayer load method that receives a URL argument. This method creates a reader source for the AudioTransportSource class which allows controlling the audio. 
 
 ```
 void DJAudioPlayer::loadURL(URL audioURL)
@@ -108,7 +108,7 @@ void MainComponent::releaseResources()
 ```
 ## Volume Component
 
-The crossfader component sets the gain property of the AudioTransportSource and it is affected by the Volume class in each deck. The crossfader component will be explained in more detail in its section. The Volume component listens to the slider changes and sets the  VolumeL and VolumeR properties of the Crossfader class. Finally, the crossfader makes the calculations to set the gain of the AudioTransportSource.
+The volume components on each deck set the volume properties of the crossfader. Then the crossfader component sets the gain property of the AudioTransportSource depending on the crossfader value. 
 
 ```
 void Volume::sliderValueChanged(Slider* slider)
@@ -122,7 +122,7 @@ void Volume::sliderValueChanged(Slider* slider)
 
 ## Speed Component
 
-Each Deck has access to an instance of the controller DJAudioPlayer respectively, allowing communication between these two classes. The ResamplingAudioSource is instantiated in DJAudioPlayer and possesses
+Each Deck has access to an instance of the controller DJAudioPlayer, allowing communication between the GUI and the controller. The ResamplingAudioSource is instantiated in DJAudioPlayer and possesses
 the ResamplingRatio property that varies the speed of the track. The Speed component sets the ResamplingRatio between 0.5 and 1.5 with a slider listener. Similar to the MixerAudioSource, the resamplingAudioSource uses the audio life cycle to send the output information.
 
 ```
@@ -244,11 +244,11 @@ void Crossfader::mixVolumesAlgorithm()
 ## Playlist Component
 ### Adding files to the playlist
 
-The playlist stores files in the local vector<TrackEntry> playlist, by drag and drop. The FileDragAndDropTarget JUCE class allows this functionality with the filesDropped() method. Once the files are dropped, they pass through a filter that checks if a file’s path already exists in the vector. A new instance of the model Track Entry is created and added to the playlist vector if the file is new, otherwise is ignored. 
+The playlist stores files in the local vector<TrackEntry> playlist, by drag and drop. The FileDragAndDropTarget JUCE class allows this functionality with the filesDropped() method. Once the files are dropped, they pass through a filter that checks if a file’s path already exists in the vector. A new instance of the model Track Entry is created and pushed to the playlist vector when the file is new, otherwise is ignored. 
 
 ### Displaying meta data
 
-The TrackEntry class contains the metadata that displays on the playlist. These are the file itself, name, extension, full path, and track length. Almost all the metadata can be returned by the File class, except the track length. Therefore, the DJAudioPlayer class contains the getTrackLength() method that returns the track’s length.  
+The TrackEntry model class contains the metadata that displays on the playlist. The properties are the file itself, name, extension, full path, and track length. Almost all the metadata can be originated with the File JUCE class, except the track length. The DJAudioPlayer that instantiates the AudioTransportSource has access to the track length. Therefore, the playlist requires a pointer to the DJAudioPlayer to get the track length from the AudioTransportSource. 
 
 ```
 void Playlist::filesDropped (const StringArray &files, int x, int y)
@@ -278,10 +278,126 @@ void Playlist::filesDropped (const StringArray &files, int x, int y)
 
 ### Search functionality
 
+The search functionality requires two vectors. The vector<TrackEntry> playlist stores all the files, and the vector<TrackEntry> playlistView stores the searched file items. The playlistView vector gets rendered in the playlist table. The playlist vector mutates when loading new tracks or when starting the application. While the playlist view mutates when typing in the search box. The TextEditor::Listener class has been implemented in the playlist to listen to the changes in the text editor when typing in the search box. This class contains the textEditorTextChanged() method, which passes an argument that allows the evaluation of the files stored in the playlist vector with the text from the text editor.
+
+
+```
+void Playlist::textEditorTextChanged (TextEditor & textEditor)
+{
+    playlistView.clear();
+    
+    // search in playlist
+    for (TrackEntry track : playlist)
+    {
+        if(track.file.getFileName().containsIgnoreCase(textEditor.getText()))
+        {
+            playlistView.push_back(track);
+        }
+    }
+    
+    tableComponent.updateContent();
+}
+```
 ### Persisting data
+
+A CSV file is the method to persist data in Seratium. A static property references the playlist vector when dropping files into the playlist. The vector becomes a local static property in the CSV class. Then, a save method stores each TrackEntry property in a line of the CSV. The playlist file is saved in the Music/Seratium directory. The CSV class contains a method to load the data from the CSV file that gets called in the constructor of the Playlist class. 
+
+```
+void CSV::save()
+{
+    fstream file;
+    file.open(CSV::playlistPath, ios::out);
+    
+    if (file.is_open())
+    {
+        String playlistString;
+        
+        for (TrackEntry track : *playlist)
+        {
+            playlistString += createLine(track) + "\n";
+        }
+        
+        // save
+        file<< playlistString;
+    }
+    else
+        cout << "CSV::save File not open!" <<endl;
+
+    file.close();
+}
+
+vector<TrackEntry> CSV::read()
+{
+    vector<TrackEntry> entries;
+    string line;
+    
+    fstream file;
+    file.open(CSV::playlistPath, ios::in);
+        
+    if(file.is_open())
+    {
+        while(getline(file, line))
+        {
+            // push files
+            entries.push_back(stringsToTrackEntry(tokenise(line, ',')));
+        }
+    }
+    else
+        cout << "CSV::read File not open!" <<endl;
+    
+    file.close();
+    
+    return entries;
+}
+```
 
 ## GUI Layout
 
 ### Main GUI
 
+The MainGUI.h class is implemented to separate the structure of the MainComponent.h and establish the MainGUI class only for GUI’s layout purposes. The MainGUI contains the logo, custom graphics, crossfader, playlist, and two DeckGUI components. Each component of the DeckGUI.h has been separated into a component class. 
+
 ### LookAndFeel
+
+The FaderLookAndFeel class extends LookAndFeelClass which gives the instruments to customize sliders. I draw sticks to simulate a fader feeling and I switch the custom slider with a .png image file.
+
+```
+void FaderLookAndFeel::drawLinearSlider(Graphics &g,
+                                                   int _x,
+                                                   int _y,
+                                                   int _width,
+                                                   int _height,
+                                                   float _sliderPos,
+                                                   float _minSliderPos,
+                                                   float _maxSliderPos,
+                                                   const Slider::SliderStyle _sliderStyle,
+                                                   Slider &_slider)
+{
+    // reference component elements
+    x = &_x;
+    y = &_y;
+    width = &_width;
+    height = &_height;
+    sliderPos = &_sliderPos;
+    sliderStyle = _sliderStyle;
+    slider = &_slider;
+    
+    // draw custom slider
+    // lines
+    g.setColour(Colours::white);
+    for (Rectangle<int> line : lines())
+        g.drawRect(line);
+    // background
+    g.setColour(Colour(22, 17, 35));
+    g.fillRoundedRectangle(backgroundRectangle(), 2.0f);
+    // track
+    g.setColour(Colour(137,70,205));
+    if(FaderStyle::FullGrow == faderStyle)
+        g.fillRoundedRectangle(trackRectangle(), 2.0f);
+    if(FaderStyle::MidGrow == faderStyle)
+        g.fillRect(trackRectangle());
+    // thumb
+    g.drawImage(thumbImage, thumbRectangle(),RectanglePlacement());
+            
+}
+```
