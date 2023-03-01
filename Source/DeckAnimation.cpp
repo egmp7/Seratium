@@ -32,7 +32,8 @@ void DeckAnimation::update ()
 
 void DeckAnimation::paint (Graphics& g)
 {
-    float responsiveSize = (float) getLocalBounds().getWidth()*0.009f;
+    int size = min(getLocalBounds().getWidth(),getLocalBounds().getHeight());
+    float responsiveSize = (float) size * 0.009f;
      
     g.fillAll(Colour(36, 17, 51));
     

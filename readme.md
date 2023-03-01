@@ -1,6 +1,6 @@
 # Seratium
 
-Seratium is a DJ application capable of reading .mp3 and .wav files, with DJ controllers allowing tempo and volume manipulation. The user also has access to a playlist that let's add music to the desks.
+Seratium is a DJ application capable of reading .mp3 and .wav files. The decks control music playback with cues, volume faders, and speed controllers. A crossfader controls the main mix of the decks. Timers and titles have been implemented to give users tracking tools and enhance the user experience. The playlist persists data, allows loading tracks to the decks for convenience, and has a search component that looks for items stored in the playlist.
 
 <br>
 
@@ -41,8 +41,6 @@ Download and install the [Seratium Package](https://github.com/egmp7/Seratium/re
         3. FaderLookAndFeel.h
     6. Main.cpp
     7. MainComponent.h
-
-
 
 # Application functionality
 
@@ -145,3 +143,145 @@ void DJAudioPlayer::setSpeed(double ratio)
     }
 }
 ```
+
+## Animation disk
+
+The AnimatedAppComponent class provides Draw and Update methods to animate elements. The deck animation is a turntable and contains two ellipses, a line, and a path. The ellipses are static and add ornament to the graphic. However, the state of the line and the path instances changes every frame per second depending on the track’s position. This component knows about the controller DJAudioPlayer and gets its position in the Update method. The algorithms animateX and animateY return the ellipse's points responding to the local position variable. The animation algorithm is referenced from the JUCE Animation Tutorials.
+
+```
+
+void DeckAnimation::paint (Graphics& g)
+{
+    int size = min(getLocalBounds().getWidth(),getLocalBounds().getHeight());
+    float responsiveSize = (float) size * 0.009f;
+     
+    g.fillAll(Colour(36, 17, 51));
+    
+    // bigger circle
+    int d1 = 100 * responsiveSize;
+    g.setColour(Colours::black);
+    g.fillEllipse(getWidth()/2 - d1/2, getHeight()/2 -d1/2, d1, d1);
+    
+    // small circle
+    int d2 = 40 * responsiveSize ;
+    g.setColour(Colour(213,210,255));
+    g.fillEllipse(getWidth()/2 - d2/2, getHeight()/2 -d2/2, d2, d2);
+    
+    // deck line animation
+    int pointRadius1 = 50 * responsiveSize;
+    int pointRadius2 = 20 * responsiveSize;
+    
+    Point<float> startPoint (animateX(pointRadius1 , 0), animateY(pointRadius1 , 0));
+    Point<float> endPoint   (animateX(pointRadius2 , 0), animateY(pointRadius2 , 0));
+    
+    g.setColour (Colour(137,70,205));
+    g.drawLine(Line<float>(startPoint, endPoint),3.0f);
+     
+    // ring deck animation
+    
+    int ringRadius = 50 * responsiveSize;
+    auto numberOfDots = 62 ;
+    Path path;
+
+    // i = 2 to offset the start of the path
+    for (auto i = 2; i < numberOfDots; ++i)
+    {
+        // get points
+        Point<float> p (animateX(ringRadius, i),animateY(ringRadius, i));
+
+        if (i == 2)     // start
+            path.startNewSubPath (p);
+        else            // add points to Path
+            path.lineTo (p);
+    }
+
+    g.strokePath (path, PathStrokeType (3.0f));
+    
+}
+
+void DeckAnimation::update ()
+{
+    float pos = player->getPosition();
+    if(position != pos && !isnan(pos))
+        position = pos;
+}
+
+float DeckAnimation::animateX (float radius, int offset)
+{
+    // math to animate a point or varius depending on offset
+    return (float)getWidth()  / 2.0f + (float) radius * (-std::sin ((float) position * 1.5f + (float) offset * 0.10f));
+}
+
+float DeckAnimation::animateY (float radius, int offset)
+{
+    // math to animate a point or varius depending on offset
+    return (float) getHeight() / 2.0f + (float) radius * std::cos ((float) position * 1.5f + (float) offset * 0.10f);
+}
+```
+## Crossfader Component
+
+This component instantiates a slider that listens and sets the output gain of both decks, depending on the state of their Volume components. Every move on the volume faders or the crossfader itself triggers the mixVolumesAlgorithm(). The algorithm is a linear function that once the crossfader slider reaches the middle state, the sound of both decks will be at its peak. If the slider keeps moving towards any direction, one of the decks gain value will linearly decrease until it reaches 0.
+
+```
+void Crossfader::mixVolumesAlgorithm()
+{
+    float crossfaderValue = crossfaderSlider.getValue();
+    
+    if(crossfaderValue < 0.5f)
+    {
+        mainVolumeL = volumeL;
+        mainVolumeR = volumeR * (2.0f * crossfaderValue);
+    }
+    else{
+        mainVolumeL = volumeL * (-2.0f * crossfaderValue + 2.0f);
+        mainVolumeR = volumeR;
+    }
+    player1->setGain(mainVolumeL);
+    player2->setGain(mainVolumeR);
+}
+```
+
+## Playlist Component
+### Adding files to the playlist
+
+The playlist stores files in the local vector<TrackEntry> playlist, by drag and drop. The FileDragAndDropTarget JUCE class allows this functionality with the filesDropped() method. Once the files are dropped, they pass through a filter that checks if a file’s path already exists in the vector. A new instance of the model Track Entry is created and added to the playlist vector if the file is new, otherwise is ignored. 
+
+### Displaying meta data
+
+The TrackEntry class contains the metadata that displays on the playlist. These are the file itself, name, extension, full path, and track length. Almost all the metadata can be returned by the File class, except the track length. Therefore, the DJAudioPlayer class contains the getTrackLength() method that returns the track’s length.  
+
+```
+void Playlist::filesDropped (const StringArray &files, int x, int y)
+{
+    for (String file : *&files)
+    {
+        // check if file exists in playlist
+        if (!checkFileInPlaylist(file))
+        {
+            // prepare player
+            player.loadURL(URL{File{file}});
+            
+            // create a new file
+            TrackEntry track{
+                File{file},
+                File{file}.getFileNameWithoutExtension(),
+                File{file}.getFileExtension(),
+                File{file}.getFullPathName(),
+                (float)player.getTrackLength()};
+            
+            playlist.push_back(track);
+            player.releaseResources();
+        }
+    }
+}
+```
+
+### Search functionality
+
+### Persisting data
+
+## GUI Layout
+
+### Main GUI
+
+### LookAndFeel

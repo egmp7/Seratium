@@ -11,6 +11,7 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include <iostream>
 #include "DJAudioPlayer.h"
 #include "CueButton.h"
 
