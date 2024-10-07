@@ -118,16 +118,22 @@ bool DeckGUI::isInterestedInDragSource (const SourceDetails &dragSourceDetails)
     return true;
 }
 
-void  DeckGUI::itemDropped (const SourceDetails &dragSourceDetails)
+void DeckGUI::itemDropped(const SourceDetails& dragSourceDetails)
 {
-    cout<<"DeckGUI::itemDropped"<<endl;
-    
-    File file = String(dragSourceDetails.description);
-    
-    player->loadURL(URL{file});
-    waveformDisplay.loadURL(URL{file});
-    trackName.setFileName(file.getFileName());
+    cout << "DeckGUI::itemDropped" << endl;
 
+    // Convert var to String safely using toString()
+    juce::String filePath = dragSourceDetails.description.toString();
+
+    // Create File object using the file path
+    juce::File file(filePath);
+
+    // Load the URL into the player and waveform display
+    player->loadURL(juce::URL{ file });
+    waveformDisplay.loadURL(juce::URL{ file });
+
+    // Set track name using the file name
+    trackName.setFileName(file.getFileName());
 }
 
 void DeckGUI::timerCallback()

@@ -1,3 +1,18 @@
+# JUCE specific
+Builds/
+*.jucer
+
+# C++ specific
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+
+# IDE specific (example for Xcode and Visual Studio)
 .DS_Store
-playlist.csv
-Builds
+*.user
+*.suo
+*.vcxproj*
+*.xcodeproj/
